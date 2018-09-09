@@ -1,0 +1,125 @@
+@import "resume.theme.less";
+
+@basicText: 16px;
+@h3Size: @basicText + 1;
+@h2Size: @h3Size + 0;
+@h1Size: @h2Size + 3px;
+@smallText: 13px;
+
+@base_font: Arial, Helvetica, sans-serif;
+@base_color: black;
+
+.faded_text() {
+  color: @base_color;
+  opacity: 0.5;
+}
+
+body {
+  font-family: @base_font;
+  font-size: @basicText;
+}
+
+body {
+  background-color: darkgray;
+
+  article {
+    background-color: lightgrey;
+
+    main {
+      background-color: white;
+      background-clip: content-box;
+    }
+  }
+}
+
+a:visited {
+  color: blue;
+}
+
+.job {
+  & > h2 {
+    font-weight: normal;
+  }
+
+  .position {
+    & > h3 {
+      font-style: italic;
+      font-weight: bold;
+    }
+  }
+}
+
+h1 {
+  font-size: @h1Size;
+}
+
+h2 {
+  font-size: @h2Size;
+}
+
+h3 {
+  font-size: @h3Size;
+}
+
+#equipment h2 {
+  font-weight: bold;
+  font-style: normal;
+}
+
+#education {
+  h3 {
+    font-weight: normal;
+    font-style: italic;
+  }
+}
+
+#knowledge {
+  .basic {
+    .faded_text();
+  }
+
+  .intermediate {
+    color: @base_color;
+  }
+
+  .advanced {
+    font-weight: bold;
+  }
+}
+
+section > h1 {
+  text-decoration: underline;
+}
+
+address {
+  font-style: normal;
+}
+
+aside {
+  font-style: italic;
+  .faded_text();
+}
+
+#projects {
+  h3 {
+    font-weight: normal;
+  }
+
+  aside {
+    font-size: @smallText;
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  a {
+    .faded_text();
+
+    &:visited {
+      .faded_text();
+    }
+  }
+}
+
+span.purpose {
+  font-style: italic;
+}

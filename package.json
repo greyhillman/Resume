@@ -1,0 +1,19 @@
+{
+  "name": "resume",
+  "version": "1.0.0",
+  "description": "A repo to 1) store resume info and 2) to generate resumes for job applications",
+  "watch": {
+    "build": {
+      "patterns": ["src"],
+      "extensions": ["dhall", "less"]
+    }
+  },
+  "scripts": {
+    "build": "cabal run Resume -- --rebuild",
+    "watch": "npm-watch"
+  },
+  "devDependencies": {
+    "less": "^4.1.1",
+    "npm-watch": "0.10.0"
+  }
+}

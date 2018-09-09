@@ -1,0 +1,118 @@
+@highlightIndent: 18px;
+
+@basicText: 16px;
+@h3Size: @basicText + 1;
+@h2Size: @h3Size + 0;
+@h1Size: @h2Size + 3px;
+
+* {
+  box-sizing: border-box;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: darkgray;
+}
+
+body {
+  min-width: 8.5in;
+  max-width: 8.5in;
+  max-height: 11in;
+  min-height: 11in;
+
+  background-color: lightgray;
+}
+
+article {
+  background-color: white;
+  background-clip: content-box;
+  min-width: 8.5in;
+  max-width: 8.5in;
+  min-height: 11in;
+  max-height: 11in;
+
+  padding: 1in;
+
+  display: flex;
+  flex-direction: column;
+  //   justify-content: space-between;
+
+  > * + * {
+    margin-top: 4em;
+  }
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-weight: normal;
+    margin-top: 2em;
+    font-size: 1em;
+  }
+}
+
+address {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+
+  * + * {
+    margin-top: 0.25em;
+  }
+  > * {
+    display: inline-block;
+  }
+
+  .name {
+    font-weight: bold;
+    font-size: 1.25em;
+  }
+}
+
+main {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  line-height: 1.5rem;
+
+  h2 + * {
+    margin-top: 2em;
+  }
+
+  p + p {
+    margin-top: 1em;
+  }
+
+  p {
+    text-indent: 4em;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+}
+
+footer {
+  font-family: Georgia, "Times New Roman", Times, serif;
+
+  margin-left: 2em;
+
+  .name {
+    display: block;
+    margin-top: 1.5em;
+  }
+}
+
+a:visited {
+  color: blue;
+}

@@ -1,0 +1,10 @@
+# Haskell build files
+dist-newstyle/
+
+.shake/
+
+# NPM
+node_modules/
+
+# Output files
+bin/
