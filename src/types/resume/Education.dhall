@@ -1,3 +1,3 @@
 let Period = ../Period.dhall
 
-in  { title : Text, from : Text, period : Period, highlights : List Text }
+in  { title : Text, from : Text, period : Period.Type, highlights : List Text }

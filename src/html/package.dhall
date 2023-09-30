@@ -6,11 +6,27 @@ let Month = ../types/Month.dhall
 
 let Period = ../types/Period.dhall
 
-let PeriodDate = ../types/PeriodDate.dhall
-
 let Data = ../types/resume/package.dhall
 
-let month =
+let num_month =
+      \(month : Month) ->
+        merge
+          { Jan = "01"
+          , Feb = "02"
+          , Mar = "03"
+          , Apr = "04"
+          , May = "05"
+          , Jun = "06"
+          , Jul = "07"
+          , Aug = "08"
+          , Sep = "09"
+          , Oct = "10"
+          , Nov = "11"
+          , Dec = "12"
+          }
+          month
+
+let month_show =
       \(month : Month) ->
         merge
           { Jan = "Jan"
@@ -28,19 +44,79 @@ let month =
           }
           month
 
-let date =
-      \(date : PeriodDate) -> "${month date.month} ${Natural/show date.year}"
+let point_show =
+      \(year : Natural) ->
+      \(month : Month) ->
+        ''
+        <time datetime="${Natural/show year}-${num_month month}">
+        ${month_show month} ${Natural/show year}
+        </time>
+        ''
+
+let point_show_month =
+      \(year : Natural) ->
+      \(month : Month) ->
+        ''
+        <time datetime="${Natural/show year}-${num_month month}">
+        ${month_show month}
+        </time>
+        ''
+
+let element =
+      \(name : Text) ->
+      \(class : Text) ->
+      \(content : Text) ->
+        ''
+        <${name} class="${class}">
+        ${content}
+        </${name}>
+        ''
 
 let period =
-      \(period : Period) ->
+      \(period : Period.Type) ->
         merge
-          { Short =
-              \(short : { year : Natural, start : Month, end : Month }) ->
-                    "${month short.start}-${month short.end} "
-                ++  Natural/show short.year
-          , Long =
-              \(long : { start : PeriodDate, end : PeriodDate }) ->
-                "${date long.start} - ${date long.end}"
+          { Past =
+              \ ( past
+                : { start : { year : Natural, month : Month }
+                  , end : { year : Natural, month : Month }
+                  }
+                ) ->
+                element
+                  "section"
+                  "period"
+                  (     point_show past.start.year past.start.month
+                    ++  point_show past.end.year past.end.month
+                  )
+          , Current =
+              \(current : { start : { year : Natural, month : Month } }) ->
+                element
+                  "section"
+                  "period"
+                  "${point_show current.start.year current.start.month} -"
+          }
+          period
+
+let short_period =
+      \(period : Period.Type) ->
+        merge
+          { Past =
+              \ ( past
+                : { start : { year : Natural, month : Month }
+                  , end : { year : Natural, month : Month }
+                  }
+                ) ->
+                element
+                  "section"
+                  "period"
+                  (     point_show_month past.start.year past.start.month
+                    ++  point_show past.end.year past.end.month
+                  )
+          , Current =
+              \(current : { start : { year : Natural, month : Month } }) ->
+                element
+                  "section"
+                  "period"
+                  "${point_show current.start.year current.start.month} -"
           }
           period
 
@@ -178,7 +254,6 @@ in  { social_account =
             <a class="username" href="${account.link}">${account.username}</a>
           </li>
           ''
-    , month
     , period
     , job
     , project

@@ -33,9 +33,9 @@ let fulltime_dev =
         Job::{
         , title = jobTitles.fullStackDev
         , period =
-            Period.Long
-              { start = { month = Month.May, year = 2019 }
-              , end = { month = Month.Jul, year = 2021 }
+            Period.past
+              { start = Period.point 2019 Month.May
+              , end = Period.point 2021 Month.Jul
               }
         , languages = jobLanguages
         , databases = Job.Databases::{
@@ -87,7 +87,10 @@ in  { company = "Helm Operations"
             Job::{
             , title = jobTitles.coop jobTitles.fullStackDev
             , period =
-                Period.Short { year = 2019, start = Month.Jan, end = Month.Apr }
+                Period.past
+                  { start = Period.point 2019 Month.Jan
+                  , end = Period.point 2019 Month.Apr
+                  }
             , languages = jobLanguages
             , databases = Job.Databases::{ sql_server = Usage.Medium }
             , frameworks = Job.Frameworks::{

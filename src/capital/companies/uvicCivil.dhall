@@ -15,8 +15,10 @@ in  { company = "UVic Civil Engineering"
                 Job::{
                 , title = jobTitles.coop jobTitles.softwareDev
                 , period =
-                    Period.Short
-                      { year = 2017, start = Month.May, end = Month.Aug }
+                    Period.past
+                      { start = Period.point 2017 Month.May
+                      , end = Period.point 2017 Month.Aug
+                      }
                 , languages = Job.Languages::{ python3 = Usage.High }
                 , technologies = Job.Technologies::{ docker = Usage.Low }
                 , tools = Job.Tools::{ vs_code = Usage.High }

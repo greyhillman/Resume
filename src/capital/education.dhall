@@ -19,9 +19,9 @@ let uvicDegree =
               , faculty = "Computer Science"
               , university = "University of Victoria"
               , period =
-                  Period.Long
-                    { start = { month = Month.Sep, year = 2014 }
-                    , end = { month = Month.Apr, year = 2019 }
+                  Period.past
+                    { start = Period.point 2014 Month.Sep
+                    , end = Period.point 2019 Month.Apr
                     }
               , highlights = [ "GPA: 8.5 / 9" ]
               }
@@ -78,9 +78,9 @@ let uvicDegree =
 let highschool =
       { name = "Mount Douglas High School"
       , period =
-          Period.Long
-            { start = { month = Month.Sep, year = 2010 }
-            , end = { month = Month.Jun, year = 2014 }
+          Period.past
+            { start = Period.point 2010 Month.Sep
+            , end = Period.point 2014 Month.Jun
             }
       , highlights.apCourses = "Took 4 College Board Advanced Placement courses"
       }

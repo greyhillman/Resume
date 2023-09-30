@@ -15,8 +15,10 @@ in  { company = "Latitude Geographics"
                 Job::{
                 , title = jobTitles.coop jobTitles.qa
                 , period =
-                    Period.Short
-                      { year = 2018, start = Month.May, end = Month.Aug }
+                    Period.past
+                      { start = Period.point 2018 Month.May
+                      , end = Period.point 2018 Month.Aug
+                      }
                 , languages = Job.Languages::{ type_script = Usage.High }
                 , technologies = Job.Technologies::{
                   , web_driver_io = Usage.High

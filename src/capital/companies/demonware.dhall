@@ -15,8 +15,10 @@ in  { company = "Demonware"
                 Job::{
                 , title = jobTitles.coop jobTitles.softwareDev
                 , period =
-                    Period.Short
-                      { year = 2016, start = Month.Sep, end = Month.Dec }
+                    Period.past
+                      { start = Period.point 2016 Month.Sep
+                      , end = Period.point 2016 Month.Dec
+                      }
                 , languages = Job.Languages::{ python2 = Usage.High }
                 , tools = Job.Tools::{ git = Usage.High }
                 , methodologies = Job.Methodologies::{

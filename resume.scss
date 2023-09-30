@@ -72,6 +72,14 @@ article > main > header address section {
   justify-self: start;
 }
 
+section.period {
+  time + time {
+    &::before {
+      content: "-";
+    }
+  }
+}
+
 article > main > header {
   display: flex;
   flex-direction: column;

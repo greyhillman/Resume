@@ -45,7 +45,7 @@ let TechnologyUsage =
 let Job =
       { Type =
           { title : Text
-          , period : Period
+          , period : Period.Type
           , languages : LanguageUsage.Type
           , tools : ToolUsage.Type
           , methodologies : MethodologyUsage.Type
