@@ -1,4 +1,4 @@
-let capital = ../capital.dhall
+let capital = ../capital/package.dhall
 
 let Languages = ../types/Languages.dhall
 

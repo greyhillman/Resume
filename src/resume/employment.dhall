@@ -1,4 +1,4 @@
-let capital = ../capital.dhall
+let capital = ../capital/package.dhall
 
 let Resume = ../types/resume/package.dhall
 
