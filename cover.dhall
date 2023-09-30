@@ -39,7 +39,7 @@ let content =
 in  ''
     <html>
         <head>
-            <link href="cover.css" rel="stylesheet" />
+            <link href="./cover.css" rel="stylesheet" />
         </head>
         <body>
             <article>

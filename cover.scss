@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  background-color: darkgray;
+
+  body {
+    background-color: lightgray;
+
+    article {
+      background-color: white;
+    }
+  }
+}
+
+html {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body {
+  min-width: 8.5in;
+  max-width: 8.5in;
+  max-height: 11in;
+  min-height: 11in;
+
+  article {
+    min-width: 8.5in;
+    max-width: 8.5in;
+    min-height: 11in;
+    max-height: 11in;
+    padding: 1in;
+  }
+}
+
+article {
+  background-clip: content-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+header h1 {
+  font-weight: normal;
+  margin-top: 2em;
+  font-size: 1em;
+}
+
+address {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+}
+
+address * + * {
+  margin-top: 0.25em;
+}
+
+address > * {
+  display: inline-block;
+}
+
+address .name {
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+main {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  line-height: 1.5rem;
+}
+
+main h2 + * {
+  margin-top: 2em;
+}
+
+main p + p {
+  margin-top: 1em;
+}
+
+main p {
+  text-indent: 4em;
+}
+
+main h2 {
+  font-size: 1em;
+}
+
+footer {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-left: 2em;
+}
+
+footer .name {
+  display: block;
+  margin-top: 1.5em;
+}
+
+a:visited {
+  color: blue;
+}

@@ -1,10 +1,10 @@
-# Haskell build files
-dist-newstyle/
-
-.shake/
-
 # NPM
 node_modules/
 
-# Output files
+# C# build
 bin/
+obj/
+
+# Files that frequently change
+cover.dhall
+resume.dhall
