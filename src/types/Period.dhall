@@ -10,6 +10,9 @@ let Period = < Past : Past | Current : Current >
 
 in  { Type = Period
     , past = Period.Past
-    , current = Period.Current
+    , current =
+        \(year : Natural) ->
+        \(month : Month) ->
+          Period.Current { start = { month, year } }
     , point = \(year : Natural) -> \(month : Month) -> { year, month } : Point
     }
