@@ -2,19 +2,19 @@ let capital = ../capital/package.dhall
 
 let Resume = ../types/resume/package.dhall
 
-let helmOperations = capital.experience.companies.helmOperations
+let helmOperations = capital.experience.jobs.helmOperations
 
-let latitude = capital.experience.companies.latitude
+let latitude = capital.experience.jobs.latitude
 
-let uvicCivil = capital.experience.companies.uvicCivil
+let uvicCivil = capital.experience.jobs.uvicCivil
 
-let demonware = capital.experience.companies.demonware
+let demonware = capital.experience.jobs.demonware
 
 let quote = \(quote : Text) -> "\"${quote}\""
 
-in    [ { company = helmOperations.company
+in    [ { company = helmOperations.dev.company
         , positions =
-          [ let dev = helmOperations.positions.dev
+          [ let dev = helmOperations.dev
 
             in  { title = dev.title
                 , period = dev.period

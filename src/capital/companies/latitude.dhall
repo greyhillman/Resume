@@ -6,34 +6,28 @@ let jobTitles = ../../common/jobTitles.dhall
 
 let Period = ../../types/Period.dhall
 
-let Job = ../../types/capital/JobPosition.dhall
+let Job = ../../types/capital/Job.dhall
 
-in  { company = "Latitude Geographics"
-    , positions.qaCoop
-      =
-        let job =
-                Job::{
-                , title = jobTitles.coop jobTitles.qa
-                , period =
-                    Period.past
-                      { start = Period.point 2018 Month.May
-                      , end = Period.point 2018 Month.Aug
-                      }
-                , languages = Job.Languages::{ type_script = Usage.High }
-                , technologies = Job.Technologies::{
-                  , web_driver_io = Usage.High
-                  }
-                , tools = Job.Tools::{ vs_code = Usage.High }
-                }
-              : Job.Type
+let knowledge = ../knowledge.dhall
 
-        in      job
-            /\  { highlights =
-                  { design =
-                      "Gave recommendations on design of end-to-end tests (\"model\"-based)"
-                  , improvement = "Introduced tool to improve QA reports"
-                  , testingInfra =
-                      "Developed TypeScript automated end-to-end tests for new product"
-                  }
-                }
+let company = "Latitude Geographics"
+
+in  Job::{
+    , company
+    , position = Job.position.coop "Quality Assurance Analyst"
+    , period =
+        Period.past
+          { start = Period.point 2018 Month.May
+          , end = Period.point 2018 Month.Aug
+          }
+    , knowledge =
+      [ Job.used Usage.High knowledge.languages.typescript
+      , Job.used Usage.High knowledge.frameworks.web_driver
+      , Job.used Usage.High knowledge.tools.vscode
+      ]
+    , skills =
+      [ "Gave recommendations on design of end-to-end tests (\"model\"-based)"
+      , "Introduced tool to improve QA reports"
+      , "Developed TypeScript automated end-to-end tests for new product"
+      ]
     }

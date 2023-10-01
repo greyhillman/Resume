@@ -13,9 +13,8 @@ let tools = ./tools.dhall
 
 let methodologies = ./methodologies.dhall
 
-let companies = ./companies/package.dhall
-
-in  { experience = { companies, projects = ./projects/package.dhall }
+in  { experience =
+      { jobs = ./companies/package.dhall, projects = ./projects/package.dhall }
     , knowledge =
       { eduction = ./education.dhall
       , languages

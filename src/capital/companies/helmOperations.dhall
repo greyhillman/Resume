@@ -1,109 +1,89 @@
 let Month = ../../types/Month.dhall
 
-let databases = ../../common/databases.dhall
-
-let frameworks = ../../common/frameworks.dhall
-
-let languages = ../../common/languages.dhall
-
-let tools = ../../common/tools.dhall
-
-let methodologies = ../../common/methodologies.dhall
-
-let jobTitles = ../../common/jobTitles.dhall
-
-let JobLanguage = ../../types/capital/JobLanguage.dhall
-
 let Usage = ../../types/Usage.dhall
 
 let Period = ../../types/Period.dhall
 
-let Job = ../../types/capital/JobPosition.dhall
+let Job = ../../types/capital/Job.dhall
 
-let jobLanguages =
-      Job.Languages::{
-      , `c#` = Usage.High
-      , js = Usage.Medium
-      , html = Usage.Medium
-      , css = Usage.Medium
-      , less_css = Usage.Medium
-      }
+let knowledge = ../knowledge.dhall
 
-let fulltime_dev =
-        Job::{
-        , title = jobTitles.fullStackDev
-        , period =
-            Period.past
-              { start = Period.point 2019 Month.May
-              , end = Period.point 2021 Month.Jul
-              }
-        , languages = jobLanguages
-        , databases = Job.Databases::{
-          , sql_server = Usage.High
-          , postgres = Usage.Low
-          }
-        , frameworks = Job.Frameworks::{
-          , net = Usage.Medium
-          , knockout = Usage.High
-          , nunit = Usage.Medium
-          }
-        , tools = Job.Tools::{
-          , visual_studio = Usage.High
-          , vs_code = Usage.High
-          , git = Usage.High
-          , jira = Usage.High
-          , confluence = Usage.Medium
-          , powershell = Usage.Low
-          }
-        , methodologies = Job.Methodologies::{
-          , agile = Usage.Medium
-          , scrum = Usage.Medium
-          }
-        }
-      : Job.Type
+let company = "Helm Operations"
 
-in  { company = "Helm Operations"
-    , positions =
-      { dev =
-              fulltime_dev
-          /\  { highlights =
-                { bestPractisesAdvocate =
-                    "Continual advocate for best practises across code, UI/UX, processes"
-                , quickLearner =
-                    "Fixed several core issues within first year to recover system from major outage"
-                , testInfra =
-                    "Oversaw 2 testing infrastructure projects from conception to completion"
-                }
-              , quotes =
-                { kathy =
-                    "We're definitely going to miss your humour and attention to quality and detail"
-                , tim =
-                    "I'm gonna miss your attention to all the high-level problems in our code"
-                , peter =
-                    "Talented dev with well-thought-out solutions and attention to good coding practices"
-                }
-              }
-      , coop =
-            Job::{
-            , title = jobTitles.coop jobTitles.fullStackDev
-            , period =
-                Period.past
-                  { start = Period.point 2019 Month.Jan
-                  , end = Period.point 2019 Month.Apr
-                  }
-            , languages = jobLanguages
-            , databases = Job.Databases::{ sql_server = Usage.Medium }
-            , frameworks = Job.Frameworks::{
-              , net = Usage.Low
-              , knockout = Usage.High
-              }
-            , tools = Job.Tools::{
-              , visual_studio = Usage.Medium
-              , vs_code = Usage.High
-              , jira = Usage.Low
-              , confluence = Usage.Low
-              }
+in  { dev = Job::{
+      , company
+      , position = Job.position.permanent "Full-stack Developer"
+      , period =
+          Period.past
+            { start = Period.point 2019 Month.May
+            , end = Period.point 2021 Month.Jul
             }
-          : Job.Type
+      , knowledge =
+        [ Job.used Usage.High knowledge.languages.csharp
+        , Job.used Usage.Medium knowledge.languages.javascript
+        , Job.used Usage.Medium knowledge.languages.html
+        , Job.used Usage.Medium knowledge.languages.css
+        , Job.used Usage.Medium knowledge.languages.less_css
+        , Job.used Usage.High knowledge.databases.sql_server
+        , Job.used Usage.Low knowledge.databases.postgres
+        , Job.used Usage.Medium knowledge.frameworks.net
+        , Job.used Usage.High knowledge.frameworks.knockout_js
+        , Job.used Usage.Medium knowledge.frameworks.nunit
+        , Job.used Usage.High knowledge.tools.visual_studio
+        , Job.used Usage.High knowledge.tools.vscode
+        , Job.used Usage.High knowledge.tools.git
+        , Job.used Usage.High knowledge.services.jira
+        , Job.used Usage.Medium knowledge.services.confluence
+        , Job.used Usage.Low knowledge.languages.powershell
+        , Job.used Usage.Medium knowledge.methods.agile
+        , Job.used Usage.Medium knowledge.methods.scrum
+        ]
+      , endorsements =
+        [ Job.endorsed
+            "We're definitely going to miss your humour and attention to quality and detail"
+            "Kathy"
+            "Technical Writer"
+            Job.Relation.Coworker
+        , Job.endorsed
+            "I'm gonna miss your attention to all the high-level problems in our code"
+            "Tim"
+            "Full-stack Developer"
+            Job.Relation.Coworker
+        , Job.endorsed
+            "Talented dev with well-though-out solutions and attention to good coding practices"
+            "Peter"
+            "Team Lead"
+            Job.Relation.Boss
+        ]
+      , skills =
+        [ "Continual advocate for best practises across code, UI/UX, processes"
+        , "Fixed several core issues within first year to recover system from major outage"
+        , "Oversaw 2 testing infrastructure projects from conception to completion"
+        ]
       }
+    , coop =
+          Job::{
+          , company
+          , position = Job.position.coop "Software Developer"
+          , period =
+              Period.past
+                { start = Period.point 2019 Month.Jan
+                , end = Period.point 2019 Month.Apr
+                }
+          , knowledge =
+            [ Job.used Usage.High knowledge.languages.csharp
+            , Job.used Usage.Medium knowledge.languages.javascript
+            , Job.used Usage.Medium knowledge.languages.html
+            , Job.used Usage.Medium knowledge.languages.less_css
+            , Job.used Usage.Medium knowledge.languages.css
+            , Job.used Usage.Medium knowledge.databases.sql_server
+            , Job.used Usage.High knowledge.frameworks.knockout_js
+            , Job.used Usage.Low knowledge.frameworks.net
+            , Job.used Usage.Medium knowledge.tools.visual_studio
+            , Job.used Usage.High knowledge.tools.vscode
+            , Job.used Usage.Low knowledge.services.jira
+            , Job.used Usage.Low knowledge.services.confluence
+            ]
+          }
+        : Job.Type
     }

@@ -33,6 +33,8 @@ namespace Resume
                 new FilePath("dist/cover.css"),
                 new FilePath("dist/resume.html"),
                 new FilePath("dist/resume.css"),
+                new FilePath("dist/capital.html"),
+                new FilePath("dist/capital.css"),
             });
         }
     }

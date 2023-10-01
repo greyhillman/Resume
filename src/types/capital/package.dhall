@@ -1,5 +1,3 @@
-{ Degree = ./Degree.dhall
-, Job = ./Job.dhall
-, JobLangauge = ./JobLanguage.dhall
-, JobPosition = ./JobPosition.dhall
+{ Experience = { Job = ./Job.dhall, Project = ./Project.dhall }
+, Knowledge.Degree = ./Degree.dhall
 }
