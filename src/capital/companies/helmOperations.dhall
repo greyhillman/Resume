@@ -50,7 +50,7 @@ in  { dev = Job::{
             "Full-stack Developer"
             Job.Relation.Coworker
         , Job.endorsed
-            "Talented dev with well-though-out solutions and attention to good coding practices"
+            "Talented dev with well-thought-out solutions and attention to good coding practices"
             "Peter"
             "Team Lead"
             Job.Relation.Boss

@@ -1,47 +1,155 @@
+let Resume = ./types/Resume.dhall
+
+let Period = ./types/Period.dhall
+
+let Month = ./types/Month.dhall
+
+let Capital = ./types/capital/package.dhall
+
 let capital = ./capital/package.dhall
 
-let contact = ./contact.dhall
+let jobs = capital.experience.jobs
 
-let Resume = ./types/resume/package.dhall
+let projects = capital.experience.projects
 
-let employment = ./resume/employment.dhall
+let knowledge = ./capital/knowledge.dhall
 
-let knowledge =
-      { education =
-        [ let uvic = capital.knowledge.eduction.uvic.bachelors
+let Endorsement = Capital.Experience.Job.Endorsement
 
-          in  { title = uvic.title
-              , from = "${uvic.university} - ${uvic.faculty}"
-              , period = uvic.period
-              , highlights = uvic.highlights
+let position_title =
+      \(position : Capital.Experience.Job.Position) ->
+        let suffix =
+              merge { Coop = " (Co-op)", Permanent = "" } position.contract
+
+        in  "${position.title}${suffix}"
+
+let show_month =
+      \(month : Month) ->
+        merge
+          { Jan = "Jan"
+          , Feb = "Feb"
+          , Mar = "Mar"
+          , Apr = "Apr"
+          , May = "May"
+          , Jun = "Jun"
+          , Jul = "Jul"
+          , Aug = "Aug"
+          , Sep = "Sep"
+          , Oct = "Oct"
+          , Nov = "Nov"
+          , Dec = "Dec"
+          }
+          month
+
+let long_period =
+      \(period : Period.Type) ->
+        let show_point =
+              \(point : Period.Point) ->
+                "${show_month point.month} ${Natural/show point.year}"
+
+        in  merge
+              { Current =
+                  \(current : Period.Current) -> "${show_point current.start} -"
+              , Past =
+                  \(past : Period.Past) ->
+                    "${show_point past.start} - ${show_point past.end}"
               }
-        ]
-      , other = ./resume/equipment.dhall
-      }
+              period
 
-let projects =
-      let data = capital.experience.projects
+let short_period =
+      \(period : Period.Type) ->
+        let show_point =
+              \(point : Period.Point) ->
+                "${show_month point.month} ${Natural/show point.year}"
 
-      in    [ { title = data.finance.title
-              , link = data.finance.link
-              , repo = data.finance.repo
-              , purpose = data.finance.purpose
-              , highlights =
-                [ data.finance.highlights.shake, data.finance.highlights.dhall ]
+        in  merge
+              { Current =
+                  \(current : Period.Current) -> "${show_point current.start} -"
+              , Past =
+                  \(past : Period.Past) ->
+                    "${show_month past.start.month} - ${show_point past.end}"
               }
-            , { title = data.rentBuy.title
-              , link = data.rentBuy.link
-              , repo = data.rentBuy.repo
-              , purpose = data.rentBuy.purpose
-              , highlights = [ data.rentBuy.highlights.react ]
-              }
-            , { title = data.resume.title
-              , link = data.resume.link
-              , repo = data.resume.repo
-              , purpose = data.resume.purpose
-              , highlights = [ data.resume.highlights.dhall ] : List Text
-              }
-            ]
-          : List Resume.Project
+              period
 
-in  { contact, employment, knowledge, projects } : Resume.Type
+let endorsement_highlight =
+      \(endorsement : Text) ->
+      \(person : Text) ->
+        "\"${endorsement}\" - ${person}"
+
+in  { positions =
+          [ { title = position_title jobs.xplor.intermediate.position
+            , company = jobs.xplor.intermediate.company
+            , period = long_period jobs.xplor.intermediate.period
+            , highlights = [] : List Text
+            , tech = [] : List Text
+            }
+          , { title = position_title jobs.xplor.junior.position
+            , company = jobs.xplor.junior.company
+            , period = long_period jobs.xplor.junior.period
+            , highlights = [] : List Text
+            , tech = [] : List Text
+            }
+          , { title = position_title jobs.helmOperations.dev.position
+            , company = jobs.helmOperations.dev.company
+            , period = long_period jobs.helmOperations.dev.period
+            , highlights =
+                  [ endorsement_highlight
+                      "We're definitely going to miss your humour and attention to quality and detail"
+                      "Co-worker"
+                  , endorsement_highlight
+                      "Talented dev with well-thought-out solutions and attention to good coding practices"
+                      "Team Lead"
+                  ]
+                : List Text
+            , tech =
+                  [ knowledge.languages.csharp
+                  , knowledge.frameworks.net
+                  , knowledge.languages.javascript
+                  , knowledge.frameworks.knockout_js
+                  , knowledge.databases.sql_server
+                  , knowledge.tools.visual_studio
+                  , knowledge.tools.vscode
+                  ]
+                : List Text
+            }
+          , { title = position_title jobs.helmOperations.coop.position
+            , company = jobs.helmOperations.coop.company
+            , period = short_period jobs.helmOperations.coop.period
+            , highlights = [] : List Text
+            , tech = [] : List Text
+            }
+          ]
+        : List Resume.Position
+    , projects =
+          [ { title = projects.finance.title
+            , purpose = projects.finance.purpose
+            , link = projects.finance.link
+            , repo = projects.finance.repo
+            , highlights = [] : List Text
+            , tech = [] : List Text
+            }
+          , { title = projects.rentBuy.title
+            , purpose = projects.rentBuy.purpose
+            , link = projects.rentBuy.link
+            , repo = projects.rentBuy.repo
+            , highlights = [] : List Text
+            , tech = [] : List Text
+            }
+          , { title = projects.resume.title
+            , purpose = projects.resume.purpose
+            , link = projects.resume.link
+            , repo = projects.resume.repo
+            , highlights = [] : List Text
+            , tech = [] : List Text
+            }
+          ]
+        : List Resume.Project
+    , degree =
+          { title = capital.knowledge.education.uvic.bachelors.title
+          , period = "Sep 2014 - Apr 2019"
+          , institution = capital.knowledge.education.uvic.bachelors.university
+          , faculty = capital.knowledge.education.uvic.bachelors.faculty
+          }
+        : Resume.Degree
+    , contact = ./contact.dhall
+    }

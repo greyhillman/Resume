@@ -5,6 +5,5 @@ node_modules/
 bin/
 obj/
 
-# Files that frequently change
-cover.dhall
-resume.dhall
+# output files
+dist/

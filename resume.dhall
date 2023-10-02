@@ -1,84 +1,124 @@
 let Prelude = https://prelude.dhall-lang.org/v22.0.0/package.dhall
 
+let Resume = ./src/types/Resume.dhall
+
 let data = ./src/resume.dhall
 
 let contact = ./src/contact.dhall
 
-let ContactAccount = ./src/types/ContactAccount.dhall
+let online_account =
+      \(site : Text) ->
+      \(username : Text) ->
+      \(link : Text) ->
+        ''
+        <span class="site">${site}</span>
+        <a class="username" href="${link}">${username}</a>
+        ''
 
-let html = ./src/html/package.dhall
-
-let Types = ./src/types/resume/package.dhall
-
-let from_social-media = html.social_account
-
-let social_media_sites =
-      Prelude.Text.concatMap ContactAccount from_social-media contact.accounts
-
-let social_media =
-      ''
-      <ul class="social-media">
-          ${social_media_sites}
-      </ul>
-      ''
+let online_accounts =
+      Prelude.Text.concatMap
+        Text
+        (\(x : Text) -> "<li>${x}</li>")
+        [ online_account "GitHub" "greyhillman" "https://github.com/greyhillman"
+        , online_account
+            "LinkedIn"
+            "greyhillman"
+            "https://www.linkedin.com/in/greyhillman/"
+        ]
 
 let header =
       ''
-      <h1>${contact.name}</h1>
+      <p>${contact.name}</p>
       <address>
-        <section>
-            <span class="location">Victoria, BC</span>
-            <a href="mailto:${contact.email}">${contact.email}</a>
-        </section>
-        ${social_media}
+        <div>
+          <span class="location">Victoria, BC</span>
+          <a href="mailto:${contact.email}">${contact.email}</a>
+        </div>
+        <ul class="social">
+            ${online_accounts}
+        </ul>
       </address>
       ''
 
-let experience =
-      let jobs = Prelude.Text.concatMap Types.Job html.job data.employment
+let job =
+      \(job : Resume.Position) ->
+        let highlights =
+              Prelude.Text.concatMap
+                Text
+                (\(x : Text) -> "<li>${x}</li>")
+                job.highlights
 
-      let projects =
-            Prelude.Text.concatMap Types.Project html.project data.projects
+        let tech =
+              Prelude.Text.concatMap
+                Text
+                (\(x : Text) -> "<li>${x}</li>")
+                job.tech
 
-      in  ''
-          <section id="employment">
-            <h1>Employment</h1>
-            <ol>
-                ${jobs}
-            </ol>
-          </section>
-          <section id="projects">
-            <h1>Projects</h1>
-            <ul>
-                ${projects}
+        in  ''
+            <header>${job.title}</header>
+            <span class="company">${job.company}</span>
+            <span class="period">${job.period}</span>
+
+            <ul class="highlight">
+                ${highlights}
             </ul>
-          </section>
+            <ul class="tech">
+                ${tech}
+            </ul>
             ''
 
-let knowledge =
-      let areas =
-            Prelude.Text.concatMap
-              Types.Knowledge
-              html.knowledge
-              data.knowledge.other
+let jobs =
+      Prelude.Text.concatMap
+        Resume.Position
+        (\(x : Resume.Position) -> "<li>${job x}</li>")
+        data.positions
 
-      let educations =
-            Prelude.Text.concatMap
-              Types.Education
-              html.education
-              data.knowledge.education
+let project =
+      \(project : Resume.Project) ->
+        let link =
+              merge
+                { None = ""
+                , Some =
+                    \(link : Text) ->
+                      ''
+                      <a href="${link}">(link)</a>
+                      ''
+                }
+                project.link
 
-      in  ''
-          <section id="knowledge">
-            <h1>Knowledge</h1>
-            <ul id="education">
-                ${educations}
-            </ul>
-            <ul id="equipment">
-                ${areas}
-            </ul>
-          </section>
-          ''
+        let repo =
+              merge
+                { None = ""
+                , Some =
+                    \(repo : Text) ->
+                      ''
+                      <a href="${repo}">(repo)</a>
+                      ''
+                }
+                project.repo
+
+        in  ''
+            <header>${project.title}</header>
+            <aside>
+                ${link}
+                ${repo}
+            </aside>
+            <p>Purpose: ${project.purpose}</p>
+            ''
+
+let projects =
+      Prelude.Text.concatMap
+        Resume.Project
+        (\(x : Resume.Project) -> "<li>${project x}</li>")
+        data.projects
+
+let degree =
+      ''
+      <section class="degree">
+          <header>${data.degree.title}</header>
+          <p class="institution">${data.degree.institution} - ${data.degree.faculty}</p>
+      </section>
+      ''
 
 in  ''
     <html>
@@ -86,15 +126,29 @@ in  ''
             <link href="./resume.css" rel="stylesheet" />
         </head>
         <body>
-            <article>
-                <main>
+            <main>
+                <article>
                     <header>
                         ${header}
                     </header>
-                    ${experience}
-                    ${knowledge}
-                </main>
-            </article>
+                    <section id="employment">
+                        <header>Employment</header>
+                        <ol class="job">
+                            ${jobs}
+                        </ol>
+                    </section>
+                    <section id="projects">
+                        <header>Projects</header>
+                        <ol>
+                            ${projects}
+                        </ol>
+                    </section>
+                    <section id="education">
+                        <header>Education</header>
+                        ${degree}
+                    </section>
+                </article>
+            </main>
         </body>
     </html>
     ''

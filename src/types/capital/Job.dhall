@@ -31,6 +31,9 @@ let Job
       }
 
 in  { Type = Job
+    , Relation
+    , Position
+    , Endorsement
     , position =
       { coop = \(title : Text) -> { title, contract = Contract.Coop } : Position
       , permanent =
@@ -46,7 +49,6 @@ in  { Type = Job
         \(position : Text) ->
         \(relation : Relation) ->
           { quote, person = { name, position, relation } } : Endorsement
-    , Relation
     , default =
       { skills = [] : List Text
       , endorsements = [] : List Endorsement

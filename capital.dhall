@@ -206,7 +206,7 @@ let degrees =
       Prelude.Text.concatMap
         Degree
         (\(x : Degree) -> "<li>${degree x}</li>")
-        [ capital.knowledge.eduction.uvic.bachelors ]
+        [ capital.knowledge.education.uvic.bachelors ]
 
 let scholarship =
       \(scholarship : Scholarship) ->
@@ -223,7 +223,7 @@ let scholarships =
       Prelude.Text.concatMap
         Scholarship
         (\(x : Scholarship) -> "<li>${scholarship x}</li>")
-        capital.knowledge.eduction.scholarships
+        capital.knowledge.education.scholarships
 
 in  ''
     <html>

@@ -9,6 +9,9 @@ let Current = { start : Point }
 let Period = < Past : Past | Current : Current >
 
 in  { Type = Period
+    , Past
+    , Current
+    , Point
     , past = Period.Past
     , current =
         \(year : Natural) ->
