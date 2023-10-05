@@ -82,30 +82,37 @@ let job =
                 job.knowledge
 
         in  ''
-            <header>
-                <span class="company">${job.company}</span>
-                <section class="position">
+            <section class="job">
+                <header>${job.company}</header>
+                <p class="position">
                     <span>${job.position.title}</span>
                     -
                     <span>${contract}</span>
+                </p>
+                <aside class="period">
+                    ${html.period job.period}
+                </aside>
+                
+                <section>
+                    <header>Skills</header>
+                    <ul class="skills">
+                    ${skills}
+                    </ul>
                 </section>
-                ${html.period job.period}
-            </header>
-            <section class="skills">
-                <header>Skills</header>
-                <ul>
-                ${skills}
-                </ul>
-            </section>
 
-            <section class="endorsements">
-                <header>Endorsements</header>
-                <ul>${endorsements}</ul>
-            </section>
+                <section>
+                    <header>Endorsements</header>
+                    <ul class="endorsements">
+                        ${endorsements}
+                    </ul>
+                </section>
 
-            <section class="knowledge">
-                <header>Knowledge</header>
-                <ul>${knowledges}</ul>
+                <section>
+                    <header>Knowledge</header>
+                    <ul class="knowledge">
+                        ${knowledges}
+                    </ul>
+                </section>
             </section>
             ''
 

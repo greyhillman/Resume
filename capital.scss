@@ -3,22 +3,26 @@ body {
 }
 
 main {
-  max-width: 50vw;
+  max-width: 50em;
 }
 
 span.company {
   font-weight: bold;
 }
 
-section.knowledge {
-  ul {
-    display: grid;
-    grid-template-columns: repeat(7, auto);
-    column-gap: 0.5em;
-    row-gap: 0.5em;
+section {
+  box-shadow: 2px 2px 2px 2px lightgray;
+  border-radius: 1em;
+  padding: 1em;
+}
 
-    list-style: none;
-  }
+ul.knowledge {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  column-gap: 0.5em;
+  row-gap: 0.5em;
+
+  list-style: none;
 
   .knowledge {
     &.high {
@@ -77,29 +81,25 @@ section.endorsements li {
       grid-column: span 2;
     }
   }
+}
 
-  & > li {
-    padding: 0.5em;
-
-    margin-bottom: 1em;
-
-    & > * + * {
-      margin-top: 0.5em;
-    }
-  }
+li + li {
+  margin-top: 0.5em;
 }
 
 section > header {
   font-weight: bold;
 }
 
-#jobs > li {
-  box-shadow: 2px 2px 2px 2px lightgray;
-  border-radius: 1em;
-}
-
 .endorsements > ul {
   li + li {
     margin-top: 0.5em;
   }
+}
+
+ul,
+ol {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
 }
