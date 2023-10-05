@@ -1,5 +1,7 @@
 $muted_text: #7e7e7e;
 
+$max_job_title_length: 18em;
+
 * {
   box-sizing: border-box;
 }
@@ -61,6 +63,18 @@ article > header {
   }
 }
 
+article > section {
+  margin-top: 1em;
+
+  & > header {
+    margin-bottom: 0.5em;
+  }
+
+  & > :not(header) {
+    margin-left: 0.5em;
+  }
+}
+
 ul.social {
   display: grid;
   grid-template-columns: auto auto;
@@ -85,7 +99,7 @@ article > section > header {
 
 #employment > ol.job {
   display: grid;
-  grid-template-columns: 16em auto 10em;
+  grid-template-columns: $max_job_title_length auto 9.4em;
 
   column-gap: 0.5em;
   row-gap: 0.5em;
@@ -106,16 +120,23 @@ article > section > header {
   }
 }
 
-#employment ul.highlight {
-  list-style-type: square;
+ul.highlight {
+  list-style-type: circle;
   list-style-position: inside;
 }
 
-#employment ul.tech {
+ul.tech {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;
+
+  padding: 0.25em 0.5em;
+
+  font-style: italic;
+
+  li + li {
+    margin-left: 0.5em;
+  }
 }
 
 ol.job > li {
@@ -127,6 +148,14 @@ ol.job > li {
     justify-self: right;
   }
 }
+
+// ol.job > li {
+//   &:nth-child(3),
+//   &:nth-child(5) {
+//     border-top: solid black 0.1em;
+//     padding-top: 0.5em;
+//   }
+// }
 
 ol.job .period {
   font-style: italic;

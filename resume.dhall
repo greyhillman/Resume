@@ -97,6 +97,18 @@ let project =
                 }
                 project.repo
 
+        let highlights =
+              Prelude.Text.concatMap
+                Text
+                (\(x : Text) -> "<li>${x}</li>")
+                project.highlights
+
+        let tech =
+              Prelude.Text.concatMap
+                Text
+                (\(x : Text) -> "<li>${x}</li>")
+                project.tech
+
         in  ''
             <header>${project.title}</header>
             <aside>
@@ -104,6 +116,12 @@ let project =
                 ${repo}
             </aside>
             <p>Purpose: ${project.purpose}</p>
+            <ul class="highlight">
+                ${highlights}
+            </ul>
+            <ul class="tech">
+                ${tech}
+            </ul>
             ''
 
 let projects =

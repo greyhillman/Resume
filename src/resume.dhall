@@ -71,23 +71,31 @@ let short_period =
               }
               period
 
-let endorsement_highlight =
-      \(endorsement : Text) ->
-      \(person : Text) ->
-        "\"${endorsement}\" - ${person}"
+let endorsement_highlight = \(endorsement : Text) -> "\"${endorsement}\""
 
 in  { positions =
           [ { title = position_title jobs.xplor.intermediate.position
             , company = jobs.xplor.intermediate.company
             , period = long_period jobs.xplor.intermediate.period
             , highlights = [] : List Text
-            , tech = [] : List Text
+            , tech =
+                  [ knowledge.frameworks.terraform
+                  , knowledge.services.aws
+                  , knowledge.services.bamboo
+                  , knowledge.languages.dhall
+                  ]
+                : List Text
             }
           , { title = position_title jobs.xplor.junior.position
             , company = jobs.xplor.junior.company
             , period = long_period jobs.xplor.junior.period
             , highlights = [] : List Text
-            , tech = [] : List Text
+            , tech =
+                  [ knowledge.languages.csharp
+                  , knowledge.services.aws
+                  , knowledge.frameworks.asp_net_mvc
+                  ]
+                : List Text
             }
           , { title = position_title jobs.helmOperations.dev.position
             , company = jobs.helmOperations.dev.company
@@ -95,10 +103,8 @@ in  { positions =
             , highlights =
                   [ endorsement_highlight
                       "We're definitely going to miss your humour and attention to quality and detail"
-                      "Co-worker"
                   , endorsement_highlight
                       "Talented dev with well-thought-out solutions and attention to good coding practices"
-                      "Team Lead"
                   ]
                 : List Text
             , tech =
@@ -118,6 +124,24 @@ in  { positions =
             , highlights = [] : List Text
             , tech = [] : List Text
             }
+          , { title = position_title jobs.latitude.position
+            , company = jobs.latitude.company
+            , period = short_period jobs.latitude.period
+            , highlights = [] : List Text
+            , tech = [] : List Text
+            }
+          , { title = position_title jobs.uvicCivil.position
+            , company = jobs.uvicCivil.company
+            , period = short_period jobs.uvicCivil.period
+            , highlights = [] : List Text
+            , tech = [] : List Text
+            }
+          , { title = position_title jobs.demonware.position
+            , company = jobs.demonware.company
+            , period = short_period jobs.demonware.period
+            , highlights = [] : List Text
+            , tech = [] : List Text
+            }
           ]
         : List Resume.Position
     , projects =
@@ -133,14 +157,18 @@ in  { positions =
             , link = projects.rentBuy.link
             , repo = projects.rentBuy.repo
             , highlights = [] : List Text
-            , tech = [] : List Text
+            , tech =
+                  [ knowledge.frameworks.react, knowledge.languages.typescript ]
+                : List Text
             }
           , { title = projects.resume.title
             , purpose = projects.resume.purpose
             , link = projects.resume.link
             , repo = projects.resume.repo
             , highlights = [] : List Text
-            , tech = [] : List Text
+            , tech =
+                  [ knowledge.languages.csharp, knowledge.languages.dhall ]
+                : List Text
             }
           ]
         : List Resume.Project
