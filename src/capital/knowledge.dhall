@@ -3,6 +3,7 @@
   { csharp = "C#"
   , html = "HTML"
   , css = "CSS"
+  , scss = "SCSS/SASS"
   , less_css = "LessCSS"
   , javascript = "JavaScript"
   , powershell = "PowerShell"
@@ -20,7 +21,10 @@
   , web_driver = "WebdriverIO"
   , docker = "Docker"
   , react = "React"
+  , asp_net_mvc = "ASP.NET MVC"
+  , terraform = "Terraform"
   }
-, services = { jira = "JIRA", confluence = "Confluence" }
+, services =
+  { jira = "JIRA", confluence = "Confluence", aws = "AWS", bamboo = "Bamboo" }
 , methods = { agile = "Agile", scrum = "Scrum" }
 }

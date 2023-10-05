@@ -22,6 +22,11 @@ ul.knowledge {
   column-gap: 0.5em;
   row-gap: 0.5em;
 
+  & > li {
+    // Override other styling
+    margin: 0;
+  }
+
   list-style: none;
 
   .knowledge {
@@ -83,10 +88,6 @@ section.endorsements li {
   }
 }
 
-li + li {
-  margin-top: 0.5em;
-}
-
 section > header {
   font-weight: bold;
 }
@@ -102,4 +103,8 @@ ol {
   margin-block-start: 0;
   margin-block-end: 0;
   padding-inline-start: 0;
+
+  & > li + li {
+    margin-top: 0.5em;
+  }
 }
