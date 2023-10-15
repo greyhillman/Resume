@@ -50,6 +50,9 @@ in  { junior = Job::{
       , skills =
         [ "Worked on migrating production AWS infrastructure to Terraform"
         , "Debugging AWS infrastructure"
+        , "Provided basic support for Bamboo"
+        , "Identified issue with MSBuild producing Debug builds in production"
+        , "Migrated legacy Nuget package config to PackageReference format"
         ]
       }
     }

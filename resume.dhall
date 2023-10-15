@@ -26,14 +26,13 @@ let online_accounts =
             "https://www.linkedin.com/in/greyhillman/"
         ]
 
-let header =
+let address =
       ''
-      <p>${contact.name}</p>
       <address>
-        <div>
-          <span class="location">Victoria, BC</span>
-          <a href="mailto:${contact.email}">${contact.email}</a>
-        </div>
+        <p>${contact.name}</p>
+        <span class="location">Victoria, BC</span>
+        <a href="mailto:${contact.email}">${contact.email}</a>
+
         <ul class="social">
             ${online_accounts}
         </ul>
@@ -59,12 +58,8 @@ let job =
             <span class="company">${job.company}</span>
             <span class="period">${job.period}</span>
 
-            <ul class="highlight">
-                ${highlights}
-            </ul>
-            <ul class="tech">
-                ${tech}
-            </ul>
+            <ul class="highlight">${highlights}</ul>
+            <ul class="tech">${tech}</ul>
             ''
 
 let jobs =
@@ -134,7 +129,9 @@ let degree =
       ''
       <section class="degree">
           <header>${data.degree.title}</header>
+          <aside class="period">${data.degree.period}</aside>
           <p class="institution">${data.degree.institution} - ${data.degree.faculty}</p>
+
       </section>
       ''
 
@@ -146,9 +143,7 @@ in  ''
         <body>
             <main>
                 <article>
-                    <header>
-                        ${header}
-                    </header>
+                    ${address}
                     <section id="employment">
                         <header>Employment</header>
                         <ol class="job">
@@ -166,6 +161,9 @@ in  ''
                         ${degree}
                     </section>
                 </article>
+                <footer>
+                    References on request
+                </footer>
             </main>
         </body>
     </html>

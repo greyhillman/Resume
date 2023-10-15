@@ -26,7 +26,7 @@ in  { dev = Job::{
         , Job.used Usage.Medium knowledge.languages.less_css
         , Job.used Usage.High knowledge.databases.sql_server
         , Job.used Usage.Low knowledge.databases.postgres
-        , Job.used Usage.Medium knowledge.frameworks.net
+        , Job.used Usage.Medium knowledge.frameworks.net_framework
         , Job.used Usage.High knowledge.frameworks.knockout_js
         , Job.used Usage.Medium knowledge.frameworks.nunit
         , Job.used Usage.High knowledge.tools.visual_studio
@@ -78,7 +78,7 @@ in  { dev = Job::{
             , Job.used Usage.Medium knowledge.languages.css
             , Job.used Usage.Medium knowledge.databases.sql_server
             , Job.used Usage.High knowledge.frameworks.knockout_js
-            , Job.used Usage.Low knowledge.frameworks.net
+            , Job.used Usage.Low knowledge.frameworks.net_framework
             , Job.used Usage.Medium knowledge.tools.visual_studio
             , Job.used Usage.High knowledge.tools.vscode
             , Job.used Usage.Low knowledge.services.jira

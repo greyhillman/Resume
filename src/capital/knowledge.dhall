@@ -16,7 +16,8 @@
   { sql_server = "SQL Server", postgres = "PostgreSQL", dynamo_db = "DynamoDB" }
 , frameworks =
   { knockout_js = "KnockoutJS"
-  , net = ".NET Framework"
+  , net_framework = ".NET Framework"
+  , net_7 = ".NET 7"
   , nunit = "NUnit"
   , web_driver = "WebdriverIO"
   , docker = "Docker"

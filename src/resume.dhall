@@ -77,46 +77,46 @@ in  { positions =
           [ { title = position_title jobs.xplor.intermediate.position
             , company = jobs.xplor.intermediate.company
             , period = long_period jobs.xplor.intermediate.period
-            , highlights = [] : List Text
+            , highlights =
+              [ "Worked on migrating production AWS infrastructure to Terraform"
+              , "Identified issue with MSBuild producing Debug builds in production"
+              ]
             , tech =
-                  [ knowledge.frameworks.terraform
-                  , knowledge.services.aws
-                  , knowledge.services.bamboo
-                  , knowledge.languages.dhall
-                  ]
-                : List Text
+              [ knowledge.frameworks.terraform
+              , knowledge.services.aws
+              , knowledge.services.bamboo
+              , knowledge.languages.dhall
+              ]
             }
           , { title = position_title jobs.xplor.junior.position
             , company = jobs.xplor.junior.company
             , period = long_period jobs.xplor.junior.period
-            , highlights = [] : List Text
+            , highlights =
+              [ "Identified \$35k/year in AWS savings for ECS clusters"
+              , "Trained co-op on software development basics"
+              , "Designed, built, and maintained AWS systems for internal tool"
+              ]
             , tech =
-                  [ knowledge.languages.csharp
-                  , knowledge.services.aws
-                  , knowledge.frameworks.asp_net_mvc
-                  ]
-                : List Text
+              [ knowledge.languages.csharp
+              , knowledge.services.aws
+              , knowledge.frameworks.asp_net_mvc
+              ]
             }
           , { title = position_title jobs.helmOperations.dev.position
             , company = jobs.helmOperations.dev.company
             , period = long_period jobs.helmOperations.dev.period
             , highlights =
-                  [ endorsement_highlight
-                      "We're definitely going to miss your humour and attention to quality and detail"
-                  , endorsement_highlight
-                      "Talented dev with well-thought-out solutions and attention to good coding practices"
-                  ]
-                : List Text
+              [ endorsement_highlight
+                  "We're definitely going to miss your humour and attention to quality and detail"
+              , endorsement_highlight
+                  "Talented dev with well-thought-out solutions and attention to good coding practices"
+              ]
             , tech =
-                  [ knowledge.languages.csharp
-                  , knowledge.frameworks.net
-                  , knowledge.languages.javascript
-                  , knowledge.frameworks.knockout_js
-                  , knowledge.databases.sql_server
-                  , knowledge.tools.visual_studio
-                  , knowledge.tools.vscode
-                  ]
-                : List Text
+              [ knowledge.languages.csharp
+              , knowledge.frameworks.net_framework
+              , knowledge.frameworks.knockout_js
+              , knowledge.databases.sql_server
+              ]
             }
           , { title = position_title jobs.helmOperations.coop.position
             , company = jobs.helmOperations.coop.company
@@ -149,26 +149,31 @@ in  { positions =
             , purpose = projects.finance.purpose
             , link = projects.finance.link
             , repo = projects.finance.repo
-            , highlights = [] : List Text
-            , tech = [] : List Text
+            , highlights =
+              [ "Migrated to .NET due to limitations in hledger"
+              , "Created new accounting Nuget packages based on hledger"
+              , "Created new build system in .NET based on Haskell's Shake library"
+              ]
+            , tech =
+              [ knowledge.languages.dhall
+              , knowledge.languages.csharp
+              , knowledge.frameworks.net_7
+              ]
             }
           , { title = projects.rentBuy.title
             , purpose = projects.rentBuy.purpose
             , link = projects.rentBuy.link
             , repo = projects.rentBuy.repo
-            , highlights = [] : List Text
+            , highlights = [ "Learned React (with hooks) to build frontend" ]
             , tech =
-                  [ knowledge.frameworks.react, knowledge.languages.typescript ]
-                : List Text
+              [ knowledge.frameworks.react, knowledge.languages.typescript ]
             }
           , { title = projects.resume.title
             , purpose = projects.resume.purpose
             , link = projects.resume.link
             , repo = projects.resume.repo
             , highlights = [] : List Text
-            , tech =
-                  [ knowledge.languages.csharp, knowledge.languages.dhall ]
-                : List Text
+            , tech = [ knowledge.languages.csharp, knowledge.languages.dhall ]
             }
           ]
         : List Resume.Project

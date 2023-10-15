@@ -28,7 +28,7 @@ body {
   }
 }
 
-body main {
+main {
   min-width: 8.5in;
   max-width: 8.5in;
   max-height: 11in;
@@ -37,38 +37,61 @@ body main {
   article {
     min-width: 8.5in;
     max-width: 8.5in;
-    max-height: 11in;
-    min-height: 11in;
-    padding: 1in;
+    max-height: 10in;
+    min-height: 10in;
+
+    padding-top: 1in;
+    padding-left: 1in;
+    padding-right: 1in;
+  }
+
+  & > footer {
+    height: 1in;
+    width: 100%;
+    padding: 0 1in;
+  }
+}
+
+main > footer {
+  text-align: center;
+  font-style: italic;
+  color: $muted_text;
+}
+
+article > address {
+  margin-left: 40%;
+
+  display: grid;
+  grid-template-areas:
+    ". name     ."
+    ". location social"
+    ". email    social";
+
+  & > p {
+    grid-area: name;
+    font-weight: bold;
+    font-size: 1.25em;
+  }
+
+  & > .location {
+    grid-area: location;
+  }
+
+  & > a[href^="mailto"] {
+    grid-area: email;
+  }
+
+  ul.social {
+    grid-area: social;
   }
 }
 
 article > header {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-
-  address {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-
-    justify-content: space-between;
-
-    div {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-    }
-  }
+  margin-bottom: 0.5em;
 }
 
 article > section {
-  margin-top: 1em;
-
-  & > header {
-    margin-bottom: 0.5em;
-  }
+  margin-top: 0.25em;
 
   & > :not(header) {
     margin-left: 0.5em;
@@ -99,10 +122,10 @@ article > section > header {
 
 #employment > ol.job {
   display: grid;
-  grid-template-columns: $max_job_title_length auto 9.4em;
+  grid-template-columns: auto auto fit-content(10em);
 
   column-gap: 0.5em;
-  row-gap: 0.5em;
+  row-gap: 0.25em;
 
   & > li {
     grid-column: span 3;
@@ -123,9 +146,13 @@ article > section > header {
 ul.highlight {
   list-style-type: circle;
   list-style-position: inside;
+
+  &:not(:empty) {
+    margin-top: 0.25em;
+  }
 }
 
-ul.tech {
+ul.tech:not(:empty) {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -135,7 +162,7 @@ ul.tech {
   font-style: italic;
 
   li + li {
-    margin-left: 0.5em;
+    margin-left: 1em;
   }
 }
 
@@ -146,6 +173,8 @@ ol.job > li {
 
   .period {
     justify-self: right;
+    text-wrap: nowrap;
+    min-width: fit-content;
   }
 }
 
@@ -210,4 +239,9 @@ ol {
 
 p {
   margin: 0;
+}
+
+#education section.degree {
+  display: grid;
+  grid-template-columns: auto max-content;
 }
