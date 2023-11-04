@@ -79,7 +79,6 @@ in  { positions =
             , period = long_period jobs.xplor.intermediate.period
             , highlights =
               [ "Worked on migrating production AWS infrastructure to Terraform"
-              , "Identified issue with MSBuild producing Debug builds in production"
               ]
             , tech =
               [ knowledge.frameworks.terraform
@@ -168,15 +167,18 @@ in  { positions =
             , tech =
               [ knowledge.frameworks.react, knowledge.languages.typescript ]
             }
-          , { title = projects.resume.title
-            , purpose = projects.resume.purpose
-            , link = projects.resume.link
-            , repo = projects.resume.repo
-            , highlights = [] : List Text
-            , tech = [ knowledge.languages.csharp, knowledge.languages.dhall ]
-            }
           ]
         : List Resume.Project
+    , certifications =
+        let aws_cert =
+              capital.knowledge.education.certifications.aws.solutions_architect_associate
+
+        in    [ { name = aws_cert.name
+                , organization = aws_cert.organization
+                , valid = "Oct 2023 - Oct 2026"
+                }
+              ]
+            : List Resume.Certification
     , degree =
           { title = capital.knowledge.education.uvic.bachelors.title
           , period = "Sep 2014 - Apr 2019"

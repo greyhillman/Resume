@@ -17,8 +17,12 @@ let Project
       , tech : List Text
       }
 
+let Certification
+    : Type
+    = { name : Text, organization : Text, valid : Text }
+
 let Degree
     : Type
     = { title : Text, period : Text, institution : Text, faculty : Text }
 
-in  { Position, Project, Degree }
+in  { Position, Project, Degree, Certification }

@@ -34,5 +34,6 @@ let highschool =
 
 in  { uvic.bachelors = uvicDegree
     , highschool
+    , certifications = ./certifications.dhall
     , scholarships = ./scholarships.dhall
     }

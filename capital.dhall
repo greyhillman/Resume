@@ -22,6 +22,8 @@ let Scholarship = ./src/types/capital/Scholarship.dhall
 
 let Degree = ./src/types/capital/Degree.dhall
 
+let Certification = ./src/types/capital/Certification.dhall
+
 let header =
       ''
       <h1>${contact.name}</h1>
@@ -198,6 +200,23 @@ let projects =
         , capital.experience.projects.resume
         ]
 
+let certification =
+      \(cert : Certification.Type) ->
+        ''
+        <section class="certification">
+           <header>${cert.name}</header>
+           <span class="institution">${cert.organization}</span>
+           ${html.period cert.valid}
+        </section>
+        ''
+
+let certifications =
+      Prelude.Text.concatMap
+        Certification.Type
+        (\(x : Certification.Type) -> "<li>${certification x}</li>")
+        [ capital.knowledge.education.certifications.aws.solutions_architect_associate
+        ]
+
 let degree =
       \(degree : Degree) ->
         ''
@@ -261,6 +280,14 @@ in  ''
                 </article>
                 <article id="education">
                     <header>Education</header>
+
+                    <section>
+                        <header>Certifications</header>
+
+                        <ul>
+                            ${certifications}
+                        </ul>
+                    </section>
 
                     <section>
                         <header>Degrees</header>

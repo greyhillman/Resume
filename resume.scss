@@ -245,3 +245,12 @@ p {
   display: grid;
   grid-template-columns: auto max-content;
 }
+
+#certifications li {
+  display: grid;
+  grid-template-columns: auto max-content;
+
+  header {
+    font-weight: bold;
+  }
+}

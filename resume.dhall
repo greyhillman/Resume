@@ -68,6 +68,20 @@ let jobs =
         (\(x : Resume.Position) -> "<li>${job x}</li>")
         data.positions
 
+let certification =
+      \(cert : Resume.Certification) ->
+        ''
+        <header>${cert.name}</header>
+        <aside class="period">${cert.valid}</aside>
+        <span class="institution">${cert.organization}</span>
+        ''
+
+let certifications =
+      Prelude.Text.concatMap
+        Resume.Certification
+        (\(x : Resume.Certification) -> "<li>${certification x}</li>")
+        data.certifications
+
 let project =
       \(project : Resume.Project) ->
         let link =
@@ -148,6 +162,12 @@ in  ''
                         <header>Employment</header>
                         <ol class="job">
                             ${jobs}
+                        </ol>
+                    </section>
+                    <section id="certifications">
+                        <header>Certifications</header>
+                        <ol>
+                            ${certifications}
                         </ol>
                     </section>
                     <section id="projects">
