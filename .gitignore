@@ -4,6 +4,3 @@ node_modules/
 # C# build
 bin/
 obj/
-
-# output files
-dist/

@@ -1,1 +1,0 @@
-< Basic | Intermediate | Advanced >

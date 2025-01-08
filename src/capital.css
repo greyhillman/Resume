@@ -1,0 +1,342 @@
+:root {
+  --muted-color: lightgrey;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+article {
+  max-width: 50em;
+}
+
+header {
+  font-weight: bold;
+}
+
+article>header {
+  font-size: 4em;
+}
+
+article>section>header {
+  font-size: 3em;
+}
+
+article>section>section>header {
+  font-size: 2em;
+}
+
+section#jobs>ol {
+  list-style: none;
+  margin: 0;
+  margin-block: 0;
+  padding-inline: 0;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+section.job {
+  padding: 1em;
+  border: solid 2px black;
+  border-radius: 1em;
+}
+
+ul.knowledge {
+  list-style: none;
+  padding-inline: 0;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  column-gap: 0.5em;
+  row-gap: 0.5em;
+}
+
+ul.knowledge>li.high {
+  font-weight: bold;
+}
+
+ul.knowledge>li.low {
+  color: var(--muted-color);
+}
+
+ol.position {
+  list-style: none;
+  padding-inline: 0;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+section.position {
+  display: grid;
+
+  grid-template-columns: 1fr auto;
+  row-gap: 0.5em;
+
+  align-items: baseline;
+}
+
+section.position>* {
+  grid-column: span 2;
+}
+
+section.position>header {
+  font-size: 1.25em;
+  grid-column: span 1;
+}
+
+section.position>section.period {
+  grid-column: 2;
+}
+
+section.period {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  column-gap: 0.25em;
+}
+
+section.knowledge>ul {
+  margin-left: 1em;
+}
+
+ul.skills {
+  padding-inline-start: 1.5em;
+}
+
+section.job>header {
+  font-size: 1.5em;
+  margin-bottom: 1rem;
+}
+
+section.project {
+  border: solid 2px black;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+section#projects>ol {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+}
+
+section.project {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+}
+
+section.project>header {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  column-gap: 1em;
+}
+
+section.project>header>aside {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+section.project>* {
+  grid-column: span 2;
+}
+
+section.project>header {
+  font-size: 1.5em;
+}
+
+section#scholarships>ul {
+  display: grid;
+  grid-template-areas:
+    'year amount title institution';
+  grid-template-columns: max-content max-content max-content auto;
+
+  column-gap: 1em;
+}
+
+section#scholarships>ul>li {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: span 4;
+}
+
+section#scholarships>ul>li>section {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: span 4;
+}
+
+section.scholarship>header {
+  grid-area: title;
+}
+
+section.scholarship>span.year {
+  grid-area: year;
+}
+
+section.scholarship>span.institution {
+  grid-area: institution;
+}
+
+section.scholarship>span.amount {
+  grid-area: amount;
+  justify-self: flex-end;
+}
+
+section.endorsements>ul {
+  margin-left: 1.5em;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25em;
+}
+
+section.endorsement {
+  display: grid;
+  grid-template-areas:
+    'quote quote quote quote'
+    '. name position relation';
+  grid-template-columns: 1fr auto auto auto;
+
+  column-gap: 0.5em;
+}
+
+section.endorsement>q {
+  grid-area: quote;
+}
+
+section.endorsement>span.name {
+  grid-area: name;
+}
+
+section.endorsement>span.position {
+  grid-area: position;
+}
+
+section.endorsement>span.relation {
+  grid-area: relation;
+
+  color: var(--muted-color);
+
+  /* Remove space between pseudo elements*/
+  display: inline-flex;
+}
+
+section.endorsement>span.relation::before {
+  content: "(";
+}
+
+section.endorsement>span.relation::after {
+  content: ")";
+}
+
+q {
+  font-style: italic;
+  /* Remove space due to quote pseudo elements */
+  display: inline-flex;
+}
+
+section#certifications>ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+section.certification {
+  border: solid 2px black;
+  border-radius: 1em;
+  padding: 1em;
+
+  display: grid;
+  grid-template-areas:
+    'name verify'
+    'org valid';
+  grid-template-columns: auto 1fr;
+
+  align-items: baseline;
+  column-gap: 1em;
+  row-gap: 0.25em;
+}
+
+section.certification>header {
+  font-size: 1.25em;
+  grid-area: name;
+}
+
+section.certification>aside {
+  grid-area: verify;
+}
+
+section.certification>span.institution {
+  grid-area: org;
+}
+
+section.certification>section.period {
+  grid-area: valid;
+}
+
+section#degrees>ol {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+}
+
+section.degree {
+  display: grid;
+  grid-template-areas:
+    'title title period'
+    'institution faculty .'
+    'skill skill skill';
+  grid-template-columns: auto auto 1fr;
+
+  border: solid black 2px;
+  border-radius: 1em;
+  padding: 1em;
+  column-gap: 0.5em;
+  row-gap: 0.25em;
+
+  align-items: baseline;
+}
+
+section.degree>header {
+  grid-area: title;
+
+  font-size: 1.25em;
+}
+
+section.degree>section.period {
+  grid-area: period;
+  justify-self: flex-end;
+}
+
+section.degree>span.institution {
+  grid-area: institution;
+}
+
+section.degree>span.faculty {
+  grid-area: faculty;
+}
+
+section.degree>section.skills {
+  grid-area: faculty;
+}
+
+section.degree>section.skills {
+  grid-area: skill;
+}

@@ -1,147 +1,75 @@
-﻿using System;
+﻿using System.Threading.Tasks;
+using System.CommandLine;
 using System.IO;
+using Tomlet;
+using System;
+using Tomlet.Models;
+using Tomlet.Exceptions;
 using System.Linq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Shake;
-using Shake.FileSystem;
-using System.Diagnostics;
 
 
-namespace Resume
+namespace Program
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        public static async Task<int> Main(string[] args)
         {
-            var working_directory = new DirectoryPath(Directory.GetCurrentDirectory());
+            var rootCommand = new RootCommand("Generate resume files");
 
-            var file_system = new DefaultFileSystem(working_directory);
-            var rules = new List<IRule<FilePath>>
+            rootCommand.SetHandler(async () =>
             {
-                new HtmlRule(file_system),
-                new SassRule(file_system),
-                new SourceFileRule(file_system),
-            };
-
-            var rule_set = new ListRuleSet<FilePath>(rules);
-            var build = new DefaultBuildSystem<FilePath>(rule_set);
-
-            await build.Want(new[]
-            {
-                new FilePath("dist/cover.html"),
-                new FilePath("dist/cover.css"),
-                new FilePath("dist/resume.html"),
-                new FilePath("dist/resume.css"),
-                new FilePath("dist/capital.html"),
-                new FilePath("dist/capital.css"),
+                await WriteCapital();
+                await WriteResume();
             });
-        }
-    }
 
-    public class SassRule : IRule<FilePath>
-    {
-        private readonly IFileSystem _file_system;
+            var capitalCommand = new Command("capital", "Build capital files");
+            capitalCommand.SetHandler(WriteCapital);
 
-        public SassRule(IFileSystem file_system)
-        {
-            _file_system = file_system;
+            var resumeCommand = new Command("resume", "Build resume files");
+            resumeCommand.SetHandler(WriteResume);
+
+            return await rootCommand.InvokeAsync(args);
         }
 
-        public bool IsFor(FilePath resource)
+        static async Task WriteCapital()
         {
-            return resource.Extension.Equals("css");
-        }
-
-        public async Task Build(IBuildSystem<FilePath>.IBuilder builder)
-        {
-            var source = new FilePathBuilder(builder.Resource);
-            source.Directory.Up();
-            source.Extension = "scss";
-
-            await builder.Need(source.Path);
-
-            var sass = new Process();
-            sass.StartInfo.FileName = "rsass";
-            sass.StartInfo.ArgumentList.Add(source.Path.ToString());
-            sass.StartInfo.RedirectStandardOutput = true;
-            sass.Start();
-
-            await sass.WaitForExitAsync();
-
-            using (var output = sass.StandardOutput)
-            using (var file = await _file_system.SetText(builder.Resource))
+            using (var file = File.OpenText("./src/capital.toml"))
             {
-                var content = await output.ReadToEndAsync();
-                await file.WriteAsync(content);
-            }
-        }
-    }
+                var content = await file.ReadToEndAsync();
 
-    public class HtmlRule : IRule<FilePath>
-    {
-        private readonly IFileSystem _file_system;
+                var capital = TomletMain.To<Capital.Data>(content);
 
-        public HtmlRule(IFileSystem file_system)
-        {
-            _file_system = file_system;
-        }
-
-        public bool IsFor(FilePath resource)
-        {
-            return resource.Extension.Equals("html");
-        }
-
-        public async Task Build(IBuildSystem<FilePath>.IBuilder builder)
-        {
-            var source = new FilePathBuilder(builder.Resource);
-            source.Directory.Up();
-            source.Extension = "dhall";
-
-            await builder.Need(source.Path);
-
-            var file_dependencies = await GetFileDependencies(source.Path).ToArrayAsync();
-            await builder.Need(file_dependencies);
-
-            using (var output = await _file_system.SetText(builder.Resource))
-            {
-                await output.WriteAsync("");
-            }
-
-            var dhall = new Process();
-            dhall.StartInfo.FileName = "dhall";
-            dhall.StartInfo.ArgumentList.Add("text");
-            dhall.StartInfo.ArgumentList.Add("--file");
-            dhall.StartInfo.ArgumentList.Add(source.Path.ToString());
-            dhall.StartInfo.ArgumentList.Add("--output");
-            dhall.StartInfo.ArgumentList.Add(builder.Resource.ToString());
-            dhall.Start();
-
-            await dhall.WaitForExitAsync();
-        }
-
-        async IAsyncEnumerable<FilePath> GetFileDependencies(FilePath file_path)
-        {
-            var dhall = new Process();
-            dhall.StartInfo.FileName = "dhall";
-            dhall.StartInfo.ArgumentList.Add("resolve");
-            dhall.StartInfo.ArgumentList.Add("--transitive-dependencies");
-            dhall.StartInfo.ArgumentList.Add("--file");
-            dhall.StartInfo.ArgumentList.Add(file_path.ToString());
-            dhall.StartInfo.RedirectStandardOutput = true;
-            dhall.Start();
-
-            await dhall.WaitForExitAsync();
-
-            using (var output = dhall.StandardOutput)
-            {
-                while (!output.EndOfStream)
+                using (var writer = new StreamWriter("./dist/capital.html"))
                 {
-                    var line = await output.ReadLineAsync();
-                    if (line != null && line.StartsWith("."))
-                    {
-                        yield return new FilePath(line);
-                    }
+                    var htmlWriter = new HtmlStreamWriter(writer);
+                    var visitor = new CapitalWriter(htmlWriter);
+
+                    capital.Accept(visitor);
+
+                    writer.Flush();
+                }
+            }
+        }
+
+        static async Task WriteResume()
+        {
+            using (var resumeFile = File.OpenText("./src/resume.toml"))
+            using (var capitalFile = File.OpenText("./src/capital.toml"))
+            {
+                var resumeContent = await resumeFile.ReadToEndAsync();
+                var capitalContent = await capitalFile.ReadToEndAsync();
+
+                var resume = TomletMain.To<Resume.Data>(resumeContent);
+                var capital = TomletMain.To<Capital.Data>(capitalContent);
+
+                using (var writer = new StreamWriter("./dist/resume.html"))
+                {
+                    var htmlWriter = new HtmlStreamWriter(writer);
+                    var visitor = new ResumeWriter(capital, htmlWriter);
+
+                    resume.Accept(visitor);
+
+                    writer.Flush();
                 }
             }
         }

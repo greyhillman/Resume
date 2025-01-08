@@ -1,0 +1,70 @@
+knowledge = [
+    "C#",
+    "AWS",
+    "Terraform",
+    "HTML",
+    "CSS",
+    "Jira",
+    "PostgreSQL",
+    "VSCode",
+    "TypeScript",
+]
+
+
+[[jobs]]
+company = "Xplor Recreation"
+
+[[jobs.positions]]
+title = "Intermediate Software Developer"
+skills = [1, 2]
+knowledge = true
+
+[[jobs.positions]]
+title = "Junior Software Developer"
+skills = [1, 2, 3, 4, 7]
+knowledge = true
+
+
+[[jobs]]
+company = "Helm Operations"
+
+[[jobs.positions]]
+title = "Full-stack Developer"
+knowledge = true
+
+[[jobs.positions.endorsements]]
+name = "Peter"
+
+[[jobs]]
+company = "Latitude Geographics"
+
+[[jobs]]
+company = "UVic Civil Engineering"
+
+[[jobs]]
+company = "Demonware"
+
+
+[[projects]]
+title = "Personal Blog"
+knowledge = true
+
+[[projects]]
+title = "Rent vs. Buy Calculator"
+skills = [1]
+knowledge = true
+
+[[projects]]
+title = "Resume"
+knowledge = true
+
+[[projects]]
+title = "Personal Finance System"
+knowledge = true
+
+
+[[degrees]]
+title = "Bachelor of Science (Honours) (Co-op)"
+
+[[certifications]]
+name = "AWS Certified Solutions Architect - Associate"
