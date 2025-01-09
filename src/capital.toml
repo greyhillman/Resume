@@ -11,6 +11,14 @@ site = "LinkedIn"
 username = "greyhillman"
 link = "https://www.linkedin.com/in/greyhillman"
 
+#
+# JOBS
+#
+
+#
+# XPLOR RECREATION
+#
+
 [[jobs]]
 company = "Xplor Recreation"
 
@@ -44,6 +52,9 @@ skills = [
 knowledge.high = ["C#", "AWS", "ASP.NET MVC"]
 knowledge.medium = ["HTML", "SCSS", "Jira", "AWS DynamoDB"]
 
+#
+# HELM OPERATIONS
+#
 
 [[jobs]]
 company = "Helm Operations"
@@ -110,6 +121,9 @@ knowledge.medium = [
 ]
 knowledge.low = [".NET Framework", "Jira", "Confluence"]
 
+#
+# LATITUDE GEOGRAPHICS
+#
 
 [[jobs]]
 company = "Latitude Geographics"
@@ -126,6 +140,9 @@ skills = [
 ]
 knowledge.high = ["TypeScript", "WebDriverIO", "VSCode"]
 
+#
+# UVIC CIVIL ENGINEERING
+#
 
 [[jobs]]
 company = "UVic Civil Engineering"
@@ -148,6 +165,9 @@ name = "Ralph"
 position = "Professor/Head Researcher"
 relation = "Boss"
 
+#
+# DEMONWARE
+#
 
 [[jobs]]
 company = "Demonware"
@@ -164,6 +184,28 @@ skills = [
 knowledge.high = ["Python 2", "git"]
 knowledge.low = ["Agile", "Scrum"]
 
+#
+# PROJECTS
+#
+
+[[projects]]
+title = "Lamport Clock Paper"
+purpose = "To create an interactive paper like Bret Victor; to deeply understand Lamport Clocks"
+link = "https://greyhillman.github.io/lamport-clock-paper/"
+repo = "https://github.com/greyhillman/lamport-clock-paper"
+knowledge.high = ["HTML", "CSS", "TypeScript", "Preact"]
+
+[[projects]]
+title = "Apartment Noise Tracker"
+purpose = "To learn basics of creating a Progressive Web App; to help me file noise complaints"
+link = "https://greyhillman.github.io/apartment-noise-tracker"
+repo = "https://github.com/greyhillman/apartment-noise-tracker"
+skills = [
+    "Learned basics of creating a Progressive Web App (PWA)",
+    "Used modern CSS to create responsive design (mobile/desktop & dark/light mode)",
+]
+knowledge.high = ["SolidJS", "CSS", "TypeScript", "PWA"]
+knowledge.medium = ["Vite"]
 
 [[projects]]
 title = "Personal Blog"
@@ -184,8 +226,7 @@ title = "Resume"
 repo = "https://github.com/greyhillman/Resume"
 purpose = "To hold all resume data; change resume quickly & easily"
 skills = ["Learned Dhall to hold data & configure content"]
-knowledge.high = ["Dhall"]
-knowledge.medium = ["C#"]
+knowledge.high = ["TOML", "HTML", "CSS", "C#"]
 
 [[projects]]
 title = "Personal Finance System"
@@ -199,6 +240,9 @@ skills = [
 ]
 knowledge.high = ["Dhall", "C#", ".NET 7"]
 
+#
+# DEGREES
+#
 
 [[degrees]]
 title = "Bachelor of Science (Honours) (Co-op)"
@@ -208,6 +252,10 @@ start = 2014-09-01
 end = 2019-04-30
 skills = ["GPA: 8.5/9"]
 
+#
+# CERTIFICATIONS
+#
+
 [[certifications]]
 name = "AWS Certified Solutions Architect - Associate"
 organization = "Amazon Web Services (AWS)"
@@ -215,6 +263,9 @@ valid_start = 2023-10-27
 valid_end = 2026-10-27
 url = "https://www.credly.com/badges/6d92b1c5-e35f-411f-90b0-18eed1fb7d04/linked_in_profile"
 
+#
+# SCHOLARSHIPS
+#
 
 [[scholarships]]
 name = "UVic Entrance Scholarship"

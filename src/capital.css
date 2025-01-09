@@ -1,5 +1,29 @@
 :root {
-  --muted-color: lightgrey;
+  --color: black;
+  --background-color: white;
+  --muted-color: #8f8f8f;
+  --link-color: rgb(0, 0, 238);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color: white;
+    --background-color: black;
+    --link-color: rgb(143, 143, 238);
+  }
+}
+
+body {
+  color: var(--color);
+  background-color: var(--background-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+a:visited {
+  color: var(--link-color);
 }
 
 body {
@@ -7,13 +31,73 @@ body {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-areas:
+    'nav main address';
+  grid-template-columns: 1fr 50em 1fr;
+  column-gap: 2em;
 }
 
-article {
-  max-width: 50em;
+body>nav {
+  grid-area: nav;
+
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  justify-self: flex-end;
+}
+
+body>article {
+  grid-area: main;
+}
+
+body>address {
+  grid-area: address;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 1.25em;
+}
+
+nav ol {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+nav ol>li {
+  margin-left: 1em;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+}
+
+nav ol ol {
+  row-gap: 0.5em;
+}
+
+address {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+address>header {
+  font-size: 2em;
+}
+
+ul.accounts {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25em;
 }
 
 header {
@@ -32,6 +116,24 @@ article>section>section>header {
   font-size: 2em;
 }
 
+article {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+article>section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+article>section>section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+}
+
 section#jobs>ol {
   list-style: none;
   margin: 0;
@@ -40,12 +142,12 @@ section#jobs>ol {
 
   display: flex;
   flex-direction: column;
-  row-gap: 1em;
+  row-gap: 0.5em;
 }
 
 section.job {
   padding: 1em;
-  border: solid 2px black;
+  border: solid 2px var(--color);
   border-radius: 1em;
 }
 
@@ -75,7 +177,7 @@ ol.position {
 
   display: flex;
   flex-direction: column;
-  row-gap: 1em;
+  row-gap: 2em;
 }
 
 section.position {
@@ -113,7 +215,7 @@ section.knowledge>ul {
 }
 
 ul.skills {
-  padding-inline-start: 1.5em;
+  list-style: inside square;
 }
 
 section.job>header {
@@ -122,7 +224,7 @@ section.job>header {
 }
 
 section.project {
-  border: solid 2px black;
+  border: solid 2px var(--color);
   border-radius: 1em;
   padding: 1em;
 }
@@ -160,22 +262,24 @@ section.project>header {
   font-size: 1.5em;
 }
 
-section#scholarships>ul {
+ul.scholarships {
   display: grid;
   grid-template-areas:
     'year amount title institution';
   grid-template-columns: max-content max-content max-content auto;
 
   column-gap: 1em;
+
+  margin-left: 1em;
 }
 
-section#scholarships>ul>li {
+ul.scholarships>li {
   display: grid;
   grid-template-columns: subgrid;
   grid-column: span 4;
 }
 
-section#scholarships>ul>li>section {
+ul.scholarships>li>section {
   display: grid;
   grid-template-columns: subgrid;
   grid-column: span 4;
@@ -198,11 +302,18 @@ section.scholarship>span.amount {
   justify-self: flex-end;
 }
 
-section.endorsements>ul {
-  margin-left: 1.5em;
+ul.endorsements {
+  /* Each quote is at least 2 lines, with the last line
+   * being on the right, making the first line recognizable
+   * as the item.
+   */
+  list-style: none;
+
+  margin-left: 1em;
+
   display: flex;
   flex-direction: column;
-  row-gap: 0.25em;
+  row-gap: 0.5em;
 }
 
 section.endorsement {
@@ -257,7 +368,7 @@ section#certifications>ul {
 }
 
 section.certification {
-  border: solid 2px black;
+  border: solid 2px var(--color);
   border-radius: 1em;
   padding: 1em;
 
@@ -305,7 +416,7 @@ section.degree {
     'skill skill skill';
   grid-template-columns: auto auto 1fr;
 
-  border: solid black 2px;
+  border: solid 2px var(--color);
   border-radius: 1em;
   padding: 1em;
   column-gap: 0.5em;
@@ -339,4 +450,57 @@ section.degree>section.skills {
 
 section.degree>section.skills {
   grid-area: skill;
+}
+
+ul.skills {
+  margin-left: 1em;
+}
+
+ul.endorsements {
+  margin-left: 1em;
+}
+
+@media (width <=800px) {
+  body {
+    grid-template-areas:
+      'address'
+      'nav'
+      'main';
+    grid-template-columns: 1fr;
+    row-gap: 1em;
+  }
+
+  body>nav {
+    position: initial;
+    justify-self: flex-start;
+  }
+
+  body>address {
+    position: initial;
+  }
+
+  ul.scholarships {
+    grid-template-columns: max-content max-content 1fr 1fr;
+    margin-left: 0;
+  }
+
+  section.degree {
+    grid-template-areas:
+      'title title'
+      'institution period'
+      'faculty .'
+      'skill skill';
+    grid-template-columns: auto 1fr;
+  }
+
+  section.certification {
+    grid-template-areas:
+      'name name'
+      'org verify'
+      'valid valid';
+  }
+
+  section.certification>aside {
+    justify-self: flex-end;
+  }
 }

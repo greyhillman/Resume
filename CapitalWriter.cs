@@ -13,7 +13,7 @@ public class CapitalWriter : ICapitalVisitor
         _writer = writer;
     }
 
-    public void Visit(Data element)
+    public void Visit(Data data)
     {
         _writer.Write("<!DOCTYPE html>");
         _writer.Open("html");
@@ -33,7 +33,7 @@ public class CapitalWriter : ICapitalVisitor
         });
         _writer.OpenClose("meta", new() {
             { "name", "viewport" },
-            { "content", "width=device-width, height-device-height, intial-scale=1"},
+            { "content", "width=device-width, height=device-height, intial-scale=1"},
         });
 
         _writer.Open("title");
@@ -43,11 +43,111 @@ public class CapitalWriter : ICapitalVisitor
         _writer.Close("head");
 
         _writer.Open("body");
-        _writer.Open("article");
 
+        _writer.Open("address");
         _writer.Open("header");
-        _writer.Write("Human Capital");
+        _writer.Write(data.Name);
         _writer.Close("header");
+
+        _writer.Open("a", new() {
+            { "href", $"mailto:{data.Email}" },
+        });
+        _writer.Write(data.Email);
+        _writer.Close("a");
+
+        if (data.Accounts.Length > 0)
+        {
+            _writer.Open("ul", new() {
+                { "class", "accounts" }
+            });
+            foreach (var account in data.Accounts)
+            {
+                _writer.Open("li");
+
+                _writer.Write(account.Site);
+
+                _writer.Open("a", new() {
+                    { "href", account.Link },
+                });
+                _writer.Write(account.Username);
+                _writer.Close("a");
+
+                _writer.Close("li");
+            }
+            _writer.Close("ul");
+        }
+
+        _writer.Close("address");
+
+        _writer.Open("nav");
+        _writer.Open("ol");
+
+        _writer.Open("li");
+        _writer.Open("a", new() {
+            { "href", "#experience" },
+        });
+        _writer.Write("Experience");
+        _writer.Close("a");
+
+        _writer.Open("ol");
+
+        _writer.Open("li");
+        _writer.Open("a", new() {
+            { "href", "jobs" },
+        });
+        _writer.Write("Jobs");
+        _writer.Close("a");
+        _writer.Close("li");
+
+        _writer.Open("li");
+        _writer.Open("a", new() {
+            { "href", "projects" },
+        });
+        _writer.Write("Projects");
+        _writer.Close("a");
+        _writer.Close("li");
+
+        _writer.Close("ol"); // experience
+        _writer.Close("li");
+
+        _writer.Open("li");
+        _writer.Open("a", new() {
+            { "href", "#education" },
+        });
+        _writer.Write("Education");
+        _writer.Close("a");
+
+        _writer.Open("ol");
+        _writer.Open("li");
+        _writer.Open("a", new() {
+            { "href", "#degrees" },
+        });
+        _writer.Write("Degrees");
+        _writer.Close("a");
+        _writer.Close("li"); // degrees
+
+        _writer.Open("li");
+        _writer.Open("a", new() {
+            { "href", "#certifications" },
+        });
+        _writer.Write("Certifications");
+        _writer.Close("a");
+        _writer.Close("li"); // certifications
+
+        _writer.Open("li");
+        _writer.Open("a", new() {
+            { "href", "#scholarships" },
+        });
+        _writer.Write("Scholarships");
+        _writer.Close("a");
+        _writer.Close("li"); // scholarships
+        _writer.Close("ol"); // education
+        _writer.Close("li"); // education
+
+        _writer.Close("ol");
+        _writer.Close("nav");
+
+        _writer.Open("article");
 
         _writer.Open("section", new() {
             { "id", "experience" }
@@ -65,7 +165,7 @@ public class CapitalWriter : ICapitalVisitor
         _writer.Close("header");
 
         _writer.Open("ol");
-        foreach (var job in element.Jobs)
+        foreach (var job in data.Jobs)
         {
             _writer.Open("li");
             job.Accept(this);
@@ -83,7 +183,7 @@ public class CapitalWriter : ICapitalVisitor
         _writer.Close("header");
 
         _writer.Open("ol");
-        foreach (var project in element.Projects)
+        foreach (var project in data.Projects)
         {
             _writer.Open("li");
             project.Accept(this);
@@ -99,6 +199,10 @@ public class CapitalWriter : ICapitalVisitor
             { "id", "education" },
         });
 
+        _writer.Open("header");
+        _writer.Write("Education");
+        _writer.Close("header");
+
         _writer.Open("section", new() {
             { "id", "degrees" },
         });
@@ -107,7 +211,7 @@ public class CapitalWriter : ICapitalVisitor
         _writer.Close("header");
 
         _writer.Open("ol");
-        foreach (var degree in element.Degrees)
+        foreach (var degree in data.Degrees)
         {
             _writer.Open("li");
             degree.Accept(this);
@@ -125,7 +229,7 @@ public class CapitalWriter : ICapitalVisitor
         _writer.Close("header");
 
         _writer.Open("ul");
-        foreach (var certification in element.Certifications)
+        foreach (var certification in data.Certifications)
         {
             _writer.Open("li");
             certification.Accept(this);
@@ -142,8 +246,10 @@ public class CapitalWriter : ICapitalVisitor
         _writer.Write("Scholarships");
         _writer.Close("header");
 
-        _writer.Open("ul");
-        foreach (var scholarship in element.Scholarships)
+        _writer.Open("ul", new() {
+            { "class", "scholarships"}
+        });
+        foreach (var scholarship in data.Scholarships)
         {
             _writer.Open("li");
             scholarship.Accept(this);
@@ -265,7 +371,9 @@ public class CapitalWriter : ICapitalVisitor
             _writer.Write("Endorsements");
             _writer.Close("header");
 
-            _writer.Open("ul");
+            _writer.Open("ul", new() {
+                { "class", "endorsements" },
+            });
             foreach (var endorsement in position.Endorsements)
             {
                 _writer.Open("li");
