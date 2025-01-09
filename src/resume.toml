@@ -3,11 +3,17 @@ knowledge = [
     "AWS",
     "Terraform",
     "HTML",
+    "React",
+    "Preact",
+    "SolidJS",
+    "Vue",
+    "KnockoutJS",
     "CSS",
-    "Jira",
-    "PostgreSQL",
-    "VSCode",
+    "PosgreSQL",
+    "SQL Server",
     "TypeScript",
+    "JavaScript",
+    "Python",
 ]
 
 
@@ -21,7 +27,7 @@ knowledge = true
 
 [[jobs.positions]]
 title = "Junior Software Developer"
-skills = [1, 2, 3, 4, 7]
+skills = [1, 2, 3]
 knowledge = true
 
 
@@ -46,20 +52,17 @@ company = "Demonware"
 
 
 [[projects]]
-title = "Personal Blog"
+title = "Lamport Clock Paper"
+knowledge = true
+
+[[projects]]
+title = "Apartment Noise Tracker"
+skills = [1, 2]
 knowledge = true
 
 [[projects]]
 title = "Rent vs. Buy Calculator"
 skills = [1]
-knowledge = true
-
-[[projects]]
-title = "Resume"
-knowledge = true
-
-[[projects]]
-title = "Personal Finance System"
 knowledge = true
 
 

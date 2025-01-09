@@ -93,7 +93,7 @@ public class CapitalWriter : ICapitalVisitor
 
         _writer.Open("li");
         _writer.Open("a", new() {
-            { "href", "jobs" },
+            { "href", "#jobs" },
         });
         _writer.Write("Jobs");
         _writer.Close("a");
@@ -101,7 +101,7 @@ public class CapitalWriter : ICapitalVisitor
 
         _writer.Open("li");
         _writer.Open("a", new() {
-            { "href", "projects" },
+            { "href", "#projects" },
         });
         _writer.Write("Projects");
         _writer.Close("a");

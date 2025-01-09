@@ -27,8 +27,8 @@ title = "Intermediate Software Developer"
 start = 2023-05-01
 end = 2024-06-15
 skills = [
-    "Worked on migrating production AWS infrastructure to Terraform",
-    "Debugging AWS infrastructure",
+    "Lead project on migrating production AWS infrastructure to Terraform",
+    "Debugged AWS infrastructure production issues",
     "Provided basic support for Bamboo",
     "Identified issue with MSBuild producing Debug builds in production",
     "Migrated legacy Nuget package configs to PackageReference format",
