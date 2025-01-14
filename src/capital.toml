@@ -1,0 +1,316 @@
+name = "Grey Hill"
+email = "infogreytech@gmail.com"
+
+[[accounts]]
+site = "GitHub"
+username = "greyhillman"
+link = "https://github.com/greyhillman"
+
+[[accounts]]
+site = "LinkedIn"
+username = "greyhillman"
+link = "https://www.linkedin.com/in/greyhillman"
+
+#
+# JOBS
+#
+
+#
+# XPLOR RECREATION
+#
+
+[[jobs]]
+company = "Xplor Recreation"
+
+[[jobs.positions]]
+title = "Intermediate Software Developer"
+start = 2023-05-01
+end = 2024-06-15
+skills = [
+    "Lead project on migrating production AWS infrastructure to Terraform",
+    "Debugged AWS infrastructure production issues",
+    "Provided basic support for Bamboo",
+    "Identified issue with MSBuild producing Debug builds in production",
+    "Migrated legacy Nuget package configs to PackageReference format",
+]
+knowledge.high = ["Terraform", "Bamboo", "AWS"]
+knowledge.medium = ["Dhall"]
+
+[[jobs.positions]]
+title = "Junior Software Developer"
+start = 2022-04-01
+end = 2023-05-01
+skills = [
+    "Identified $35k/year in AWS savings for ECS clusters",
+    "Migrated internal tool's AWS infrastructure to Terraform",
+    "Designed, built, and maintained AWS systems for internal tool",
+    "Trained co-op on software development basics",
+    "Planned migration of Bamboo builds and deployments to Bamboo Specs",
+    "Used previous knowledge of Dhall for Bamboo Specs",
+    "Learned AWS via Udemy and applied learning immediately",
+]
+knowledge.high = ["C#", "AWS", "ASP.NET MVC"]
+knowledge.medium = ["HTML", "SCSS", "Jira", "AWS DynamoDB"]
+
+#
+# HELM OPERATIONS
+#
+
+[[jobs]]
+company = "Helm Operations"
+
+[[jobs.positions]]
+title = "Full-stack Developer"
+start = 2019-04-01
+end = 2021-07-01
+skills = [
+    "Continual advocate for best practises across code, UI/UX, processes",
+    "Fixed several core issues within first year to recover system from major outage",
+    "Oversaw 2 testing infrastructure projects from conception to completion",
+]
+knowledge.high = [
+    "C#",
+    "SQL Server",
+    "KnockoutJS",
+    "Visual Studio",
+    "VSCode",
+    "git",
+    "Jira",
+]
+knowledge.medium = [
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "LessCSS",
+    ".NET Framework",
+    "NUnit",
+    "Confluence",
+]
+knowledge.low = ["PostgreSQL", "PowerShell"]
+
+[[jobs.positions.endorsements]]
+quote = "We're definitely going to miss your humour and attention to quality and detail"
+name = "Kathy"
+position = "Technical Writer"
+relation = "Coworker"
+
+[[jobs.positions.endorsements]]
+quote = "I'm gonna miss your attention to all the high-level problems in our code"
+name = "Tim"
+position = "Full-stack Developer"
+relation = "Coworker"
+
+[[jobs.positions.endorsements]]
+quote = "Talented dev with well-though-out solutions and attention to good coding practices"
+name = "Peter"
+position = "Team Lead"
+relation = "Boss"
+
+[[jobs.positions]]
+title = "Software Developer"
+start = 2019-01-01
+end = 2019-04-01
+knowledge.high = ["C#", "KnockoutJS", "VSCode"]
+knowledge.medium = [
+    "JavaScript",
+    "HTML",
+    "LessCSS",
+    "CSS",
+    "SQL Server",
+    "Visual Studio",
+]
+knowledge.low = [".NET Framework", "Jira", "Confluence"]
+
+#
+# LATITUDE GEOGRAPHICS
+#
+
+[[jobs]]
+company = "Latitude Geographics"
+
+[[jobs.positions]]
+title = "Quality Assurance Analyst"
+contract = "co-op"
+start = 2018-05-01
+end = 2018-08-31
+skills = [
+    "Gave recommendations on design of end-to-end tests (\"model\"-based)",
+    "Introduced tool to improve QA reports",
+    "Developed TypeScript automated end-to-end tests for new product",
+]
+knowledge.high = ["TypeScript", "WebDriverIO", "VSCode"]
+
+#
+# UVIC CIVIL ENGINEERING
+#
+
+[[jobs]]
+company = "UVic Civil Engineering"
+
+[[jobs.positions]]
+title = "Software Developer"
+contract = "co-op"
+start = 2017-05-01
+end = 2017-08-31
+skills = [
+    "Refactored researcher's code to allow for future development (also fixed critical issue)",
+    "Explained technical concepts to non-technical people",
+]
+knowledge.high = ["Python 3", "VSCode"]
+knowledge.low = ["Docker"]
+
+[[jobs.positions.endorsements]]
+quote = "Good at explaining technical concepts to non-technical people"
+name = "Ralph"
+position = "Professor/Head Researcher"
+relation = "Boss"
+
+#
+# DEMONWARE
+#
+
+[[jobs]]
+company = "Demonware"
+
+[[jobs.positions]]
+title = "Software Developer"
+contract = "co-op"
+start = 2016-09-01
+end = 2016-12-31
+skills = [
+    "Learned basics of software development",
+    "Participated in Agile development processes",
+]
+knowledge.high = ["Python 2", "git"]
+knowledge.low = ["Agile", "Scrum"]
+
+#
+# PROJECTS
+#
+
+[[projects]]
+title = "Lamport Clock Paper"
+purpose = "To create an interactive paper like Bret Victor; to deeply understand Lamport Clocks"
+link = "https://greyhillman.github.io/lamport-clock-paper/"
+repo = "https://github.com/greyhillman/lamport-clock-paper"
+knowledge.high = ["HTML", "CSS", "TypeScript", "Preact"]
+
+[[projects]]
+title = "Apartment Noise Tracker"
+purpose = "To learn basics of creating a Progressive Web App; to help me file noise complaints"
+link = "https://greyhillman.github.io/apartment-noise-tracker"
+repo = "https://github.com/greyhillman/apartment-noise-tracker"
+skills = [
+    "Learned basics of creating a Progressive Web App (PWA)",
+    "Used modern CSS to create responsive design (mobile/desktop & dark/light mode)",
+]
+knowledge.high = ["SolidJS", "CSS", "TypeScript", "PWA"]
+knowledge.medium = ["Vite"]
+
+[[projects]]
+title = "Personal Blog"
+link = "https://greyhillman.github.io"
+repo = "https://github.com/greyhillman/greyhillman.github.io"
+purpose = "To explain my ideas; teach others via explorable explanations"
+
+[[projects]]
+title = "Rent vs. Buy Calculator"
+link = "https://greyhillman.github.io/rent-vs-buy/"
+repo = "https://github.com/greyhillman/rent-vs-buy"
+purpose = "To help myself make important decision & convince others"
+skills = ["Learned React (with hooks) to build frontend"]
+knowledge.high = ["React", "TypeScript"]
+
+[[projects]]
+title = "Resume"
+repo = "https://github.com/greyhillman/Resume"
+purpose = "To hold all resume data; change resume quickly & easily"
+skills = ["Learned Dhall to hold data & configure content"]
+knowledge.high = ["TOML", "HTML", "CSS", "C#"]
+
+[[projects]]
+title = "Personal Finance System"
+purpose = "To track finances; automatically produce financial reports"
+skills = [
+    "Used Haskell's Shake build system to generate reports",
+    "Learned Dhall to store financial data",
+    "Migrated to .NET due to limitations in hledger",
+    "Created new accounting Nuget packages based on hledger",
+    "Created new build system in .NET based on Haskell's Shake library",
+]
+knowledge.high = ["Dhall", "C#", ".NET 7"]
+
+#
+# DEGREES
+#
+
+[[degrees]]
+title = "Bachelor of Science (Honours) (Co-op)"
+faculty = "Computer Science"
+university = "University of Victoria"
+start = 2014-09-01
+end = 2019-04-30
+skills = ["GPA: 8.5/9"]
+
+#
+# CERTIFICATIONS
+#
+
+[[certifications]]
+name = "AWS Certified Solutions Architect - Associate"
+organization = "Amazon Web Services (AWS)"
+valid_start = 2023-10-27
+valid_end = 2026-10-27
+url = "https://www.credly.com/badges/6d92b1c5-e35f-411f-90b0-18eed1fb7d04/linked_in_profile"
+
+#
+# SCHOLARSHIPS
+#
+
+[[scholarships]]
+name = "UVic Entrance Scholarship"
+institution = "University of Victoria"
+date = 2014
+amount = 3000
+
+[[scholarships]]
+name = "Dean's Entrance Scholarship"
+institution = "University of Victoria"
+date = 2014
+amount = 1000
+
+[[scholarships]]
+name = "President's Scholarship"
+institution = "University of Victoria"
+date = 2015
+amount = 3750
+
+[[scholarships]]
+name = "James Riddell Memorial Scholarship"
+institution = "University of Victoria"
+date = 2015
+amount = 250
+
+[[scholarships]]
+name = "President's Scholarship"
+institution = "University of Victoria"
+date = 2016
+amount = 2000
+
+[[scholarships]]
+name = "President's Scholarship"
+institution = "University of Victoria"
+date = 2016
+amount = 2000
+
+[[scholarships]]
+name = "President's Scholarship"
+institution = "University of Victoria"
+date = 2017
+amount = 2000
+
+[[scholarships]]
+name = "President's Scholarship"
+institution = "University of Victoria"
+date = 2018
+amount = 4000

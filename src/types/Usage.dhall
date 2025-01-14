@@ -1,1 +1,0 @@
-< None | Low | Medium | High >
