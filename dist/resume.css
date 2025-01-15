@@ -1,0 +1,314 @@
+:root {
+    --font-color: black;
+    --muted-color: lightgrey;
+    --link-color: rgb(0, 0, 238);
+}
+
+html {
+    background-color: grey;
+}
+
+body {
+    color: var(--font-color);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 8.5in;
+    height: 11in;
+    padding: 1in;
+
+    background-color: lightgrey;
+}
+
+article {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+header {
+    font-weight: bold;
+}
+
+article>section>header {
+    font-size: 1.25em;
+}
+
+article>section>*:not(header) {
+    margin-left: 0.5em;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    column-gap: 0.5em;
+}
+
+article>address {
+    align-self: flex-end;
+    width: fit-content;
+}
+
+address {
+    display: grid;
+    grid-template-areas:
+        'name  .'
+        'email social'
+        '.     social';
+    column-gap: 0.5em;
+}
+
+address>p {
+    grid-area: name;
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+address>a[href^="mailto"] {
+    grid-area: email;
+}
+
+address>ul.accounts {
+    grid-area: social;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+section#jobs>ol {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.25em;
+}
+
+section.job {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+}
+
+section.job>header.company {
+    font-weight: normal;
+    justify-self: center;
+}
+
+section.job>section.period {
+    justify-self: flex-end;
+}
+
+section.job>ul.skills {
+    grid-column: span 3;
+}
+
+ul.skills {
+    list-style: inside disc;
+    margin-left: 1em;
+}
+
+ul.knowledge {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1em;
+    row-gap: 0.25em;
+}
+
+section.job>ul.knowledge {
+    grid-column: span 3;
+}
+
+ul.knowledge {
+    margin-left: 1em;
+    font-style: italic;
+}
+
+section.job>ul.endorsements {
+    grid-column: span 3;
+}
+
+ul.endorsements {
+    margin-left: 1em;
+}
+
+
+section.endorsement {
+    display: grid;
+    grid-template-areas:
+        'quote quote quote quote'
+        '. name position relation';
+    grid-template-columns: 1fr auto auto auto;
+
+    column-gap: 0.5em;
+}
+
+section.endorsement>q {
+    grid-area: quote;
+}
+
+section.endorsement>span.name {
+    grid-area: name;
+}
+
+section.endorsement>span.position {
+    grid-area: position;
+}
+
+section.endorsement>span.relation {
+    grid-area: relation;
+
+    color: var(--muted-color);
+
+    /* Remove space between pseudo elements*/
+    display: inline-flex;
+}
+
+section.endorsement>span.relation::before {
+    content: "(";
+}
+
+section.endorsement>span.relation::after {
+    content: ")";
+}
+
+q {
+    font-style: italic;
+    /* Remove space due to quote pseudo elements */
+    display: inline-flex;
+}
+
+section.certification {
+    display: grid;
+    grid-template-areas:
+        'name verify'
+        'org valid';
+    grid-template-columns: auto 1fr;
+
+    align-items: baseline;
+    column-gap: 1em;
+    row-gap: 0.25em;
+}
+
+section.certification>header {
+    font-size: 1em;
+    grid-area: name;
+}
+
+section.certification>aside {
+    grid-area: verify;
+}
+
+section.certification>span.institution {
+    grid-area: org;
+}
+
+section.certification>section.period {
+    grid-area: valid;
+}
+
+
+section#degrees>ol {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5em;
+}
+
+section.degree {
+    display: grid;
+    grid-template-areas:
+        'title title period'
+        'institution faculty .'
+        'skill skill skill';
+    grid-template-columns: auto auto 1fr;
+
+    column-gap: 0.5em;
+
+    align-items: baseline;
+}
+
+section.degree>header {
+    grid-area: title;
+
+    font-size: 1em;
+}
+
+section.degree>section.period {
+    grid-area: period;
+    justify-self: flex-end;
+}
+
+section.degree>span.institution {
+    grid-area: institution;
+}
+
+section.degree>span.faculty {
+    grid-area: faculty;
+}
+
+section.degree>section.skills {
+    grid-area: faculty;
+}
+
+section.degree>section.skills {
+    grid-area: skill;
+}
+
+
+section#projects>ol {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.25em;
+}
+
+section.project {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    column-gap: 1em;
+}
+
+section.project>aside {
+    grid-column: 2;
+}
+
+section.project>p {
+    grid-column: span 2;
+}
+
+section.project>ul.skills {
+    grid-column: span 2;
+}
+
+section.project>ul.knowledge {
+    grid-column: span 2;
+}
+
+section.project>header {
+    font-size: 1em;
+}
+
+section.project>p {
+    margin-left: 1em;
+}
+
+a {
+    color: var(--link-color);
+}
+
+a:visited {
+    color: var(--link-color);
+}
+
+section.period {
+    font-style: italic;
+}
