@@ -42,18 +42,20 @@ public class Program
         tasks.Add("capital.toml", new SourceTask(loggerFactory, "../src/capital.toml"));
         tasks.Add("resume.toml", new SourceTask(loggerFactory, "../src/resume.toml"));
 
-        tasks.Add("capital.html", new CapitalTask(loggerFactory));
-        tasks.Add("resume.html", new ResumeTask(loggerFactory));
-        tasks.Add("reset.css", new CopyTask(loggerFactory, "../src/reset.css", "../dist/reset.css"));
-        tasks.Add("resume.css", new CopyTask(loggerFactory, "../src/resume.css", "../dist/resume.css"));
-        tasks.Add("capital.css", new CopyTask(loggerFactory, "../src/capital.css", "../dist/capital.css"));
+        tasks.Add("capital/index.html", new CapitalTask(loggerFactory));
+        tasks.Add("capital/reset.css", new CopyTask(loggerFactory, "../src/reset.css", "../dist/capital/reset.css"));
+        tasks.Add("capital/index.css", new CopyTask(loggerFactory, "../src/capital.css", "../dist/capital/index.css"));
+
+        tasks.Add("resume/index.html", new ResumeTask(loggerFactory));
+        tasks.Add("resume/reset.css", new CopyTask(loggerFactory, "../src/reset.css", "../dist/resume/reset.css"));
+        tasks.Add("resume/index.css", new CopyTask(loggerFactory, "../src/resume.css", "../dist/resume/index.css"));
 
         var rootCommand = new RootCommand("Generate resume files");
 
         rootCommand.SetHandler(async () =>
         {
-            await builder.Build("capital.html");
-            await builder.Build("resume.html");
+            await builder.Build("capital/index.html");
+            await builder.Build("resume/index.html");
         });
 
         var watchCommand = new Command("watch", "Rebuild on file changes");
@@ -143,18 +145,18 @@ public class CapitalTask : IBuildTask<string, FileContent>
     {
         var capitalPath = await system.Build("capital.toml");
 
-        var resetStylesheet = await system.Build("reset.css");
-        var capitalStylesheet = await system.Build("capital.css");
+        var resetStylesheet = await system.Build("capital/reset.css");
+        var capitalStylesheet = await system.Build("capital/index.css");
 
         var content = capitalPath.Content;
         var capital = TomletMain.To<Capital.Data>(content);
 
-        using (var writer = new StreamWriter("../dist/capital.html"))
+        using (var writer = new StreamWriter("../dist/capital/index.html"))
         {
             var htmlWriter = new HtmlStreamWriter(writer);
             var visitor = new CapitalWriter(htmlWriter, [
-                resetStylesheet.Path,
-                capitalStylesheet.Path,
+                Path.GetRelativePath("../dist/capital", resetStylesheet.Path),
+                Path.GetRelativePath("../dist/capital", capitalStylesheet.Path),
             ]);
 
             capital.Accept(visitor);
@@ -162,11 +164,11 @@ public class CapitalTask : IBuildTask<string, FileContent>
             await writer.FlushAsync();
         }
 
-        using (var reader = new StreamReader("../dist/capital.html", Encoding.UTF8))
+        using (var reader = new StreamReader("../dist/capital/index.html", Encoding.UTF8))
         {
             var result = await reader.ReadToEndAsync();
 
-            return new FileContent("../dist/capital.html", result);
+            return new FileContent("../dist/capital/index.html", result);
         }
     }
 }
@@ -185,8 +187,8 @@ public class ResumeTask : IBuildTask<string, FileContent>
         var resumePath = await system.Build("resume.toml");
         var capitalPath = await system.Build("capital.toml");
 
-        var resetStylesheet = await system.Build("reset.css");
-        var resumeStylesheet = await system.Build("resume.css");
+        var resetStylesheet = await system.Build("resume/reset.css");
+        var resumeStylesheet = await system.Build("resume/index.css");
 
         var resumeContent = resumePath.Content;
         var capitalContent = capitalPath.Content;
@@ -194,12 +196,12 @@ public class ResumeTask : IBuildTask<string, FileContent>
         var resume = TomletMain.To<Resume.Data>(resumeContent);
         var capital = TomletMain.To<Capital.Data>(capitalContent);
 
-        using (var writer = new StreamWriter("../dist/resume.html"))
+        using (var writer = new StreamWriter("../dist/resume/index.html"))
         {
             var htmlWriter = new HtmlStreamWriter(writer);
             var visitor = new ResumeWriter(capital, htmlWriter, [
-                resetStylesheet.Path,
-                resumeStylesheet.Path,
+                Path.GetRelativePath("../dist/resume", resetStylesheet.Path),
+                Path.GetRelativePath("../dist/resume", resumeStylesheet.Path),
             ]);
 
             resume.Accept(visitor);
@@ -207,11 +209,11 @@ public class ResumeTask : IBuildTask<string, FileContent>
             writer.Flush();
         }
 
-        using (var reader = new StreamReader("../dist/resume.html"))
+        using (var reader = new StreamReader("../dist/resume/index.html"))
         {
             var content = await reader.ReadToEndAsync();
 
-            return new FileContent("../dist/resume.html", content);
+            return new FileContent("../dist/resume/index.html", content);
         }
     }
 }
@@ -241,7 +243,7 @@ public class CopyTask : IBuildTask<string, FileContent>
         {
             var content = await reader.ReadToEndAsync();
 
-            return new FileContent(Path.GetRelativePath("../dist", _to), content);
+            return new FileContent(_to, content);
         }
     }
 }
