@@ -19,6 +19,16 @@ content="width=device-width, height=device-height, intial-scale=1"
 <title>
 Human Capital
 </title>
+<script>
+document.addEventListener("DOMContentLoaded", (event) => {
+    var name = "infogreytech";
+    var domain = "gmail.com";
+
+    var element = document.getElementById("personal-email");
+    element.href = `mailto:${name}@${domain}`;
+    element.textContent = `${name}@${domain}`;
+});
+</script>
 </head>
 <body>
 <address>
@@ -26,9 +36,10 @@ Human Capital
 Grey Hill
 </header>
 <a
-href="mailto:infogreytech@gmail.com"
+href="mailto:fake@fake.com"
+id="personal-email"
 >
-infogreytech@gmail.com
+fake@fake.com
 </a>
 <ul
 class="accounts"

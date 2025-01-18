@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Formats.Tar;
 using System.IO;
 
 namespace Program;
@@ -22,7 +23,15 @@ public class HtmlStreamWriter
 
             foreach (var entry in attributes)
             {
-                _writer.WriteLine($"{entry.Key}=\"{entry.Value}\"");
+                if (string.IsNullOrEmpty(entry.Value))
+                {
+                    // Like "<script defer>" or "<button disabled>"
+                    _writer.WriteLine($"{entry.Key}");
+                }
+                else
+                {
+                    _writer.WriteLine($"{entry.Key}=\"{entry.Value}\"");
+                }
             }
         }
 

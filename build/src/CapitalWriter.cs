@@ -40,6 +40,21 @@ public class CapitalWriter : ICapitalVisitor
         _writer.Write("Human Capital");
         _writer.Close("title");
 
+        // Prevent email scraping
+        // https://www.matthewthom.as/blog/stop-email-scraping/
+        _writer.Open("script");
+        _writer.Write($$"""
+        document.addEventListener("DOMContentLoaded", (event) => {
+            var name = "{{data.Email.Split("@")[0]}}";
+            var domain = "{{data.Email.Split("@")[1]}}";
+
+            var element = document.getElementById("personal-email");
+            element.href = `mailto:${name}@${domain}`;
+            element.textContent = `${name}@${domain}`;
+        });
+        """);
+        _writer.Close("script");
+
         _writer.Close("head");
 
         _writer.Open("body");
@@ -50,9 +65,11 @@ public class CapitalWriter : ICapitalVisitor
         _writer.Close("header");
 
         _writer.Open("a", new() {
-            { "href", $"mailto:{data.Email}" },
+            // Prevent email scraping
+            { "href", $"mailto:fake@fake.com" },
+            { "id", "personal-email" },
         });
-        _writer.Write(data.Email);
+        _writer.Write("fake@fake.com");
         _writer.Close("a");
 
         if (data.Accounts.Length > 0)
