@@ -10,6 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Security.Cryptography;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
+using System.Runtime.CompilerServices;
 
 
 namespace Program;
@@ -18,30 +21,39 @@ public class Program
 {
     public static async Task<int> Main(string[] args)
     {
+        var loggerFactory = LoggerFactory.Create(builder =>
+        {
+            builder.AddSimpleConsole(options =>
+            {
+                options.SingleLine = true;
+                options.ColorBehavior = LoggerColorBehavior.Disabled;
+            });
+
+            builder.AddFilter("build.Rebuilders", LogLevel.Warning);
+            builder.AddFilter("build.Schedulers", LogLevel.Warning);
+        });
         var store = new DictionaryStore<string, FileContent>();
         var tasks = new DictionaryMap<string, IBuildTask<string, FileContent>>();
 
         var traces = new DictionaryVerifyingTraceStore<string, FileContent>();
-        var rebuilder = new VerifyingTraceRebuilder<string, FileContent>(traces, store);
-        var build = new SuspendingScheduler<string, FileContent>(rebuilder, tasks, store);
+        var rebuilder = new VerifyingTraceRebuilder<string, FileContent>(loggerFactory, traces, store);
+        var builder = new SuspendingScheduler<string, FileContent>(loggerFactory, rebuilder, tasks, store);
 
-        tasks.Add("capital.toml", new SourceTask("../src/capital.toml"));
-        tasks.Add("resume.toml", new SourceTask("../src/resume.toml"));
+        tasks.Add("capital.toml", new SourceTask(loggerFactory, "../src/capital.toml"));
+        tasks.Add("resume.toml", new SourceTask(loggerFactory, "../src/resume.toml"));
 
-        tasks.Add("capital.html", new CapitalTask());
-        tasks.Add("resume.html", new ResumeTask());
-        tasks.Add("reset.css", new CopyTask("../src/reset.css", "../dist/reset.css"));
-        tasks.Add("resume.css", new CopyTask("../src/resume.css", "../dist/resume.css"));
-        tasks.Add("capital.css", new CopyTask("../src/capital.css", "../dist/capital.css"));
+        tasks.Add("capital.html", new CapitalTask(loggerFactory));
+        tasks.Add("resume.html", new ResumeTask(loggerFactory));
+        tasks.Add("reset.css", new CopyTask(loggerFactory, "../src/reset.css", "../dist/reset.css"));
+        tasks.Add("resume.css", new CopyTask(loggerFactory, "../src/resume.css", "../dist/resume.css"));
+        tasks.Add("capital.css", new CopyTask(loggerFactory, "../src/capital.css", "../dist/capital.css"));
 
         var rootCommand = new RootCommand("Generate resume files");
 
         rootCommand.SetHandler(async () =>
         {
-            await Task.WhenAll([
-                build.Build("capital.html"),
-                build.Build("resume.html"),
-            ]);
+            await builder.Build("capital.html");
+            await builder.Build("resume.html");
         });
 
         var watchCommand = new Command("watch", "Rebuild on file changes");
@@ -74,10 +86,8 @@ public class Program
                         lastWriteTimes[file] = writeTime;
                     }
 
-                    await Task.WhenAll([
-                        build.Build("capital.html"),
-                        build.Build("resume.html"),
-                    ]);
+                    await builder.Build("capital.html");
+                    await builder.Build("resume.html");
 
                     await Task.Delay(1000, token);
                 }
@@ -122,10 +132,15 @@ public class FileContent : IHashable
 
 public class CapitalTask : IBuildTask<string, FileContent>
 {
+    private readonly ILogger _logger;
+
+    public CapitalTask(ILoggerFactory loggerFactory)
+    {
+        _logger = loggerFactory.CreateLogger<CapitalTask>();
+    }
+
     public async Task<FileContent> Execute(IBuildSystem<string, FileContent> system)
     {
-        Console.WriteLine("Compiling capital...");
-
         var capitalPath = await system.Build("capital.toml");
 
         var resetStylesheet = await system.Build("reset.css");
@@ -158,10 +173,15 @@ public class CapitalTask : IBuildTask<string, FileContent>
 
 public class ResumeTask : IBuildTask<string, FileContent>
 {
+    private readonly ILogger _logger;
+
+    public ResumeTask(ILoggerFactory loggerFactory)
+    {
+        _logger = loggerFactory.CreateLogger<ResumeTask>();
+    }
+
     public async Task<FileContent> Execute(IBuildSystem<string, FileContent> system)
     {
-        Console.WriteLine("Compiling resume...");
-
         var resumePath = await system.Build("resume.toml");
         var capitalPath = await system.Build("capital.toml");
 
@@ -198,18 +218,22 @@ public class ResumeTask : IBuildTask<string, FileContent>
 
 public class CopyTask : IBuildTask<string, FileContent>
 {
+    private readonly ILogger _logger;
+
     private readonly string _from;
     private readonly string _to;
 
-    public CopyTask(string from, string to)
+    public CopyTask(ILoggerFactory loggerFactory, string from, string to)
     {
+        _logger = loggerFactory.CreateLogger<CopyTask>();
+
         _from = from;
         _to = to;
     }
 
     public async Task<FileContent> Execute(IBuildSystem<string, FileContent> system)
     {
-        Console.WriteLine("Copying file from {0} to {1}", _from, _to);
+        _logger.LogInformation("Copying file from {Source} to {Destination}", _from, _to);
 
         File.Copy(_from, _to, overwrite: true);
 
@@ -224,16 +248,20 @@ public class CopyTask : IBuildTask<string, FileContent>
 
 public class SourceTask : IBuildTask<string, FileContent>
 {
+    private readonly ILogger _logger;
+
     private readonly string _path;
 
-    public SourceTask(string path)
+    public SourceTask(ILoggerFactory loggerFactory, string path)
     {
+        _logger = loggerFactory.CreateLogger<SourceTask>();
+
         _path = path;
     }
 
     public async Task<FileContent> Execute(IBuildSystem<string, FileContent> system)
     {
-        Console.WriteLine("Getting source file contents: {0}", _path);
+        _logger.LogInformation("Getting source file contents for {File}", _path);
 
         using (var reader = new StreamReader(_path))
         {
