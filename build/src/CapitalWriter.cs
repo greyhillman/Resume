@@ -1,5 +1,3 @@
-using System.IO;
-using System.Linq;
 using Capital;
 
 namespace Program;
@@ -7,10 +5,12 @@ namespace Program;
 public class CapitalWriter : ICapitalVisitor
 {
     private readonly HtmlStreamWriter _writer;
+    private readonly string[] _stylesheets;
 
-    public CapitalWriter(HtmlStreamWriter writer)
+    public CapitalWriter(HtmlStreamWriter writer, string[] stylesheets)
     {
         _writer = writer;
+        _stylesheets = stylesheets;
     }
 
     public void Visit(Data data)
@@ -20,14 +20,14 @@ public class CapitalWriter : ICapitalVisitor
 
         _writer.Open("head");
 
-        _writer.OpenClose("link", new() {
-            { "rel", "stylesheet"},
-            { "href", "../src/reset.css" },
-        });
-        _writer.OpenClose("link", new() {
-            { "rel", "stylesheet"},
-            { "href", "../src/capital.css" },
-        });
+        foreach (var stylesheet in _stylesheets)
+        {
+            _writer.OpenClose("link", new() {
+                { "rel", "stylesheet"},
+                { "href", stylesheet },
+            });
+        }
+
         _writer.OpenClose("meta", new() {
             { "charset", "utf-8" },
         });

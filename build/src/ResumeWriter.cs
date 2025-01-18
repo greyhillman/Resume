@@ -13,10 +13,14 @@ public class ResumeWriter : IResumeVisitor
     private Capital.Job? _currentJob = null;
     private Capital.JobPosition? _currentJobPosition = null;
 
-    public ResumeWriter(Capital.Data data, HtmlStreamWriter writer)
+    private readonly string[] _stylesheets;
+
+    public ResumeWriter(Capital.Data data, HtmlStreamWriter writer, string[] stylesheets)
     {
         _capital = data;
         _writer = writer;
+
+        _stylesheets = stylesheets;
     }
 
     public void Visit(Data element)
@@ -27,14 +31,13 @@ public class ResumeWriter : IResumeVisitor
         _writer.Open("html");
 
         _writer.Open("head");
-        _writer.OpenClose("link", new() {
-            { "rel", "stylesheet"},
-            { "href", "../src/reset.css" },
-        });
-        _writer.OpenClose("link", new() {
-            { "rel", "stylesheet"},
-            { "href", "../src/resume.css" },
-        });
+        foreach (var stylesheet in _stylesheets)
+        {
+            _writer.OpenClose("link", new() {
+                { "rel", "stylesheet"},
+                { "href", stylesheet },
+            });
+        }
         _writer.Open("title");
         _writer.Write($"{_capital.Name} - Resume");
         _writer.Close("title");
