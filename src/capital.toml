@@ -223,6 +223,7 @@ knowledge.high = ["React", "TypeScript"]
 
 [[projects]]
 title = "Resume"
+link = "https://greyhillman.github.io/Resume/"
 repo = "https://github.com/greyhillman/Resume"
 purpose = "To hold all resume data; change resume quickly & easily"
 skills = ["Learned Dhall to hold data & configure content"]
