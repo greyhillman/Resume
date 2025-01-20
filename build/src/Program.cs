@@ -2,10 +2,10 @@
 using System.CommandLine;
 using System.IO;
 using Tomlet;
-using build;
+using PolyBuild;
 using Common;
-using build.Rebuilders;
-using build.Schedulers;
+using PolyBuild.Rebuilders;
+using PolyBuild.Schedulers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +13,7 @@ using System.Security.Cryptography;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using System.Runtime.CompilerServices;
+using System.Collections.Map;
 
 
 namespace Program;
@@ -29,8 +30,8 @@ public class Program
                 options.ColorBehavior = LoggerColorBehavior.Disabled;
             });
 
-            builder.AddFilter("build.Rebuilders", LogLevel.Warning);
-            builder.AddFilter("build.Schedulers", LogLevel.Warning);
+            builder.AddFilter("PolyBuild.Rebuilders", LogLevel.Warning);
+            builder.AddFilter("PolyBuild.Schedulers", LogLevel.Warning);
         });
         var store = new DictionaryStore<string, FileContent>();
         var tasks = new DictionaryMap<string, IBuildTask<string, FileContent>>();

@@ -16,7 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\build\src\build.csproj" />
+    <ProjectReference Include="..\..\poly-build\dotnet\PolyBuild\PolyBuild.csproj" />
+    <ProjectReference Include="..\..\poly-build\dotnet\PolyBuild.Rebuilders.VerifyingTrace\PolyBuild.Rebuilders.VerifyingTrace.csproj" />
+    <ProjectReference Include="..\..\poly-build\dotnet\PolyBuild.Schedulers.Suspending\PolyBuild.Schedulers.Suspending.csproj" />
+    <ProjectReference Include="..\..\poly-build\dotnet\System.Collections.Map\System.Collections.Map.csproj" />
   </ItemGroup>
 
 </Project>
