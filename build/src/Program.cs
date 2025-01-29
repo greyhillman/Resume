@@ -78,7 +78,7 @@ public class Program
                         {
                             if (writeTime > lastWrite)
                             {
-                                Console.WriteLine("{0} updated...");
+                                Console.WriteLine("{0} updated...", file);
 
                                 var key = Path.GetRelativePath("../src", file);
 
@@ -89,8 +89,8 @@ public class Program
                         lastWriteTimes[file] = writeTime;
                     }
 
-                    await builder.Build("capital.html");
-                    await builder.Build("resume.html");
+                    await builder.Build("capital/index.html");
+                    await builder.Build("resume/index.html");
 
                     await Task.Delay(1000, token);
                 }
