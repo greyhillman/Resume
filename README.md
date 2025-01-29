@@ -7,14 +7,14 @@ A repo to
 
 ## How to make new Resume
 
-1. Edit `resume.dhall` to have the information from `capital.dhall` for a new resume
+1. Edit `src/resume.toml` to have the information from `src/capital.toml` for a new resume.
 2. Run
 
 ```bash
 dotnet run
 ```
 
-3. Style the resume using `resume.scss`
+3. Style the resume using `src/resume.css`
 4. Run
 
 ```bash
@@ -73,9 +73,3 @@ I'm sure there's ways around it, but I don't want to know more about Google Docs
 
 **Solution**: Separate content from view: HTML = content, CSS = styling
 
-### Current Design
-
-Currently, all potential resume data is stored in [`.dhall`](https://dhall-lang.org/) files.
-The resume is created by selecting from all potential resume data and turned into a HTML page via [`src/html/package.dhall`](./src/html/package.dhall).
-A barebones build system using [Nuget.Shake](https://github.com/greyhillman/Nuget.Shake) "builds" the HTML file held in [`resume.dhall`](./resume.dhall).
-The build system also builds the CSS via [Sass](https://sass-lang.com/) for the styling.
