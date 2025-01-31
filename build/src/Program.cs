@@ -154,7 +154,7 @@ public class CapitalTask : IBuildTask<string, FileContent>
 
         using (var writer = new StreamWriter("../dist/capital/index.html"))
         {
-            var htmlWriter = new HtmlStreamWriter(writer);
+            var htmlWriter = new HtmlStreamWriter(writer, spacesPerIndent: 4);
             var visitor = new CapitalWriter(htmlWriter, [
                 Path.GetRelativePath("../dist/capital", resetStylesheet.Path),
                 Path.GetRelativePath("../dist/capital", capitalStylesheet.Path),
@@ -199,7 +199,7 @@ public class ResumeTask : IBuildTask<string, FileContent>
 
         using (var writer = new StreamWriter("../dist/resume/index.html"))
         {
-            var htmlWriter = new HtmlStreamWriter(writer);
+            var htmlWriter = new HtmlStreamWriter(writer, spacesPerIndent: 4);
             var visitor = new ResumeWriter(capital, htmlWriter, [
                 Path.GetRelativePath("../dist/resume", resetStylesheet.Path),
                 Path.GetRelativePath("../dist/resume", resumeStylesheet.Path),
