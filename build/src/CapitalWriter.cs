@@ -365,9 +365,13 @@ public class CapitalWriter : ICapitalVisitor
             {
                 { "class", "skills" },
             });
-            foreach (var skill in position.Skills)
+            for (var i = 0; i < position.Skills.Length; i++)
             {
-                _writer.Open("li");
+                var skill = position.Skills[i];
+
+                _writer.Open("li", new() {
+                    { "title", $"Resume Position: {i + 1}" },
+                });
                 _writer.Write(skill);
                 _writer.Close("li");
             }
