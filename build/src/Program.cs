@@ -42,6 +42,7 @@ public class Program
 
         tasks.Add("capital.toml", new SourceTask(loggerFactory, "../src/capital.toml"));
         tasks.Add("resume.toml", new SourceTask(loggerFactory, "../src/resume.toml"));
+        tasks.Add("defence.md", new SourceTask(loggerFactory, "../src/defence.md"));
 
         tasks.Add("capital/index.html", new CapitalTask(loggerFactory));
         tasks.Add("capital/reset.css", new CopyTask(loggerFactory, "../src/reset.css", "../dist/capital/reset.css"));
@@ -197,13 +198,19 @@ public class ResumeTask : IBuildTask<string, FileContent>
         var resume = TomletMain.To<Resume.Data>(resumeContent);
         var capital = TomletMain.To<Capital.Data>(capitalContent);
 
+        FileContent? defenceFile = null;
+        if (resume.IncludeDefences)
+        {
+            defenceFile = await system.Build("defence.md");
+        }
+
         using (var writer = new StreamWriter("../dist/resume/index.html"))
         {
             var htmlWriter = new HtmlStreamWriter(writer, spacesPerIndent: 4);
             var visitor = new ResumeWriter(capital, htmlWriter, [
                 Path.GetRelativePath("../dist/resume", resetStylesheet.Path),
                 Path.GetRelativePath("../dist/resume", resumeStylesheet.Path),
-            ]);
+            ], defenceFile?.Content);
 
             resume.Accept(visitor);
 

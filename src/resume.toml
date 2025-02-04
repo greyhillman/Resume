@@ -16,6 +16,8 @@ knowledge = [
     "JavaScript",
 ]
 
+defence = true
+
 
 [[jobs]]
 company = "Xplor Recreation"

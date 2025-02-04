@@ -1,3 +1,4 @@
+using System.IO;
 using System.Linq;
 using Resume;
 
@@ -14,13 +15,15 @@ public class ResumeWriter : IResumeVisitor
     private Capital.JobPosition? _currentJobPosition = null;
 
     private readonly string[] _stylesheets;
+    private readonly string? _defences;
 
-    public ResumeWriter(Capital.Data data, HtmlStreamWriter writer, string[] stylesheets)
+    public ResumeWriter(Capital.Data data, HtmlStreamWriter writer, string[] stylesheets, string? defences)
     {
         _capital = data;
         _writer = writer;
 
         _stylesheets = stylesheets;
+        _defences = defences;
     }
 
     public void Visit(Data element)
@@ -77,6 +80,17 @@ public class ResumeWriter : IResumeVisitor
         _writer.Close("ul");
 
         _writer.Close("address");
+
+        if (_defences != null)
+        {
+            _writer.Open("section", new() {
+                { "id", "defence" },
+            });
+
+            _writer.Write(_defences);
+
+            _writer.Close("section");
+        }
 
         _writer.Open("section", new() {
             { "id", "jobs" },

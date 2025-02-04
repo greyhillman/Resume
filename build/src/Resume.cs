@@ -18,6 +18,9 @@ public class Data : IAcceptor<Data>
     [TomlProperty("knowledge")]
     public required string[] Knowledge { get; set; }
 
+    [TomlProperty("defence")]
+    public bool IncludeDefences { get; set; } = false;
+
     [TomlProperty("jobs")]
     public required Job[] Jobs { get; set; }
 

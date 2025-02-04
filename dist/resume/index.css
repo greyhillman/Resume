@@ -1,5 +1,6 @@
 :root {
     --font-color: black;
+    --article-background-color: white;
     --muted-color: lightgrey;
     --link-color: rgb(0, 0, 238);
 }
@@ -26,7 +27,7 @@ body {
 }
 
 article {
-    background-color: white;
+    background-color: var(--article-background-color);
     width: 100%;
     height: 100%;
 }
@@ -311,4 +312,13 @@ a:visited {
 
 section.period {
     font-style: italic;
+}
+
+#defence {
+    position: fixed;
+    color: var(--article-background-color);
+    z-index: -100;
+
+    max-width: 10em;
+    max-height: 10em;
 }
