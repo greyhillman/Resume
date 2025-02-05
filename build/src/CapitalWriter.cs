@@ -1,3 +1,4 @@
+using System.Threading;
 using Capital;
 
 namespace Program;
@@ -71,6 +72,12 @@ public class CapitalWriter : ICapitalVisitor
         });
         _writer.Write("fake@fake.com");
         _writer.Close("a");
+
+        _writer.Open("span", new() {
+            { "class", "location" },
+        });
+        _writer.Write(data.Location);
+        _writer.Close("span");
 
         if (data.Accounts.Length > 0)
         {

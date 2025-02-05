@@ -60,6 +60,12 @@ public class ResumeWriter : IResumeVisitor
         _writer.Write(_capital.Email);
         _writer.Close("a");
 
+        _writer.Open("span", new() {
+            { "class", "location" },
+        });
+        _writer.Write(_capital.Location);
+        _writer.Close("span");
+
         _writer.Open("ul", new() {
             { "class", "accounts" },
         });

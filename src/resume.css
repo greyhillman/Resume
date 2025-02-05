@@ -63,10 +63,14 @@ article>address {
 address {
     display: grid;
     grid-template-areas:
-        'name  .'
-        'email social'
-        '.     social';
+        'name     .'
+        'location social'
+        'email    social';
     column-gap: 0.5em;
+}
+
+address>span.location {
+    grid-area: location;
 }
 
 address>p {

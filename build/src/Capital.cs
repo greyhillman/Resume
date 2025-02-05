@@ -22,6 +22,9 @@ public class Data : IAcceptor<Data>
     [TomlProperty("name")]
     public required string Name { get; set; }
 
+    [TomlProperty("location")]
+    public required string Location { get; set; }
+
     [TomlProperty("email")]
     public required string Email { get; set; }
 
