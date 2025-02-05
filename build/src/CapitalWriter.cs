@@ -376,9 +376,7 @@ public class CapitalWriter : ICapitalVisitor
             {
                 var skill = position.Skills[i];
 
-                _writer.Open("li", new() {
-                    { "title", $"Resume Position: {i + 1}" },
-                });
+                _writer.Open("li");
                 _writer.Write(skill);
                 _writer.Close("li");
             }
@@ -389,20 +387,20 @@ public class CapitalWriter : ICapitalVisitor
 
         position.Knowledge.Accept(this);
 
-        if (position.Endorsements.Length > 0)
+        if (position.Quotes.Length > 0)
         {
             _writer.Open("section", new() {
-                { "class", "endorsements"}
+                { "class", "quote"}
             });
 
             _writer.Open("header");
-            _writer.Write("Endorsements");
+            _writer.Write("Quotes");
             _writer.Close("header");
 
             _writer.Open("ul", new() {
-                { "class", "endorsements" },
+                { "class", "quote" },
             });
-            foreach (var endorsement in position.Endorsements)
+            foreach (var endorsement in position.Quotes)
             {
                 _writer.Open("li");
                 endorsement.Accept(this);
@@ -416,7 +414,7 @@ public class CapitalWriter : ICapitalVisitor
         _writer.Close("section");
     }
 
-    public void Visit(JobEndorsement endorsement)
+    public void Visit(JobQuote endorsement)
     {
         _writer.Open("section", new() {
             { "class", "endorsement" }

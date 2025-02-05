@@ -9,7 +9,7 @@ public interface ICapitalVisitor
     , IVisitor<Account>
     , IVisitor<Job>
     , IVisitor<JobPosition>
-    , IVisitor<JobEndorsement>
+    , IVisitor<JobQuote>
     , IVisitor<KnowledgeUsage>
     , IVisitor<Project>
     , IVisitor<Degree>
@@ -97,8 +97,8 @@ public class JobPosition : IAcceptor<JobPosition>
     [TomlProperty("skills")]
     public string[] Skills { get; set; } = [];
 
-    [TomlProperty("endorsements")]
-    public JobEndorsement[] Endorsements { get; set; } = [];
+    [TomlProperty("quotes")]
+    public JobQuote[] Quotes { get; set; } = [];
 
     [TomlProperty("knowledge")]
     public KnowledgeUsage Knowledge { get; set; } = new KnowledgeUsage();
@@ -109,7 +109,7 @@ public class JobPosition : IAcceptor<JobPosition>
     }
 }
 
-public class JobEndorsement : IAcceptor<JobEndorsement>
+public class JobQuote : IAcceptor<JobQuote>
 {
     [TomlProperty("quote")]
     public required string Quote { get; set; }
@@ -123,7 +123,7 @@ public class JobEndorsement : IAcceptor<JobEndorsement>
     [TomlProperty("relation")]
     public required string Relation { get; set; }
 
-    public void Accept(IVisitor<JobEndorsement> visitor)
+    public void Accept(IVisitor<JobQuote> visitor)
     {
         visitor.Visit(this);
     }

@@ -7,7 +7,7 @@ public interface IResumeVisitor
     : IVisitor<Data>
     , IVisitor<Job>
     , IVisitor<JobPosition>
-    , IVisitor<Endorsement>
+    , IVisitor<Quote>
     , IVisitor<Project>
     , IVisitor<Degree>
     , IVisitor<Certification>
@@ -64,8 +64,8 @@ public class JobPosition : IAcceptor<JobPosition>
     [TomlProperty("knowledge")]
     public bool Knowledge { get; set; } = false;
 
-    [TomlProperty("endorsements")]
-    public Endorsement[] Endorsements { get; set; } = [];
+    [TomlProperty("quotes")]
+    public Quote[] Quotes { get; set; } = [];
 
     public void Accept(IVisitor<JobPosition> visitor)
     {
@@ -73,12 +73,12 @@ public class JobPosition : IAcceptor<JobPosition>
     }
 }
 
-public class Endorsement : IAcceptor<Endorsement>
+public class Quote : IAcceptor<Quote>
 {
     [TomlProperty("name")]
     public string Name { get; set; } = "";
 
-    public void Accept(IVisitor<Endorsement> visitor)
+    public void Accept(IVisitor<Quote> visitor)
     {
         visitor.Visit(this);
     }

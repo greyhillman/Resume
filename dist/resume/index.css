@@ -135,11 +135,11 @@ ul.knowledge {
     font-style: italic;
 }
 
-section.job>ul.endorsements {
+section.job>ul.quote {
     grid-column: span 3;
 }
 
-ul.endorsements {
+ul.quote {
     margin-left: 1em;
 }
 

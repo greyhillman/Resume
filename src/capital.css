@@ -218,6 +218,11 @@ ul.skills {
   list-style: inside square;
 }
 
+ul.skills>li:nth-of-type(5n)+li {
+  /* Visually separate chunks of skills */
+  margin-top: 0.5em;
+}
+
 section.job>header {
   font-size: 1.5em;
   margin-bottom: 1rem;
@@ -302,7 +307,7 @@ section.scholarship>span.amount {
   justify-self: flex-end;
 }
 
-ul.endorsements {
+ul.quote {
   /* Each quote is at least 2 lines, with the last line
    * being on the right, making the first line recognizable
    * as the item.
@@ -456,7 +461,7 @@ ul.skills {
   margin-left: 1em;
 }
 
-ul.endorsements {
+ul.quote {
   margin-left: 1em;
 }
 

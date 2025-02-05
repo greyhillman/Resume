@@ -270,14 +270,14 @@ public class ResumeWriter : IResumeVisitor
             _writer.Close("ul");
         }
 
-        if (filter.Endorsements.Length > 0)
+        if (filter.Quotes.Length > 0)
         {
             _writer.Open("ul", new()
             {
-                { "class", "endorsements"}
+                { "class", "quote"}
             });
 
-            foreach (var endorsementFilter in filter.Endorsements)
+            foreach (var endorsementFilter in filter.Quotes)
             {
                 _writer.Open("li");
                 endorsementFilter.Accept(this);
@@ -316,9 +316,9 @@ public class ResumeWriter : IResumeVisitor
         _currentJobPosition = null;
     }
 
-    public void Visit(Endorsement filter)
+    public void Visit(Quote filter)
     {
-        var endorsement = _currentJobPosition!.Endorsements.First(endorsement => endorsement.Name == filter.Name);
+        var endorsement = _currentJobPosition!.Quotes.First(endorsement => endorsement.Name == filter.Name);
 
         _writer.Open("section", new()
         {

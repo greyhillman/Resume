@@ -30,12 +30,56 @@ end = 2024-06-15
 skills = [
     "Lead project on migrating production AWS infrastructure to Terraform",
     "Debugged AWS infrastructure production issues",
-    "Provided basic support for Bamboo",
+    "Acted as AWS infrastructure expert/lead",
+    "Managed and developed Bamboo plans and deployments",
     "Identified issue with MSBuild producing Debug builds in production",
     "Migrated legacy Nuget package configs to PackageReference format",
+    "Acted as unofficial Team Lead as teammates needed it",
+    "Conducted exit interview when management failed to arrange it",
+    "Launched and monitored ECS services",
+    "Launched and monitored AWS Lambda functions",
+    "Replaced bespoke Packer and Bamboo builds for AMIs with AWS Image Builder",
 ]
-knowledge.high = ["Terraform", "Bamboo", "AWS"]
-knowledge.medium = ["Dhall"]
+knowledge.high = [
+    "Terraform",
+    "Bamboo",
+    "AWS",
+    "AWS ECS",
+    "AWS Lambda",
+    "AWS S3",
+    "AWS EC2",
+]
+knowledge.medium = [
+    "Dhall",
+    "AWS CloudFront",
+    "AWS IAM",
+    "AWS Image Builder",
+    "AWS ELB",
+]
+
+[[jobs.positions.quotes]]
+quote = "Your presence, knowledge, and will to help will be missed!"
+name = "Marcio"
+position = "Site Reliability Engineer"
+relation = "Coworker"
+
+[[jobs.positions.quotes]]
+quote = "Can you leave your brain with us?"
+name = "Marcio"
+position = "Site Reliability Engineer"
+relation = "Coworker"
+
+[[jobs.positions.quotes]]
+quote = "You have the courage to say what others want to say but cannot"
+name = "Unknown"
+position = "Engineering"
+relation = "Coworker"
+
+[[jobs.positions.quotes]]
+quote = "You have been instrumental in so many projects."
+name = "Kia"
+position = "Director of Product"
+relation = "Management"
 
 [[jobs.positions]]
 title = "Junior Software Developer"
@@ -44,14 +88,24 @@ end = 2023-05-01
 skills = [
     "Identified $35k/year in AWS savings for ECS clusters",
     "Migrated internal tool's AWS infrastructure to Terraform",
-    "Designed, built, and maintained AWS systems for internal tool",
+    "Designed, built, and maintained distributed database script runner",
+    "Maintained customer support/internal management tool",
+    "Eliminated EC2 instance cycling due to incorrect auto-scaling policies",
     "Trained co-op on software development basics",
     "Planned migration of Bamboo builds and deployments to Bamboo Specs",
     "Used previous knowledge of Dhall for Bamboo Specs",
     "Learned AWS via Udemy and applied learning immediately",
+    "Aligned internal tool styling to follow company's style guide",
 ]
-knowledge.high = ["C#", "AWS", "ASP.NET MVC"]
-knowledge.medium = ["HTML", "SCSS", "Jira", "AWS DynamoDB"]
+knowledge.high = ["C#", "AWS", "AWS ECS", "AWS Lambda", "ASP.NET MVC"]
+knowledge.medium = [
+    "HTML",
+    "SCSS",
+    "Jira",
+    "AWS DynamoDB",
+    "AWS SQS",
+    "AWS ELB",
+]
 
 #
 # HELM OPERATIONS
@@ -89,19 +143,19 @@ knowledge.medium = [
 ]
 knowledge.low = ["PostgreSQL", "PowerShell"]
 
-[[jobs.positions.endorsements]]
+[[jobs.positions.quotes]]
 quote = "We're definitely going to miss your humour and attention to quality and detail"
 name = "Kathy"
 position = "Technical Writer"
 relation = "Coworker"
 
-[[jobs.positions.endorsements]]
+[[jobs.positions.quotes]]
 quote = "I'm gonna miss your attention to all the high-level problems in our code"
 name = "Tim"
 position = "Full-stack Developer"
 relation = "Coworker"
 
-[[jobs.positions.endorsements]]
+[[jobs.positions.quotes]]
 quote = "Talented dev with well-though-out solutions and attention to good coding practices"
 name = "Peter"
 position = "Team Lead"
@@ -160,7 +214,7 @@ skills = [
 knowledge.high = ["Python 3", "VSCode"]
 knowledge.low = ["Docker"]
 
-[[jobs.positions.endorsements]]
+[[jobs.positions.quotes]]
 quote = "Good at explaining technical concepts to non-technical people"
 name = "Ralph"
 position = "Professor/Head Researcher"
