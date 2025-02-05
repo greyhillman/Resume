@@ -16,7 +16,7 @@ knowledge = [
     "JavaScript",
 ]
 
-defence = true
+defence = false
 
 
 [[jobs]]
@@ -29,7 +29,7 @@ knowledge = true
 
 [[jobs.positions]]
 title = "Junior Software Developer"
-skills = [1, 3, 4, 7]
+skills = [1, 4, 7]
 knowledge = true
 
 
@@ -58,17 +58,17 @@ company = "Demonware"
 
 
 [[projects]]
+title = "Lamport Clock Paper"
+knowledge = true
+
+[[projects]]
 title = "Apartment Noise Tracker"
-skills = [1, 2]
+skills = [2]
 knowledge = true
 
 [[projects]]
 title = "Rent vs. Buy Calculator"
 skills = [1]
-knowledge = true
-
-[[projects]]
-title = "Lamport Clock Paper"
 knowledge = true
 
 [[degrees]]
