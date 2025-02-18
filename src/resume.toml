@@ -14,6 +14,8 @@ knowledge = [
     "Preact",
     "TypeScript",
     "JavaScript",
+    "HTML5",
+    "SASS",
 ]
 
 defence = false
@@ -24,12 +26,15 @@ company = "Xplor Recreation"
 
 [[jobs.positions]]
 title = "Intermediate Software Developer"
-skills = [1, 2]
+skills = [1, 3]
 knowledge = true
+
+[[jobs.positions.quotes]]
+name = "Marcio"
 
 [[jobs.positions]]
 title = "Junior Software Developer"
-skills = [1, 4, 7]
+skills = [3, 10]
 knowledge = true
 
 
