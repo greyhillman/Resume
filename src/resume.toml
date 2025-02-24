@@ -1,12 +1,15 @@
 knowledge = [
     "C#",
+    "ASP.NET",
+    "NUnit",
+
     "AWS",
     "Terraform",
+
+    "SQL",
     "PosgreSQL",
     "SQL Server",
-    "ASP.NET",
-    ".NET Framework",
-    "NUnit",
+    "AWS DynamoDB",
 
     "React",
     "Vue",
@@ -14,8 +17,7 @@ knowledge = [
     "Preact",
     "TypeScript",
     "JavaScript",
-    "HTML5",
-    "SASS",
+    "KnockoutJS",
 ]
 
 defence = false
@@ -34,7 +36,7 @@ name = "Marcio"
 
 [[jobs.positions]]
 title = "Junior Software Developer"
-skills = [3, 10]
+skills = [3, 4]
 knowledge = true
 
 
