@@ -42,7 +42,7 @@ public class ResumeWriter : IResumeVisitor
             });
         }
         _writer.Open("title");
-        _writer.Write($"{_capital.Name} - Resume");
+        _writer.Write("resume");
         _writer.Close("title");
         _writer.Close("head");
 

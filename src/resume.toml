@@ -1,6 +1,7 @@
 knowledge = [
     "C#",
     "ASP.NET",
+    ".NET",
     "NUnit",
 
     "AWS",
@@ -9,15 +10,18 @@ knowledge = [
     "SQL",
     "PosgreSQL",
     "SQL Server",
+
     "AWS DynamoDB",
 
+    "TypeScript",
+    "JavaScript",
     "React",
     "Vue",
     "SolidJS",
     "Preact",
-    "TypeScript",
-    "JavaScript",
     "KnockoutJS",
+
+    "Docker",
 ]
 
 defence = false
@@ -28,15 +32,12 @@ company = "Xplor Recreation"
 
 [[jobs.positions]]
 title = "Intermediate Software Developer"
-skills = [1, 3]
+skills = [1, 4]
 knowledge = true
-
-[[jobs.positions.quotes]]
-name = "Marcio"
 
 [[jobs.positions]]
 title = "Junior Software Developer"
-skills = [3, 4]
+skills = [1, 3, 5]
 knowledge = true
 
 
@@ -70,7 +71,7 @@ knowledge = true
 
 [[projects]]
 title = "Apartment Noise Tracker"
-skills = [2]
+skills = [1, 2]
 knowledge = true
 
 [[projects]]
