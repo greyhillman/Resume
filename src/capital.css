@@ -183,23 +183,32 @@ ol.position {
 section.position {
   display: grid;
 
-  grid-template-columns: 1fr auto;
+  grid-template-areas: 'title attributes period';
+  grid-template-columns: auto auto 1fr;
   row-gap: 0.5em;
+  column-gap: 1em;
 
   align-items: baseline;
 }
 
 section.position>* {
-  grid-column: span 2;
+  grid-column: span 3;
 }
 
 section.position>header {
+  grid-area: title;
   font-size: 1.25em;
   grid-column: span 1;
 }
 
+section.position>aside {
+  grid-area: attributes;
+  color: var(--muted-color);
+}
+
 section.position>section.period {
-  grid-column: 2;
+  grid-area: period;
+  justify-self: flex-end;
 }
 
 section.period {

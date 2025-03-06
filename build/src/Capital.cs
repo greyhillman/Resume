@@ -96,6 +96,12 @@ public class JobPosition : IAcceptor<JobPosition>
     [TomlProperty("end")]
     public DateTime? End { get; set; }
 
+    [TomlProperty("contract")]
+    public string? Contract { get; set; }
+
+    [TomlProperty("location")]
+    public required string Location { get; set; }
+
     [TomlProperty("skills")]
     public string[] Skills { get; set; } = [];
 

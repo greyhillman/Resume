@@ -332,6 +332,14 @@ public class CapitalWriter : ICapitalVisitor
         _writer.Write(position.Title);
         _writer.Close("header");
 
+        _writer.Open("aside");
+        if (!string.IsNullOrWhiteSpace(position.Contract))
+        {
+            _writer.Write($"({position.Contract})");
+        }
+        _writer.Write($"({position.Location})");
+        _writer.Close("aside");
+
         _writer.Open("section", new()
         {
             { "class", "period" },
