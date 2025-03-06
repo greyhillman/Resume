@@ -28,17 +28,16 @@ title = "Intermediate Software Developer"
 start = 2023-05-01
 end = 2024-06-15
 skills = [
-    "Lead project on migrating production AWS infrastructure to Terraform",
-    "Debugged AWS infrastructure production issues",
-    "Acted as AWS infrastructure expert/lead",
-    "Managed and developed Bamboo plans and deployments",
-    "Identified issue with MSBuild producing Debug builds in production",
-    "Migrated legacy Nuget package configs to PackageReference format",
-    "Acted as unofficial Team Lead as teammates needed it",
+    "Lead project on migrating $100k/month production AWS to Terraform",
+    "Maintained $100k/month AWS accounts",
+    "Managed and developed 50+ Bamboo plans and deployments",
+    "Fixed issue with Debug builds being deployed to production",
+    "Acted as an unofficial Team Lead as teammates needed it",
     "Conducted exit interview when management failed to arrange it",
-    "Launched and monitored ECS services",
-    "Launched and monitored AWS Lambda functions",
+    "Launched and monitored 20+ ECS services",
+    "Launched and monitored 5+ AWS Lambda functions",
     "Replaced bespoke Packer and Bamboo builds for AMIs with AWS Image Builder",
+    "Trained co-op on software development basics",                              # George
 ]
 knowledge.high = [
     "Terraform",
@@ -61,25 +60,31 @@ knowledge.medium = [
 quote = "Your presence, knowledge, and will to help will be missed!"
 name = "Marcio"
 position = "Site Reliability Engineer"
-relation = "Coworker"
+relation = "Co-worker"
 
 [[jobs.positions.quotes]]
 quote = "Can you leave your brain with us?"
 name = "Marcio"
 position = "Site Reliability Engineer"
-relation = "Coworker"
+relation = "Co-worker"
 
 [[jobs.positions.quotes]]
 quote = "You have the courage to say what others want to say but cannot"
 name = "Unknown"
 position = "Engineering"
-relation = "Coworker"
+relation = "Co-worker"
 
 [[jobs.positions.quotes]]
 quote = "You have been instrumental in so many projects."
 name = "Kia"
 position = "Director of Product"
 relation = "Management"
+
+[[jobs.positions.quotes]]
+quote = "... you helped provide direction, and I always appreciated you sharing your knowledge while troubleshooting."
+name = "Edward"
+position = "Software Developer"
+relation = "Co-worker"
 
 [[jobs.positions]]
 title = "Junior Software Developer"
@@ -88,12 +93,12 @@ end = 2023-05-01
 skills = [
     "Identified $35k/year in AWS savings for ECS clusters",
     "Migrated internal tool's AWS infrastructure to Terraform",
-    "Designed, built, and maintained distributed database script runner",
-    "Maintained customer support/internal management tool",
+    "Designed, built, and maintained distributed SQL Server script runner in C#",
+    "Maintained ASP.NET MVC customer support/internal management tool used by 20+ daily users",
     "Eliminated EC2 instance cycling due to incorrect auto-scaling policies",
-    "Trained co-op on software development basics",
-    "Planned migration of Bamboo builds and deployments to Bamboo Specs",
-    "Used previous knowledge of Dhall for Bamboo Specs",
+    "Trained co-op on software development basics",                                             # Edward
+    "Planned migration of 50+ Bamboo builds and deployments to Bamboo Specs",
+    "Used Dhall for Bamboo Specs to reduce repetition",
     "Learned AWS via Udemy and applied learning immediately",
     "Aligned internal tool styling to follow company's style guide",
 ]
@@ -121,7 +126,9 @@ end = 2021-07-01
 skills = [
     "Continual advocate for best practises across code, UI/UX, processes",
     "Fixed several core issues within first year to recover system from major outage",
-    "Oversaw 2 testing infrastructure projects from conception to completion",
+    "Cut DB usage by ~50% by fixing core issue during major outage",
+    "Used property-based testing to improve confidence in payroll system refactoring",
+    "Designed and built server-side data generators for load testing",
 ]
 knowledge.high = [
     "C#",

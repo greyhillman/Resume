@@ -51,7 +51,35 @@ Those sections are merely sub-categories of human capital:
 - Degrees and certifications would fall under knowledge
 - Quotes would be used to back up skills
 
-### Problems & Solutions
+### Knowledge
+
+What do you know?
+Do you have proof of that knowledge?
+
+Examples:
+- certifications
+- degrees
+
+
+### Skill
+
+> the ability to use one's knowledge effectively and readily in execution or performance
+
+How have you used your knowledge during a project or job?
+What was the impact of you applying your knowledge?
+What metrics did you improve?
+
+Metrics help determine the size of the impact or the scale of your skills: maintaining an application for 5 users is different than 1000.
+
+
+### Experience
+
+Examples:
+- jobs
+- projects
+
+
+## Problems & Solutions
 
 For each new job I apply for, I change my resume to best fit the job's description.
 
