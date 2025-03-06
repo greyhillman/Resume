@@ -52,7 +52,7 @@ article>section>*:not(header) {
 article {
     display: flex;
     flex-direction: column;
-    column-gap: 0.5em;
+    row-gap: 0.5em;
 }
 
 article>address {
@@ -90,6 +90,12 @@ address>ul.accounts {
     flex-direction: row;
     column-gap: 0.25em;
     align-items: flex-end;
+}
+
+article>section>header {
+    text-transform: uppercase;
+
+    border-bottom: solid black 1px;
 }
 
 section#jobs>ol {
