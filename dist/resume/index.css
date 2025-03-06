@@ -21,15 +21,48 @@ body {
 
     width: 8.5in;
     height: 11in;
-    padding: 1in;
+    padding-top: 1in;
+    padding-left: 1in;
+    padding-right: 1in;
 
     background-color: lightgrey;
 }
 
+@media print {
+    body {
+        background-color: white;
+    }
+}
+
 article {
-    background-color: var(--article-background-color);
-    width: 100%;
-    height: 100%;
+    background-color: white;
+    width: calc(8.5in - 2in);
+    height: calc(11in - 2in);
+}
+
+body>footer {
+    height: 1in;
+    width: calc(8.5in - 4in);
+    background-color: white;
+
+    padding-top: 1em;
+}
+
+body>footer {
+    font-style: italic;
+    color: #555;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body>footer a {
+    color: #555;
+}
+
+body>footer a:visited {
+    color: #555;
 }
 
 ul,

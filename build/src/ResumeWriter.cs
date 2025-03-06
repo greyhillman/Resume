@@ -193,6 +193,22 @@ public class ResumeWriter : IResumeVisitor
         _writer.Close("section"); // technologies
 
         _writer.Close("article");
+
+        _writer.Open("footer");
+        _writer.Open("span");
+        _writer.Write("References upon request.");
+        _writer.Close("span");
+
+        _writer.Open("span");
+        _writer.Write("Full resume details");
+        _writer.Open("a", new() {
+            { "href", "https://greyhillman.github.io/Resume/" },
+        });
+        _writer.Write("here.");
+        _writer.Close("a");
+        _writer.Close("span");
+        _writer.Close("footer");
+
         _writer.Close("body");
 
         _writer.Close("html");
