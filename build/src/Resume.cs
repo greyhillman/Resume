@@ -61,9 +61,6 @@ public class JobPosition : IAcceptor<JobPosition>
     [TomlProperty("skills")]
     public int[] Skills { get; set; } = [];
 
-    [TomlProperty("knowledge")]
-    public bool Knowledge { get; set; } = false;
-
     [TomlProperty("quotes")]
     public Quote[] Quotes { get; set; } = [];
 
@@ -91,9 +88,6 @@ public class Project : IAcceptor<Project>
 
     [TomlProperty("skills")]
     public int[] Skills { get; set; } = [];
-
-    [TomlProperty("knowledge")]
-    public bool Knowledge { get; set; } = false;
 
     public void Accept(IVisitor<Project> visitor)
     {

@@ -127,9 +127,10 @@ ul.skills {
     margin-left: 1em;
 }
 
-ul.knowledge {
+section#technologies>ul {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     column-gap: 1em;
     row-gap: 0.25em;
 }

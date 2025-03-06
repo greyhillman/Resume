@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Resume;
@@ -164,10 +165,63 @@ public class ResumeWriter : IResumeVisitor
 
         _writer.Close("section"); // degrees
 
+        _writer.Open("section", new() {
+            { "id", "technologies" },
+        });
+        _writer.Open("header");
+        _writer.Write("Technologies");
+        _writer.Close("header");
+
+        _writer.Open("ul");
+
+        var usedKnowledge = GetUsedKnowledge();
+        var filterKnowledge = new HashSet<string>();
+        foreach (var knowledge in element.Knowledge)
+        {
+            filterKnowledge.Add(knowledge);
+        }
+
+        foreach (var knowledge in filterKnowledge.Intersect(usedKnowledge))
+        {
+            _writer.Open("li");
+            _writer.Write(knowledge);
+            _writer.Close("li");
+        }
+
+        _writer.Close("ul");
+
+        _writer.Close("section"); // technologies
+
         _writer.Close("article");
         _writer.Close("body");
 
         _writer.Close("html");
+    }
+
+    private HashSet<string> GetUsedKnowledge()
+    {
+        var set = new HashSet<string>();
+
+        foreach (var job in _capital.Jobs)
+        {
+            foreach (var position in job.Positions)
+            {
+                foreach (var knowledge in position.Knowledge)
+                {
+                    set.Add(knowledge);
+                }
+            }
+        }
+
+        foreach (var project in _capital.Projects)
+        {
+            foreach (var knowledge in project.Knowledge)
+            {
+                set.Add(knowledge);
+            }
+        }
+
+        return set;
     }
 
     public void Visit(Job filter)
@@ -286,30 +340,6 @@ public class ResumeWriter : IResumeVisitor
             _writer.Close("ul");
         }
 
-        if (filter.Knowledge)
-        {
-            var positionKnowledge = _data!.Knowledge
-                .Where(knowledge => position.Knowledge.High.Contains(knowledge)
-                    || position.Knowledge.Medium.Contains(knowledge)
-                    || position.Knowledge.Low.Contains(knowledge));
-
-            if (positionKnowledge.Any())
-            {
-                _writer.Open("ul", new() {
-                    { "class", "knowledge"}
-                });
-
-                foreach (var knowledge in positionKnowledge)
-                {
-                    _writer.Open("li");
-                    _writer.Write(knowledge);
-                    _writer.Close("li");
-                }
-
-                _writer.Close("ul");
-            }
-        }
-
         _writer.Close("section");
 
         _currentJobPosition = null;
@@ -405,31 +435,6 @@ public class ResumeWriter : IResumeVisitor
             }
 
             _writer.Close("ul");
-        }
-
-        if (filter.Knowledge)
-        {
-            var projectKnowledge = _data!.Knowledge
-                .Where(knowledge => project.Knowledge.High.Contains(knowledge)
-                    || project.Knowledge.Medium.Contains(knowledge)
-                    || project.Knowledge.Low.Contains(knowledge));
-
-            if (projectKnowledge.Any())
-            {
-                _writer.Open("ul", new()
-                {
-                    { "class", "knowledge"}
-                });
-
-                foreach (var knowledge in projectKnowledge)
-                {
-                    _writer.Open("li");
-                    _writer.Write(knowledge);
-                    _writer.Close("li");
-                }
-
-                _writer.Close("ul");
-            }
         }
 
         _writer.Close("section");

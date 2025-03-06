@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using Common;
 using Tomlet.Attributes;
 
@@ -129,7 +131,7 @@ public class JobQuote : IAcceptor<JobQuote>
     }
 }
 
-public class KnowledgeUsage : IAcceptor<KnowledgeUsage>
+public class KnowledgeUsage : IAcceptor<KnowledgeUsage>, IEnumerable<string>
 {
     [TomlProperty("high")]
     public string[] High { get; set; } = [];
@@ -143,6 +145,29 @@ public class KnowledgeUsage : IAcceptor<KnowledgeUsage>
     public void Accept(IVisitor<KnowledgeUsage> visitor)
     {
         visitor.Visit(this);
+    }
+
+    public IEnumerator<string> GetEnumerator()
+    {
+        foreach (var knowledge in High)
+        {
+            yield return knowledge;
+        }
+
+        foreach (var knowledge in Medium)
+        {
+            yield return knowledge;
+        }
+
+        foreach (var knowledge in Low)
+        {
+            yield return knowledge;
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }
 
