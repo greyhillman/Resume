@@ -323,63 +323,9 @@ public class ResumeWriter : IResumeVisitor
             _writer.Close("ul");
         }
 
-        if (filter.Quotes.Length > 0)
-        {
-            _writer.Open("ul", new()
-            {
-                { "class", "quote"}
-            });
-
-            foreach (var endorsementFilter in filter.Quotes)
-            {
-                _writer.Open("li");
-                endorsementFilter.Accept(this);
-                _writer.Close("li");
-            }
-
-            _writer.Close("ul");
-        }
-
         _writer.Close("section");
 
         _currentJobPosition = null;
-    }
-
-    public void Visit(Quote filter)
-    {
-        var endorsement = _currentJobPosition!.Quotes.First(endorsement => endorsement.Name == filter.Name);
-
-        _writer.Open("section", new()
-        {
-            { "class", "endorsement" },
-        });
-
-        _writer.Open("q");
-        _writer.Write(endorsement.Quote);
-        _writer.Close("q");
-
-        _writer.Open("span", new()
-        {
-            { "class", "name" }
-        });
-        _writer.Write(endorsement.Name);
-        _writer.Close("span");
-
-        _writer.Open("span", new()
-        {
-            { "class", "position" }
-        });
-        _writer.Write(endorsement.Position);
-        _writer.Close("span");
-
-        _writer.Open("span", new()
-        {
-            { "class", "relation" }
-        });
-        _writer.Write(endorsement.Relation);
-        _writer.Close("span");
-
-        _writer.Close("section");
     }
 
     public void Visit(Project filter)

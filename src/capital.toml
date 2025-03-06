@@ -94,9 +94,9 @@ skills = [
     "Identified $35k/year in AWS savings for ECS clusters",
     "Migrated internal tool's AWS infrastructure to Terraform",
     "Designed, built, and maintained distributed SQL Server script runner in C#",
-    "Maintained ASP.NET MVC customer support/internal management tool used by 20+ daily users",
+    "Maintained ASP.NET MVC internal management tool used by 20+ daily users",
     "Eliminated EC2 instance cycling due to incorrect auto-scaling policies",
-    "Trained co-op on software development basics",                                             # Edward
+    "Trained co-op on software development basics",                               # Edward
     "Planned migration of 50+ Bamboo builds and deployments to Bamboo Specs",
     "Used Dhall for Bamboo Specs to reduce repetition",
     "Learned AWS via Udemy and applied learning immediately",

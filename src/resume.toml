@@ -32,11 +32,11 @@ company = "Xplor Recreation"
 
 [[jobs.positions]]
 title = "Intermediate Software Developer"
-skills = [1, 4]
+skills = [1, 3, 5, 9]
 
 [[jobs.positions]]
 title = "Junior Software Developer"
-skills = [1, 3, 5]
+skills = [1, 3, 4, 6]
 
 
 [[jobs]]
@@ -44,30 +44,16 @@ company = "Helm Operations"
 
 [[jobs.positions]]
 title = "Full-stack Developer"
-skills = [2, 3]
-
-[[jobs.positions.quotes]]
-name = "Peter"
-
-
-[[jobs]]
-company = "Latitude Geographics"
-
-
-[[jobs]]
-company = "UVic Civil Engineering"
-
-
-[[jobs]]
-company = "Demonware"
+skills = [3, 4, 5]
 
 
 [[projects]]
 title = "Lamport Clock Paper"
+skills = [1]
 
 [[projects]]
 title = "Apartment Noise Tracker"
-skills = [1, 2]
+skills = [1, 2, 3]
 
 [[projects]]
 title = "Rent vs. Buy Calculator"

@@ -207,7 +207,6 @@ section.certification {
 
     align-items: baseline;
     column-gap: 1em;
-    row-gap: 0.25em;
 }
 
 section.certification>header {
