@@ -255,7 +255,20 @@ title = "Lamport Clock Paper"
 purpose = "To create an interactive paper like Bret Victor; to deeply understand Lamport Clocks"
 link = "https://greyhillman.github.io/lamport-clock-paper/"
 repo = "https://github.com/greyhillman/lamport-clock-paper"
-knowledge.high = ["HTML", "CSS", "TypeScript", "Preact"]
+skills = [
+    "Learned basics of Web Components via Lit",
+    "Created visualizations using animated SVG",
+    "Created interactive visualizations using KonvaJS",
+]
+knowledge.high = [
+    "HTML",
+    "CSS",
+    "TypeScript",
+    "Preact",
+    "Lit",
+    "KonvaJS",
+    "Web Components",
+]
 
 [[projects]]
 title = "Apartment Noise Tracker"
@@ -265,9 +278,10 @@ repo = "https://github.com/greyhillman/apartment-noise-tracker"
 skills = [
     "Learned basics of creating a Progressive Web App (PWA)",
     "Used modern CSS to create responsive design (mobile/desktop & dark/light mode)",
+    "Created Playwright tests to allow CSS refactoring",
 ]
 knowledge.high = ["SolidJS", "CSS", "TypeScript", "PWA"]
-knowledge.medium = ["Vite"]
+knowledge.medium = ["Vite", "Playwright"]
 
 [[projects]]
 title = "Personal Blog"
@@ -288,7 +302,11 @@ title = "Resume"
 link = "https://greyhillman.github.io/Resume/"
 repo = "https://github.com/greyhillman/Resume"
 purpose = "To hold all resume data; change resume quickly & easily"
-skills = ["Learned Dhall to hold data & configure content"]
+skills = [
+    "Learned Dhall to hold data & configure content",
+    "Refactored from Dhall to TOML to shorten feedback loop",
+    "Created GitHub pages workflow for human capital",
+]
 knowledge.high = ["TOML", "HTML", "CSS", "C#"]
 
 [[projects]]
@@ -296,12 +314,23 @@ title = "Personal Finance System"
 purpose = "To track finances; automatically produce financial reports"
 skills = [
     "Used Haskell's Shake build system to generate reports",
-    "Learned Dhall to store financial data",
     "Migrated to .NET due to limitations in hledger",
     "Created new accounting Nuget packages based on hledger",
     "Created new build system in .NET based on Haskell's Shake library",
+    "Maintaining 7+ years of financial data with monthly additions",
 ]
 knowledge.high = ["Dhall", "C#", ".NET 7"]
+
+[[projects]]
+title = "ECS-EC2 Simulator"
+purpose = "To debug turbulent ECS & EC2 scaling"
+link = "https://greyhillman.github.io/simulators/ecs-ec2/index.html"
+repo = "https://github.com/greyhillman/greyhillman.github.io/tree/master/site/simulators/ecs-ec2"
+skills = [
+    "Created simulation of AWS Auto-scaling groups",
+    "Created simulation of ECS auto-scaling",
+]
+knowledge.high = ["AWS ECS", "AWS ASG", "Vue"]
 
 #
 # DEGREES
