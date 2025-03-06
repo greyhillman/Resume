@@ -185,6 +185,12 @@ public class Project : IAcceptor<Project>
     [TomlProperty("purpose")]
     public required string Purpose { get; set; }
 
+    [TomlProperty("start_date")]
+    public DateTime? StartDate { get; set; }
+
+    [TomlProperty("end_date")]
+    public DateTime? EndDate { get; set; }
+
     [TomlProperty("skills")]
     public string[] Skills { get; set; } = [];
 

@@ -255,6 +255,7 @@ title = "Lamport Clock Paper"
 purpose = "To create an interactive paper like Bret Victor; to deeply understand Lamport Clocks"
 link = "https://greyhillman.github.io/lamport-clock-paper/"
 repo = "https://github.com/greyhillman/lamport-clock-paper"
+start_date = 2024-12-23
 skills = [
     "Learned basics of Web Components via Lit",
     "Created visualizations using animated SVG",
@@ -275,6 +276,8 @@ title = "Apartment Noise Tracker"
 purpose = "To learn basics of creating a Progressive Web App; to help me file noise complaints"
 link = "https://greyhillman.github.io/apartment-noise-tracker"
 repo = "https://github.com/greyhillman/apartment-noise-tracker"
+start_date = 2024-11-14
+end_date = 2024-12-09
 skills = [
     "Learned basics of creating a Progressive Web App (PWA)",
     "Used modern CSS to create responsive design (mobile/desktop & dark/light mode)",
@@ -291,17 +294,20 @@ purpose = "To explain my ideas; teach others via explorable explanations"
 
 [[projects]]
 title = "Rent vs. Buy Calculator"
+purpose = "To help myself make important decision & convince others"
 link = "https://greyhillman.github.io/rent-vs-buy/"
 repo = "https://github.com/greyhillman/rent-vs-buy"
-purpose = "To help myself make important decision & convince others"
+start_date = 2021-08-10
+end_date = 2021-09-09
 skills = ["Learned React (with hooks) to build frontend"]
 knowledge.high = ["React", "TypeScript"]
 
 [[projects]]
 title = "Resume"
+purpose = "To hold all resume data; change resume quickly & easily"
 link = "https://greyhillman.github.io/Resume/"
 repo = "https://github.com/greyhillman/Resume"
-purpose = "To hold all resume data; change resume quickly & easily"
+start_date = 2021-11-30
 skills = [
     "Learned Dhall to hold data & configure content",
     "Refactored from Dhall to TOML to shorten feedback loop",
@@ -312,6 +318,7 @@ knowledge.high = ["TOML", "HTML", "CSS", "C#"]
 [[projects]]
 title = "Personal Finance System"
 purpose = "To track finances; automatically produce financial reports"
+start_date = 2019-06-22
 skills = [
     "Used Haskell's Shake build system to generate reports",
     "Migrated to .NET due to limitations in hledger",
@@ -326,6 +333,8 @@ title = "ECS-EC2 Simulator"
 purpose = "To debug turbulent ECS & EC2 scaling"
 link = "https://greyhillman.github.io/simulators/ecs-ec2/index.html"
 repo = "https://github.com/greyhillman/greyhillman.github.io/tree/master/site/simulators/ecs-ec2"
+start_date = 2023-03-22
+end_date = 2023-04-22
 skills = [
     "Created simulation of AWS Auto-scaling groups",
     "Created simulation of ECS auto-scaling",

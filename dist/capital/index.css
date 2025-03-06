@@ -242,21 +242,29 @@ section#projects>ol {
 }
 
 section.project {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-areas: 'title links period';
+  grid-template-columns: auto 1fr 1fr;
   row-gap: 0.5em;
+  column-gap: 1em;
+
+  align-items: baseline;
 }
 
 section.project>header {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  column-gap: 1em;
+  grid-area: title;
 }
 
-section.project>header>aside {
-  font-size: 1rem;
-  font-weight: normal;
+section.project>aside.links {
+  grid-area: links;
+
+  justify-self: flex-start;
+}
+
+section.project>aside.period {
+  grid-area: period;
+
+  justify-self: flex-end;
 }
 
 section.project>* {

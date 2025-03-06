@@ -506,8 +506,11 @@ public class CapitalWriter : ICapitalVisitor
 
         _writer.Open("header");
         _writer.Write(project.Title);
+        _writer.Close("header");
 
-        _writer.Open("aside");
+        _writer.Open("aside", new() {
+            { "class", "links" },
+        });
         if (project.Link != null)
         {
             _writer.Open("a", new() {
@@ -525,7 +528,34 @@ public class CapitalWriter : ICapitalVisitor
             _writer.Close("a");
         }
         _writer.Close("aside");
-        _writer.Close("header");
+
+        if (project.StartDate.HasValue)
+        {
+            _writer.Open("aside", new() {
+                { "class", "period" },
+            });
+
+            _writer.Open("time", new() {
+                { "datetime", project.StartDate.Value.ToString("yyyy-MM-dd") },
+            });
+            _writer.Write(project.StartDate.Value.ToString("MMM yyyy"));
+            _writer.Close("time");
+
+            _writer.Open("span");
+            _writer.Write("-");
+            _writer.Close("span");
+
+            if (project.EndDate.HasValue)
+            {
+                _writer.Open("time", new() {
+                    { "datetime", project.EndDate.Value.ToString("yyyy-MM-dd") },
+                });
+                _writer.Write(project.EndDate.Value.ToString("MMM yyyy"));
+                _writer.Close("time");
+            }
+
+            _writer.Close("aside");
+        }
 
         _writer.Open("p");
         _writer.Write(project.Purpose);
