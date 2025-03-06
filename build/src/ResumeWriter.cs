@@ -73,12 +73,11 @@ public class ResumeWriter : IResumeVisitor
         {
             _writer.Open("li");
 
-            _writer.Write(account.Site);
-
             _writer.Open("a", new() {
+                { "class", account.Site },
                 { "href", account.Link },
             });
-            _writer.Write(account.Username);
+            _writer.Write(account.Site);
             _writer.Close("a");
 
             _writer.Close("li");

@@ -56,17 +56,15 @@ article {
 }
 
 article>address {
-    align-self: flex-end;
-    width: fit-content;
+    align-self: center;
 }
 
 address {
     display: grid;
     grid-template-areas:
-        'name     .'
-        'location social'
-        'email    social';
-    column-gap: 0.5em;
+        'name     name  name'
+        'location email social';
+    column-gap: 1em;
 }
 
 address>span.location {
@@ -75,8 +73,11 @@ address>span.location {
 
 address>p {
     grid-area: name;
+
     font-weight: bold;
-    font-size: 1.25em;
+    font-style: normal;
+    font-size: 1.5em;
+    justify-self: center;
 }
 
 address>a[href^="mailto"] {
@@ -86,7 +87,8 @@ address>a[href^="mailto"] {
 address>ul.accounts {
     grid-area: social;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    column-gap: 0.25em;
     align-items: flex-end;
 }
 
