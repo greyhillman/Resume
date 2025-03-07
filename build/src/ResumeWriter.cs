@@ -50,6 +50,54 @@ public class ResumeWriter : IResumeVisitor
         _writer.Open("body");
         _writer.Open("article");
 
+        WriteContact();
+
+        if (_defences != null)
+        {
+            _writer.Open("section", new() {
+                { "id", "defence" },
+            });
+
+            _writer.Write(_defences);
+
+            _writer.Close("section");
+        }
+
+        WriteJobs(element);
+        WriteProjects(element);
+        WriteCertifications(element);
+        WriteDegrees(element);
+        WriteTechnologies(element);
+
+        _writer.Close("article");
+
+        WriteFooter();
+
+        _writer.Close("body");
+
+        _writer.Close("html");
+    }
+
+    private void WriteFooter()
+    {
+        _writer.Open("footer");
+        _writer.Open("span");
+        _writer.Write("References upon request.");
+        _writer.Close("span");
+
+        _writer.Open("span");
+        _writer.Write("Full resume details");
+        _writer.Open("a", new() {
+            { "href", "https://greyhillman.github.io/Resume/" },
+        });
+        _writer.Write("here.");
+        _writer.Close("a");
+        _writer.Close("span");
+        _writer.Close("footer");
+    }
+
+    private void WriteContact()
+    {
         _writer.Open("address");
         _writer.Open("p");
         _writer.Write(_capital.Name);
@@ -86,18 +134,10 @@ public class ResumeWriter : IResumeVisitor
         _writer.Close("ul");
 
         _writer.Close("address");
+    }
 
-        if (_defences != null)
-        {
-            _writer.Open("section", new() {
-                { "id", "defence" },
-            });
-
-            _writer.Write(_defences);
-
-            _writer.Close("section");
-        }
-
+    private void WriteJobs(Data element)
+    {
         _writer.Open("section", new() {
             { "id", "jobs" },
         });
@@ -112,8 +152,11 @@ public class ResumeWriter : IResumeVisitor
         }
         _writer.Close("ol");
 
-        _writer.Close("section"); // jobs
+        _writer.Close("section");
+    }
 
+    private void WriteProjects(Data element)
+    {
         _writer.Open("section", new() {
             { "id", "projects" },
         });
@@ -129,8 +172,11 @@ public class ResumeWriter : IResumeVisitor
             _writer.Close("li");
         }
         _writer.Close("ol");
-        _writer.Close("section"); // projects
+        _writer.Close("section");
+    }
 
+    private void WriteCertifications(Data element)
+    {
         _writer.Open("section", new() {
             { "id", "certifications" },
         });
@@ -147,8 +193,11 @@ public class ResumeWriter : IResumeVisitor
         }
         _writer.Close("ul");
 
-        _writer.Close("section"); // certifications
+        _writer.Close("section");
+    }
 
+    private void WriteDegrees(Data element)
+    {
         _writer.Open("section");
         _writer.Open("header");
         _writer.Write("Degrees");
@@ -163,8 +212,11 @@ public class ResumeWriter : IResumeVisitor
         }
         _writer.Close("ol");
 
-        _writer.Close("section"); // degrees
+        _writer.Close("section");
+    }
 
+    private void WriteTechnologies(Data element)
+    {
         _writer.Open("section", new() {
             { "id", "technologies" },
         });
@@ -190,28 +242,7 @@ public class ResumeWriter : IResumeVisitor
 
         _writer.Close("ul");
 
-        _writer.Close("section"); // technologies
-
-        _writer.Close("article");
-
-        _writer.Open("footer");
-        _writer.Open("span");
-        _writer.Write("References upon request.");
-        _writer.Close("span");
-
-        _writer.Open("span");
-        _writer.Write("Full resume details");
-        _writer.Open("a", new() {
-            { "href", "https://greyhillman.github.io/Resume/" },
-        });
-        _writer.Write("here.");
-        _writer.Close("a");
-        _writer.Close("span");
-        _writer.Close("footer");
-
-        _writer.Close("body");
-
-        _writer.Close("html");
+        _writer.Close("section");
     }
 
     private HashSet<string> GetUsedKnowledge()
