@@ -34,7 +34,7 @@ public class CapitalWriter : ICapitalVisitor
         });
         _writer.OpenClose("meta", new() {
             { "name", "viewport" },
-            { "content", "width=device-width, height=device-height, intial-scale=1"},
+            { "content", "width=device-width, intial-scale=1"},
         });
 
         _writer.Open("title");
