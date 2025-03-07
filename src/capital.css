@@ -159,7 +159,7 @@ ul.knowledge {
   flex-direction: row;
   flex-wrap: wrap;
 
-  column-gap: 0.5em;
+  column-gap: 1em;
   row-gap: 0.5em;
 }
 
