@@ -106,11 +106,11 @@ address>span.location {
 
 address>p {
     grid-area: name;
+    justify-self: center;
 
     font-weight: bold;
     font-style: normal;
-    font-size: 1.5em;
-    justify-self: center;
+    font-size: 2em;
 }
 
 address>a[href^="mailto"] {
@@ -134,25 +134,33 @@ article>section>header {
 section#jobs>ol {
     display: flex;
     flex-direction: column;
-    row-gap: 0.25em;
 }
 
 section.job {
     display: grid;
-    grid-template-columns: auto 1fr 1fr;
+    grid-template-areas:
+        'title   period'
+        'company .'
+        'skills  skills';
+    grid-template-columns: auto 1fr;
+}
+
+section.job>header.position {
+    grid-area: title;
 }
 
 section.job>header.company {
+    grid-area: company;
     font-weight: normal;
-    justify-self: center;
 }
 
 section.job>section.period {
+    grid-area: period;
     justify-self: flex-end;
 }
 
 section.job>ul.skills {
-    grid-column: span 3;
+    grid-area: skills;
 }
 
 ul.skills {
@@ -184,7 +192,6 @@ section.job>ul.quote {
 ul.quote {
     margin-left: 1em;
 }
-
 
 section.endorsement {
     display: grid;
@@ -308,12 +315,10 @@ section.degree>section.skills {
     grid-area: skill;
 }
 
-
 section#projects>ol {
     list-style: none;
     display: flex;
     flex-direction: column;
-    row-gap: 0.25em;
 }
 
 section.project {
