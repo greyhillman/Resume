@@ -63,11 +63,11 @@ public class ResumeWriter : IResumeVisitor
             _writer.Close("section");
         }
 
+        WriteTechnologies(element);
         WriteJobs(element);
-        WriteProjects(element);
         WriteCertifications(element);
         WriteDegrees(element);
-        WriteTechnologies(element);
+        WriteProjects(element);
 
         _writer.Close("article");
 
