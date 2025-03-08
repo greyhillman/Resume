@@ -68,6 +68,7 @@ Examples:
 How have you used your knowledge during a project or job?
 What was the impact of you applying your knowledge?
 What metrics did you improve?
+What problem did you solve with which tool?
 
 Metrics help determine the size of the impact or the scale of your skills: maintaining an application for 5 users is different than 1000.
 

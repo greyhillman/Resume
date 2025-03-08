@@ -265,9 +265,9 @@ link = "https://greyhillman.github.io/lamport-clock-paper/"
 repo = "https://github.com/greyhillman/lamport-clock-paper"
 start_date = 2024-12-23
 skills = [
-    "Learned basics of Web Components via Lit",
-    "Created visualizations using animated SVG",
-    "Created interactive visualizations using KonvaJS",
+    "Used Web Components via Lit for future reusability",
+    "Created animated visualizations using SVG",
+    "Created interactive simulations using KonvaJS",
 ]
 knowledge.high = [
     "HTML",
@@ -287,7 +287,7 @@ repo = "https://github.com/greyhillman/apartment-noise-tracker"
 start_date = 2024-11-14
 end_date = 2024-12-09
 skills = [
-    "Learned basics of creating a Progressive Web App (PWA)",
+    "Allowed offline use by making it a Progressive Web App (PWA)",
     "Used modern CSS for responsive design (mobile/desktop & dark/light mode)",
     "Created Playwright tests to allow CSS refactoring",
 ]
@@ -302,7 +302,7 @@ purpose = "To explain my ideas; teach others via explorable explanations"
 
 [[projects]]
 title = "Rent vs. Buy Calculator"
-purpose = "To help myself make important decision & convince others"
+purpose = "To help make an important decision & convince others"
 link = "https://greyhillman.github.io/rent-vs-buy/"
 repo = "https://github.com/greyhillman/rent-vs-buy"
 start_date = 2021-08-10
@@ -317,7 +317,7 @@ link = "https://greyhillman.github.io/Resume/"
 repo = "https://github.com/greyhillman/Resume"
 start_date = 2021-11-30
 skills = [
-    "Learned Dhall to hold data & configure content",
+    "Used Dhall to hold data & configure content",
     "Refactored from Dhall to TOML to shorten feedback loop",
     "Created GitHub pages workflow for human capital",
 ]
