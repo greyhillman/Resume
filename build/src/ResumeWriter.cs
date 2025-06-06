@@ -84,15 +84,6 @@ public class ResumeWriter : IResumeVisitor
         _writer.Open("span");
         _writer.Write("References upon request.");
         _writer.Close("span");
-
-        _writer.Open("span");
-        _writer.Write("Full resume details");
-        _writer.Open("a", new() {
-            { "href", "https://greyhillman.github.io/Resume/" },
-        });
-        _writer.Write("here.");
-        _writer.Close("a");
-        _writer.Close("span");
         _writer.Close("footer");
     }
 

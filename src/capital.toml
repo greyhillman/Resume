@@ -260,7 +260,7 @@ knowledge.low = ["Agile", "Scrum"]
 
 [[projects]]
 title = "Lamport Clock Paper"
-purpose = "To create an interactive paper like Bret Victor; to deeply understand Lamport Clocks"
+purpose = "To create an interactive paper; to deeply understand Lamport Clocks"
 link = "https://greyhillman.github.io/lamport-clock-paper/"
 repo = "https://github.com/greyhillman/lamport-clock-paper"
 start_date = 2024-12-23

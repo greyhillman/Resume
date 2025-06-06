@@ -32,11 +32,11 @@ company = "Xplor Recreation"
 
 [[jobs.positions]]
 title = "Intermediate Software Developer"
-skills = [1, 3, 5]
+skills = [1, 3, 5, 9]
 
 [[jobs.positions]]
 title = "Junior Software Developer"
-skills = [1, 3, 4, 6]
+skills = [1, 3, 5]
 
 
 [[jobs]]
