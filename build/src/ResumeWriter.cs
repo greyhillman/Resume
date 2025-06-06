@@ -309,12 +309,20 @@ public class ResumeWriter : IResumeVisitor
             { "class", "position" },
         });
         _writer.Write(position.Title);
-        _writer.Close("header");
+        _writer.Close("header"); // Title
 
         _writer.Open("header", new() {
             { "class", "company" },
         });
         _writer.Write(job.Company);
+
+        _writer.Open("span", new()
+        {
+            { "class", "location" },
+        });
+        _writer.Write(position.Location);
+        _writer.Close("span");
+
         _writer.Close("header");
 
         _writer.Open("section", new()

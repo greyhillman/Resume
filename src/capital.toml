@@ -125,7 +125,7 @@ company = "Helm Operations"
 title = "Full-stack Developer"
 start = 2019-04-01
 end = 2021-07-01
-location = "hybrid"
+location = "hybrid: Victoria, BC"
 skills = [
     "Continual advocate for best practises across code, UI/UX, processes",
     "Fixed several core issues within first year to recover system from major outage",
@@ -176,7 +176,7 @@ title = "Software Developer"
 start = 2019-01-01
 end = 2019-04-01
 contract = "co-op"
-location = "on-site"
+location = "Victoria, BC"
 knowledge.high = ["C#", "KnockoutJS", "VSCode"]
 knowledge.medium = [
     "JavaScript",
@@ -200,7 +200,7 @@ title = "Quality Assurance Analyst"
 contract = "co-op"
 start = 2018-05-01
 end = 2018-08-31
-location = "on-site"
+location = "Victoria, BC"
 skills = [
     "Gave recommendations on design of end-to-end tests (\"model\"-based)",
     "Introduced tool to improve QA reports",
@@ -220,7 +220,7 @@ title = "Software Developer"
 contract = "co-op"
 start = 2017-05-01
 end = 2017-08-31
-location = "on-site"
+location = "Victoria, BC"
 skills = [
     "Refactored researcher's code to allow for future development (also fixed critical issue)",
     "Explained technical concepts to non-technical people",
@@ -246,7 +246,7 @@ title = "Software Developer"
 contract = "co-op"
 start = 2016-09-01
 end = 2016-12-31
-location = "on-site"
+location = "Vancouver, BC"
 skills = [
     "Learned basics of software development",
     "Participated in Agile development processes",
