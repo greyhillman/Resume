@@ -152,7 +152,7 @@ public class ResumeWriter : IResumeVisitor
             { "id", "projects" },
         });
         _writer.Open("header");
-        _writer.Write("Projects");
+        _writer.Write("Side Projects");
         _writer.Close("header");
 
         _writer.Open("ol");

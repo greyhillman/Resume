@@ -127,7 +127,7 @@ public class CapitalWriter : ICapitalVisitor
         _writer.Open("a", new() {
             { "href", "#projects" },
         });
-        _writer.Write("Projects");
+        _writer.Write("Side Projects");
         _writer.Close("a");
         _writer.Close("li");
 
@@ -203,7 +203,7 @@ public class CapitalWriter : ICapitalVisitor
             { "id", "projects" },
         });
         _writer.Open("header");
-        _writer.Write("Projects");
+        _writer.Write("Side Projects");
         _writer.Close("header");
 
         _writer.Open("ol");
