@@ -33,7 +33,7 @@ skills = [
     "Maintained $100k/month AWS accounts",
     "Managed and developed 50+ Bamboo plans and deployments",
     "Fixed issue with Debug builds being deployed to production",
-    "Acted as an unofficial Team Lead as teammates needed it",
+    "Acted as an unofficial Team Lead when needed by teammates",                 # Edward agreed with my assessment
     "Conducted exit interview when management failed to arrange it",
     "Launched and monitored 20+ ECS services",
     "Launched and monitored 5+ AWS Lambda functions",
