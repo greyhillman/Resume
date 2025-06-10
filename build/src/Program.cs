@@ -52,12 +52,15 @@ public class Program
         tasks.Add("resume/reset.css", new CopyTask(loggerFactory, "../src/reset.css", "../dist/resume/reset.css"));
         tasks.Add("resume/index.css", new CopyTask(loggerFactory, "../src/resume.css", "../dist/resume/index.css"));
 
+        tasks.Add("linkedin.txt", new LinkedInTask(loggerFactory));
+
         var rootCommand = new RootCommand("Generate resume files");
 
         rootCommand.SetHandler(async () =>
         {
             await builder.Build("capital/index.html");
             await builder.Build("resume/index.html");
+            await builder.Build("linkedin.txt");
         });
 
         var watchCommand = new Command("watch", "Rebuild on file changes");
@@ -131,6 +134,41 @@ public class FileContent : IHashable
         var digest = MD5.HashData(message);
 
         return Convert.ToHexString(digest);
+    }
+}
+
+public class LinkedInTask : IBuildTask<string, FileContent>
+{
+    private readonly ILogger _logger;
+
+    public LinkedInTask(ILoggerFactory loggerFactory)
+    {
+        _logger = loggerFactory.CreateLogger<CapitalTask>();
+    }
+
+    public async Task<FileContent> Execute(IBuildSystem<string, FileContent> system)
+    {
+        var capitalPath = await system.Build("capital.toml");
+
+        var content = capitalPath.Content;
+        var capital = TomletMain.To<Capital.Data>(content);
+
+        using (var writer = new StreamWriter("../dist/linkedin.txt"))
+        {
+            var indentWriter = new IndentTextWriter(writer, 4);
+            var visitor = new LinkedInWriter(indentWriter);
+
+            capital.Accept(visitor);
+
+            await writer.FlushAsync();
+        }
+
+        using (var reader = new StreamReader("../dist/linkedin.txt", Encoding.UTF8))
+        {
+            var result = await reader.ReadToEndAsync();
+
+            return new FileContent("../dist/linkedin.txt", result);
+        }
     }
 }
 

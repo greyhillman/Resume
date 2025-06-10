@@ -1,0 +1,301 @@
+Experience
+    Xplor Recreation
+        Intermediate Software Developer
+        Employment Type
+        Start date
+            May 2023
+        End date
+            June 2024
+        Location
+            remote
+        Description
+            - Lead project on migrating $100k/month production AWS to Terraform
+            - Maintained $100k/month AWS accounts
+            - Managed and developed 50+ Bamboo plans and deployments
+            - Fixed issue with Debug builds being deployed to production
+            - Acted as an unofficial Team Lead when needed by teammates
+            - Conducted exit interview when management failed to arrange it
+            - Launched and monitored 20+ ECS services
+            - Launched and monitored 5+ AWS Lambda functions
+            - Replaced bespoke Packer and Bamboo builds for AMIs with AWS Image Builder
+            - Trained co-op on software development basics
+        Skills
+            - Terraform
+            - Bamboo
+            - AWS
+            - AWS ECS
+            - AWS Lambda
+            - AWS S3
+            - AWS EC2
+
+            - Dhall
+            - AWS CloudFront
+            - AWS IAM
+            - AWS Image Builder
+            - AWS ELB
+
+
+        Junior Software Developer
+        Employment Type
+        Start date
+            April 2022
+        End date
+            May 2023
+        Location
+            remote
+        Description
+            - Identified $35k/year in AWS savings for ECS clusters
+            - Migrated internal tool's AWS infrastructure to Terraform
+            - Designed, built, and maintained distributed SQL Server script runner in C#
+            - Maintained ASP.NET MVC internal management tool used by 20+ daily users
+            - Eliminated EC2 instance cycling due to incorrect auto-scaling policies
+            - Trained co-op on software development basics
+            - Planned migration of 50+ Bamboo builds and deployments to Bamboo Specs
+            - Used Dhall for Bamboo Specs to reduce repetition
+            - Learned AWS via Udemy and applied learning immediately
+            - Aligned internal tool styling to follow company's style guide
+        Skills
+            - C#
+            - AWS
+            - AWS ECS
+            - AWS Lambda
+            - ASP.NET MVC
+
+            - HTML
+            - SCSS
+            - Jira
+            - AWS DynamoDB
+            - AWS SQS
+            - AWS ELB
+
+
+    Helm Operations
+        Full-stack Developer
+        Employment Type
+        Start date
+            April 2019
+        End date
+            July 2021
+        Location
+            hybrid: Victoria, BC
+        Description
+            - Continual advocate for best practises across code, UI/UX, processes
+            - Fixed several core issues within first year to recover system from major outage
+            - Cut DB usage by ~50% by fixing core issue during major outage
+            - Used property-based testing to improve confidence in payroll system refactoring
+            - Designed and built server-side data generators for load testing
+        Skills
+            - C#
+            - SQL Server
+            - KnockoutJS
+            - Visual Studio
+            - VSCode
+            - git
+            - Jira
+
+            - JavaScript
+            - HTML
+            - CSS
+            - LessCSS
+            - .NET Framework
+            - NUnit
+            - Confluence
+
+            - PostgreSQL
+            - PowerShell
+
+        Software Developer
+        Employment Type
+            co-op
+        Start date
+            January 2019
+        End date
+            April 2019
+        Location
+            Victoria, BC
+        Description
+        Skills
+            - C#
+            - KnockoutJS
+            - VSCode
+
+            - JavaScript
+            - HTML
+            - LessCSS
+            - CSS
+            - SQL Server
+            - Visual Studio
+
+            - .NET Framework
+            - Jira
+            - Confluence
+
+    Latitude Geographics
+        Quality Assurance Analyst
+        Employment Type
+            co-op
+        Start date
+            May 2018
+        End date
+            August 2018
+        Location
+            Victoria, BC
+        Description
+            - Gave recommendations on design of end-to-end tests ("model"-based)
+            - Introduced tool to improve QA reports
+            - Developed TypeScript automated end-to-end tests for new product
+        Skills
+            - TypeScript
+            - WebDriverIO
+            - VSCode
+
+
+
+    UVic Civil Engineering
+        Software Developer
+        Employment Type
+            co-op
+        Start date
+            May 2017
+        End date
+            August 2017
+        Location
+            Victoria, BC
+        Description
+            - Refactored researcher's code to allow for future development (also fixed critical issue)
+            - Explained technical concepts to non-technical people
+        Skills
+            - Python 3
+            - VSCode
+
+
+            - Docker
+
+    Demonware
+        Software Developer
+        Employment Type
+            co-op
+        Start date
+            September 2016
+        End date
+            December 2016
+        Location
+            Vancouver, BC
+        Description
+            - Learned basics of software development
+            - Participated in Agile development processes
+        Skills
+            - Python 2
+            - git
+
+
+            - Agile
+            - Scrum
+
+Education
+    University of Victoria
+    Bachelor of Science (Honours) (Co-op)
+    Computer Science
+    September 2014
+    April 2019
+Certifications
+    AWS Certified Solutions Architect - Associate
+    Amazon Web Services (AWS)
+    10 2023
+    10 2026
+    https://www.credly.com/badges/6d92b1c5-e35f-411f-90b0-18eed1fb7d04/linked_in_profile
+Projects
+    Lamport Clock Paper
+        Description
+            Purpose: To create an interactive paper; to deeply understand Lamport Clocks
+
+            - Used Web Components via Lit for future reusability
+            - Created animated visualizations using SVG
+            - Created interactive simulations using KonvaJS
+        Media
+            - https://greyhillman.github.io/lamport-clock-paper/
+            - https://github.com/greyhillman/lamport-clock-paper
+        Start date
+            December 2024
+        End date
+
+    Apartment Noise Tracker
+        Description
+            Purpose: To learn the basics of creating a Progressive Web App
+
+            - Allowed offline use by making it a Progressive Web App (PWA)
+            - Used modern CSS for responsive design (mobile/desktop & dark/light mode)
+            - Created Playwright tests to allow CSS refactoring
+        Media
+            - https://greyhillman.github.io/apartment-noise-tracker
+            - https://github.com/greyhillman/apartment-noise-tracker
+        Start date
+            November 2024
+        End date
+            December 2024
+
+    Personal Blog
+        Description
+            Purpose: To explain my ideas; teach others via explorable explanations
+
+        Media
+            - https://greyhillman.github.io
+            - https://github.com/greyhillman/greyhillman.github.io
+        Start date
+        End date
+
+    Rent vs. Buy Calculator
+        Description
+            Purpose: To help make an important decision & convince others
+
+            - Learned React (with hooks) to build frontend
+        Media
+            - https://greyhillman.github.io/rent-vs-buy/
+            - https://github.com/greyhillman/rent-vs-buy
+        Start date
+            August 2021
+        End date
+            September 2021
+
+    Resume
+        Description
+            Purpose: To hold all resume data; change resume quickly & easily
+
+            - Used Dhall to hold data & configure content
+            - Refactored from Dhall to TOML to shorten feedback loop
+            - Created GitHub pages workflow for human capital
+        Media
+            - https://greyhillman.github.io/Resume/
+            - https://github.com/greyhillman/Resume
+        Start date
+            November 2021
+        End date
+
+    Personal Finance System
+        Description
+            Purpose: To track finances; automatically produce financial reports
+
+            - Used Haskell's Shake build system to generate reports
+            - Migrated to .NET due to limitations in hledger
+            - Created new accounting Nuget packages based on hledger
+            - Created new build system in .NET based on Haskell's Shake library
+            - Maintaining 7+ years of financial data with monthly additions
+        Media
+        Start date
+            June 2019
+        End date
+
+    ECS-EC2 Simulator
+        Description
+            Purpose: To debug turbulent ECS & EC2 scaling
+
+            - Created simulation of AWS Auto-scaling groups
+            - Created simulation of ECS auto-scaling
+        Media
+            - https://greyhillman.github.io/simulators/ecs-ec2/index.html
+            - https://github.com/greyhillman/greyhillman.github.io/tree/master/site/simulators/ecs-ec2
+        Start date
+            March 2023
+        End date
+            April 2023
+
