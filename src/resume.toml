@@ -32,7 +32,7 @@ company = "Xplor Recreation"
 
 [[jobs.positions]]
 title = "Intermediate Software Developer"
-skills = [1, 3, 5, 9]
+skills = [1, 5, 10]
 
 [[jobs.positions]]
 title = "Junior Software Developer"
@@ -46,6 +46,8 @@ company = "Helm Operations"
 title = "Full-stack Developer"
 skills = [3, 4, 5]
 
+[[jobs.positions]]
+title = "Software Developer"
 
 [[projects]]
 title = "Lamport Clock Paper"
@@ -53,7 +55,7 @@ skills = [1]
 
 [[projects]]
 title = "Apartment Noise Tracker"
-skills = [1, 2, 3]
+skills = [1, 2]
 
 [[projects]]
 title = "Rent vs. Buy Calculator"

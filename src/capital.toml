@@ -281,7 +281,7 @@ knowledge.high = [
 
 [[projects]]
 title = "Apartment Noise Tracker"
-purpose = "To learn basics of creating a Progressive Web App; to help me file noise complaints"
+purpose = "To learn basics of creating a Progressive Web App"
 link = "https://greyhillman.github.io/apartment-noise-tracker"
 repo = "https://github.com/greyhillman/apartment-noise-tracker"
 start_date = 2024-11-14

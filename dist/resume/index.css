@@ -145,6 +145,12 @@ section.job {
     grid-template-columns: auto 1fr;
 }
 
+/* section.job:not(:has(ul.skills)) {
+    grid-template-areas: 'title company period';
+    grid-template-columns: auto auto 1fr;
+    column-gap: 0.25em;
+} */
+
 section.job>header.position {
     grid-area: title;
 }
@@ -167,6 +173,9 @@ section.job span.location::after {
 section.job>header.company {
     grid-area: company;
     font-weight: normal;
+
+    /* Don't line up with title */
+    padding-left: 0.5em;
 }
 
 section.job>section.period {
